@@ -1,0 +1,9 @@
+@page {
+    size: landscape;
+}
+
+@media print {
+    body {
+      overflow: visible;
+    }
+}
