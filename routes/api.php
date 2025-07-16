@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\api\ApiConfirmationController;
+use App\Http\Controllers\api\ApiGoodReceiptController;
+use App\Http\Controllers\api\ApiUpdateGoodIssueController;
+use App\Http\Controllers\api\ApiUpdateStatusPoController;
+use App\Http\Controllers\api\ApiUploadPoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +19,47 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/upload_po', [ApiUploadPoController::class, 'post_upload_po']);
+Route::get('/upload_po/{prod_ord_no}', [ApiUploadPoController::class, 'get_upload_po']);
+Route::get('/upload_po', function () {
+    return response()->json([
+        'success' => false,
+        'message' => 'Parameter prod_ord_no is required.'
+    ], 422);
+});
+
+Route::post('/update_status_po', [ApiUpdateStatusPoController::class, 'post_update_status']);
+Route::get('/update_status_po/{prod_ord_no}', [ApiUpdateStatusPoController::class, 'get_update_status']);
+Route::get('/update_status_po', function () {
+    return response()->json([
+        'success' => false,
+        'message' => 'Parameter prod_ord_no is required.'
+    ], 422);
+});
+
+Route::post('/data_good_issue', [ApiUpdateGoodIssueController::class, 'post_update_gi']);
+Route::get('/data_good_issue/{prod_ord_no}', [ApiUpdateGoodIssueController::class, 'get_update_gi']);
+Route::get('/data_good_issue', function () {
+    return response()->json([
+        'success' => false,
+        'message' => 'Parameter prod_ord_no is required.'
+    ], 422);
+});
+
+Route::post('/data_confirmation', [ApiConfirmationController::class, 'post_confirmation']);
+Route::get('/data_confirmation/{prod_ord_no}', [ApiConfirmationController::class, 'get_confirmation']);
+Route::get('/data_confirmation', function () {
+    return response()->json([
+        'success' => false,
+        'message' => 'Parameter prod_ord_no is required.'
+    ], 422);
+});
+
+Route::post('/data_good_receipt', [ApiGoodReceiptController::class, 'post_good_receipt']);
+Route::get('/data_good_receipt/{prod_ord_no}', [ApiGoodReceiptController::class, 'get_good_receipt']);
+Route::get('/data_good_receipt', function () {
+    return response()->json([
+        'success' => false,
+        'message' => 'Parameter prod_ord_no is required.'
+    ], 422);
 });
