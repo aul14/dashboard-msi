@@ -174,7 +174,7 @@
                     tagMap = map;
 
                     let ws_url = $("input[name=ws_url]").val();
-                    let ws = new WebSocket(`${ws_url}/test`);
+                    let ws = new WebSocket(`${ws_url}/Gyposat`);
 
                     ws.onopen = () => console.log('Connection Established');
 
