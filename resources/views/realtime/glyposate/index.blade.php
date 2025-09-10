@@ -159,7 +159,7 @@
         });
 
         function startWebsocket() {
-            const tagJsonUrl = "{{ asset('assets/json/testtag.json') }}";
+            const tagJsonUrl = "{{ asset('assets/json/glyposate.json') }}";
 
             let tagMap = {};
 
