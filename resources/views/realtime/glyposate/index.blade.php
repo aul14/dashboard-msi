@@ -191,14 +191,14 @@
                         ws.onmessage = function(e) {
                             let data = JSON.parse(e.data);
 
-                            // Object.entries(tagMap).forEach(([path, selector]) => {
-                            //     const value = getValueByPath(data, path);
-                            //     if (value !== undefined) {
-                            //         sv.storeValue(selector, value);
-                            //     }
-                            // });
+                            Object.entries(tagMap).forEach(([path, selector]) => {
+                                const value = getValueByPath(data, path);
+                                if (value !== undefined) {
+                                    sv.storeValue(selector, value);
+                                }
+                            });
 
-                            // sv.updateValues();
+                            sv.updateValues();
                         };
                     });
 
