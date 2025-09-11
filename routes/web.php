@@ -38,6 +38,8 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
     Route::get('/home', [HomeController::class, 'index']);
     Route::get('/glyposate/real-time', [GlyposateRealTimeController::class, 'index'])->name('glyposate.index');
     Route::get('/paraquat/real-time', [ParaquatRealTimeController::class, 'index'])->name('paraquat.index');
+    Route::get('/table/glyposate/real-time', [GlyposateRealTimeController::class, 'table_realtime'])->name('glyposate.table');
+    Route::get('/table/paraquat/real-time', [ParaquatRealTimeController::class, 'table_realtime'])->name('paraquat.table');
     Route::get('/upload_po', [UploadPoController::class, 'index'])->name('upload_po.index');
     Route::get('/good_issue', [GoodIssueController::class, 'index'])->name('good_issue.index');
     Route::get('/good_receipt', [GoodReceiptController::class, 'index'])->name('good_receipt.index');

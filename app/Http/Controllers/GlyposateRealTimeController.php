@@ -11,4 +11,10 @@ class GlyposateRealTimeController extends Controller
         $title = 'Real Time Monitoring Glyposate';
         return view('realtime.glyposate.index', compact('title'));
     }
+
+    public function table_realtime()
+    {
+        $title = 'Real Time Monitoring Glyposate';
+        return view('realtime.glyposate.table', compact('title'));
+    }
 }

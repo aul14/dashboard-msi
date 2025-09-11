@@ -65,7 +65,15 @@
                                      <a class="nav-link" href="{{ route('glyposate.index') }}">Monitoring Glyposate</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="{{ route('paraquat.index') }}">Monitoring Parakuat</a>
+                                     <a class="nav-link" href="{{ route('paraquat.index') }}">Monitoring Paraquat</a>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="{{ route('glyposate.table') }}">Table Monitoring
+                                         Glyposate</a>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="{{ route('paraquat.table') }}">Table Monitoring
+                                         Paraquat</a>
                                  </li>
                              </ul>
                          </div>
