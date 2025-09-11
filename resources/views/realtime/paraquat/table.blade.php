@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="overflow-y: auto;">
             <table id="paraquat-table" class="my-table table my-tableview my-table-striped table-hover w-100">
                 <thead></thead>
                 <tbody></tbody>
