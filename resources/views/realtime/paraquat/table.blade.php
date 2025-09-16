@@ -63,6 +63,12 @@
             });
 
             // buka websocket...
+            let ws_url = $("input[name=ws_url]").val();
+            let ws = new WebSocket(`${ws_url}/Parakuat`);
+
+            ws.onopen = () => console.log("Connection Established");
+
+
             ws.onmessage = function(e) {
                 let data = JSON.parse(e.data);
 

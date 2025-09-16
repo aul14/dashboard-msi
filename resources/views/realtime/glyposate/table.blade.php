@@ -43,8 +43,8 @@
             let parameters = config.Parameters;
 
             // build header
-            let thead = $("#paraquat-table thead");
-            let tbody = $("#paraquat-table tbody");
+            let thead = $("#glyposate-table thead");
+            let tbody = $("#glyposate-table tbody");
 
             thead.empty();
             tbody.empty();
@@ -61,6 +61,11 @@
                 row.append(`<td id="param-${idx}">-</td>`);
                 tbody.append(row);
             });
+
+            let ws_url = $("input[name=ws_url]").val();
+            let ws = new WebSocket(`${ws_url}/Glyposate`);
+
+            ws.onopen = () => console.log("Connection Established");
 
             // buka websocket...
             ws.onmessage = function(e) {
