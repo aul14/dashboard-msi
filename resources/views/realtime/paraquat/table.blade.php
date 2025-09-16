@@ -36,7 +36,7 @@
         }
 
         async function startWebsocket() {
-            const tagJsonUrl = "{{ asset('assets/json/paraquat_table.json') }}";
+            const tagJsonUrl = "{{ asset('assets/json/paraquat_table.json') }}" + "?v=" + new Date().getTime();
             let response = await fetch(tagJsonUrl);
             let config = await response.json();
 

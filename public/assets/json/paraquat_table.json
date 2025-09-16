@@ -5,8 +5,8 @@
       "key": "Data.Analog.Inv1_Frequency"
     },
     {
-      "name_parameter": "Inverter Frequency",
-      "key": "Data.Analog.Inv1_Frequency[0]"
+      "name_parameter": "Inverter Frequency TEST",
+      "key": "Data.Analog.Inv1_Frequency"
     }
   ]
 }

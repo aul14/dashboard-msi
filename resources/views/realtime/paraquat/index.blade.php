@@ -159,8 +159,7 @@
         });
 
         function startWebsocket() {
-            const tagJsonUrl = "{{ asset('assets/json/paraquat.json') }}";
-
+            const tagJsonUrl = "{{ asset('assets/json/paraquat.json') }}" + "?v=" + new Date().getTime();
             let tagMap = {};
 
             fetch(tagJsonUrl)
