@@ -50,24 +50,19 @@
             tbody.empty();
 
             let headerRow = $("<tr>");
-            parameters.forEach(p => {
-                headerRow.append(`<th>${p.name_parameter}</th>`);
-            });
+            headerRow.append("<th>Parameter</th>");
+            headerRow.append("<th>Value</th>");
             thead.append(headerRow);
 
-            // build tbody row dengan cell kosong
-            let bodyRow = $("<tr>");
+            // build tbody rows, satu parameter = satu baris
             parameters.forEach((p, idx) => {
-                bodyRow.append(`<td id="param-${idx}">-</td>`);
+                let row = $("<tr>");
+                row.append(`<td>${p.name_parameter}</td>`);
+                row.append(`<td id="param-${idx}">-</td>`);
+                tbody.append(row);
             });
-            tbody.append(bodyRow);
 
-            // buka websocket
-            let ws_url = $("input[name=ws_url]").val();
-            let ws = new WebSocket(`${ws_url}/Parakuat`);
-
-            ws.onopen = () => console.log("Connection Established");
-
+            // buka websocket...
             ws.onmessage = function(e) {
                 let data = JSON.parse(e.data);
 
