@@ -18,6 +18,9 @@ return new class extends Migration
             $table->integer('item')->nullable();
             $table->string('plant', 4)->nullable();
             $table->string('order_type', 4)->nullable();
+            $table->double('batch')->nullable();
+            $table->string('batch_code', 50)->nullable();
+            $table->string('status_batch')->default('RECEIVED')->nullable();
             $table->dateTime('production_start')->nullable();
             $table->double('qty_production')->nullable();
             $table->string('material_code', 18)->nullable();

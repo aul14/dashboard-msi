@@ -1,12 +1,1108 @@
 {
   "Parameters": [
     {
-      "name_parameter": "Inverter Frequency",
+      "name_parameter": "A_V1",
+      "key": "Data.Digital.A_V1"
+    },
+    {
+      "name_parameter": "A_V10",
+      "key": "Data.Digital.A_V10"
+    },
+    {
+      "name_parameter": "A_V11",
+      "key": "Data.Digital.A_V11"
+    },
+    {
+      "name_parameter": "A_V12",
+      "key": "Data.Digital.A_V12"
+    },
+    {
+      "name_parameter": "A_V13",
+      "key": "Data.Digital.A_V13"
+    },
+    {
+      "name_parameter": "A_V14",
+      "key": "Data.Digital.A_V14"
+    },
+    {
+      "name_parameter": "A_V15",
+      "key": "Data.Digital.A_V15"
+    },
+    {
+      "name_parameter": "A_V16",
+      "key": "Data.Digital.A_V16"
+    },
+    {
+      "name_parameter": "A_V17",
+      "key": "Data.Digital.A_V17"
+    },
+    {
+      "name_parameter": "A_V18",
+      "key": "Data.Digital.A_V18"
+    },
+    {
+      "name_parameter": "A_V19",
+      "key": "Data.Digital.A_V19"
+    },
+    {
+      "name_parameter": "A_V2",
+      "key": "Data.Digital.A_V2"
+    },
+    {
+      "name_parameter": "A_V20",
+      "key": "Data.Digital.A_V20"
+    },
+    {
+      "name_parameter": "A_V21",
+      "key": "Data.Digital.A_V21"
+    },
+    {
+      "name_parameter": "A_V22",
+      "key": "Data.Digital.A_V22"
+    },
+    {
+      "name_parameter": "A_V23",
+      "key": "Data.Digital.A_V23"
+    },
+    {
+      "name_parameter": "A_V24",
+      "key": "Data.Digital.A_V24"
+    },
+    {
+      "name_parameter": "A_V3",
+      "key": "Data.Digital.A_V3"
+    },
+    {
+      "name_parameter": "A_V4",
+      "key": "Data.Digital.A_V4"
+    },
+    {
+      "name_parameter": "A_V5",
+      "key": "Data.Digital.A_V5"
+    },
+    {
+      "name_parameter": "A_V6",
+      "key": "Data.Digital.A_V6"
+    },
+    {
+      "name_parameter": "A_V7",
+      "key": "Data.Digital.A_V7"
+    },
+    {
+      "name_parameter": "A_V8",
+      "key": "Data.Digital.A_V8"
+    },
+    {
+      "name_parameter": "A_V9",
+      "key": "Data.Digital.A_V9"
+    },
+    {
+      "name_parameter": "Control_ON",
+      "key": "Data.Digital.Control_ON"
+    },
+    {
+      "name_parameter": "Control_ON_OFF_Auto",
+      "key": "Data.Digital.Control_ON_OFF_Auto"
+    },
+    {
+      "name_parameter": "Emergency_Stop",
+      "key": "Data.Digital.Emergency_Stop"
+    },
+    {
+      "name_parameter": "Fault_Control",
+      "key": "Data.Digital.Fault_Control"
+    },
+    {
+      "name_parameter": "Fault_Mixer1",
+      "key": "Data.Digital.Fault_Mixer1"
+    },
+    {
+      "name_parameter": "Fault_Mixer2",
+      "key": "Data.Digital.Fault_Mixer2"
+    },
+    {
+      "name_parameter": "Fault_Pump1",
+      "key": "Data.Digital.Fault_Pump1"
+    },
+    {
+      "name_parameter": "Fault_Pump2",
+      "key": "Data.Digital.Fault_Pump2"
+    },
+    {
+      "name_parameter": "Fault_Pump3",
+      "key": "Data.Digital.Fault_Pump3"
+    },
+    {
+      "name_parameter": "I_Mixer1",
+      "key": "Data.Digital.I_Mixer1"
+    },
+    {
+      "name_parameter": "I_Mixer2",
+      "key": "Data.Digital.I_Mixer2"
+    },
+    {
+      "name_parameter": "I_Pompa1",
+      "key": "Data.Digital.I_Pompa1"
+    },
+    {
+      "name_parameter": "I_Pompa2",
+      "key": "Data.Digital.I_Pompa2"
+    },
+    {
+      "name_parameter": "I_Pompa3",
+      "key": "Data.Digital.I_Pompa3"
+    },
+    {
+      "name_parameter": "I_V1",
+      "key": "Data.Digital.I_V1"
+    },
+    {
+      "name_parameter": "I_V10",
+      "key": "Data.Digital.I_V10"
+    },
+    {
+      "name_parameter": "I_V11",
+      "key": "Data.Digital.I_V11"
+    },
+    {
+      "name_parameter": "I_V12",
+      "key": "Data.Digital.I_V12"
+    },
+    {
+      "name_parameter": "I_V13",
+      "key": "Data.Digital.I_V13"
+    },
+    {
+      "name_parameter": "I_V14",
+      "key": "Data.Digital.I_V14"
+    },
+    {
+      "name_parameter": "I_V15",
+      "key": "Data.Digital.I_V15"
+    },
+    {
+      "name_parameter": "I_V16",
+      "key": "Data.Digital.I_V16"
+    },
+    {
+      "name_parameter": "I_V17",
+      "key": "Data.Digital.I_V17"
+    },
+    {
+      "name_parameter": "I_V18",
+      "key": "Data.Digital.I_V18"
+    },
+    {
+      "name_parameter": "I_V19",
+      "key": "Data.Digital.I_V19"
+    },
+    {
+      "name_parameter": "I_V2",
+      "key": "Data.Digital.I_V2"
+    },
+    {
+      "name_parameter": "I_V20",
+      "key": "Data.Digital.I_V20"
+    },
+    {
+      "name_parameter": "I_V21",
+      "key": "Data.Digital.I_V21"
+    },
+    {
+      "name_parameter": "I_V22",
+      "key": "Data.Digital.I_V22"
+    },
+    {
+      "name_parameter": "I_V23",
+      "key": "Data.Digital.I_V23"
+    },
+    {
+      "name_parameter": "I_V24",
+      "key": "Data.Digital.I_V24"
+    },
+    {
+      "name_parameter": "I_V3",
+      "key": "Data.Digital.I_V3"
+    },
+    {
+      "name_parameter": "I_V4",
+      "key": "Data.Digital.I_V4"
+    },
+    {
+      "name_parameter": "I_V5",
+      "key": "Data.Digital.I_V5"
+    },
+    {
+      "name_parameter": "I_V6",
+      "key": "Data.Digital.I_V6"
+    },
+    {
+      "name_parameter": "I_V7",
+      "key": "Data.Digital.I_V7"
+    },
+    {
+      "name_parameter": "I_V8",
+      "key": "Data.Digital.I_V8"
+    },
+    {
+      "name_parameter": "I_V9",
+      "key": "Data.Digital.I_V9"
+    },
+    {
+      "name_parameter": "M_Valve1",
+      "key": "Data.Digital.M_Valve1"
+    },
+    {
+      "name_parameter": "M_Valve10",
+      "key": "Data.Digital.M_Valve10"
+    },
+    {
+      "name_parameter": "M_Valve11",
+      "key": "Data.Digital.M_Valve11"
+    },
+    {
+      "name_parameter": "M_Valve12",
+      "key": "Data.Digital.M_Valve12"
+    },
+    {
+      "name_parameter": "M_Valve13",
+      "key": "Data.Digital.M_Valve13"
+    },
+    {
+      "name_parameter": "M_Valve14",
+      "key": "Data.Digital.M_Valve14"
+    },
+    {
+      "name_parameter": "M_Valve15",
+      "key": "Data.Digital.M_Valve15"
+    },
+    {
+      "name_parameter": "M_Valve16",
+      "key": "Data.Digital.M_Valve16"
+    },
+    {
+      "name_parameter": "M_Valve17",
+      "key": "Data.Digital.M_Valve17"
+    },
+    {
+      "name_parameter": "M_Valve18",
+      "key": "Data.Digital.M_Valve18"
+    },
+    {
+      "name_parameter": "M_Valve19",
+      "key": "Data.Digital.M_Valve19"
+    },
+    {
+      "name_parameter": "M_Valve2",
+      "key": "Data.Digital.M_Valve2"
+    },
+    {
+      "name_parameter": "M_Valve20",
+      "key": "Data.Digital.M_Valve20"
+    },
+    {
+      "name_parameter": "M_Valve21",
+      "key": "Data.Digital.M_Valve21"
+    },
+    {
+      "name_parameter": "M_Valve22",
+      "key": "Data.Digital.M_Valve22"
+    },
+    {
+      "name_parameter": "M_Valve23",
+      "key": "Data.Digital.M_Valve23"
+    },
+    {
+      "name_parameter": "M_Valve24",
+      "key": "Data.Digital.M_Valve24"
+    },
+    {
+      "name_parameter": "M_Valve3",
+      "key": "Data.Digital.M_Valve3"
+    },
+    {
+      "name_parameter": "M_Valve4",
+      "key": "Data.Digital.M_Valve4"
+    },
+    {
+      "name_parameter": "M_Valve5",
+      "key": "Data.Digital.M_Valve5"
+    },
+    {
+      "name_parameter": "M_Valve6",
+      "key": "Data.Digital.M_Valve6"
+    },
+    {
+      "name_parameter": "M_Valve7",
+      "key": "Data.Digital.M_Valve7"
+    },
+    {
+      "name_parameter": "M_Valve8",
+      "key": "Data.Digital.M_Valve8"
+    },
+    {
+      "name_parameter": "M_Valve9",
+      "key": "Data.Digital.M_Valve9"
+    },
+    {
+      "name_parameter": "Manual_Charging",
+      "key": "Data.Digital.Manual_Charging"
+    },
+    {
+      "name_parameter": "Mixer_1",
+      "key": "Data.Digital.Mixer_1"
+    },
+    {
+      "name_parameter": "Mixer_2",
+      "key": "Data.Digital.Mixer_2"
+    },
+    {
+      "name_parameter": "Pipe_1",
+      "key": "Data.Digital.Pipe_1"
+    },
+    {
+      "name_parameter": "Pipe_10",
+      "key": "Data.Digital.Pipe_10"
+    },
+    {
+      "name_parameter": "Pipe_11",
+      "key": "Data.Digital.Pipe_11"
+    },
+    {
+      "name_parameter": "Pipe_12",
+      "key": "Data.Digital.Pipe_12"
+    },
+    {
+      "name_parameter": "Pipe_13",
+      "key": "Data.Digital.Pipe_13"
+    },
+    {
+      "name_parameter": "Pipe_14",
+      "key": "Data.Digital.Pipe_14"
+    },
+    {
+      "name_parameter": "Pipe_15",
+      "key": "Data.Digital.Pipe_15"
+    },
+    {
+      "name_parameter": "Pipe_16",
+      "key": "Data.Digital.Pipe_16"
+    },
+    {
+      "name_parameter": "Pipe_17",
+      "key": "Data.Digital.Pipe_17"
+    },
+    {
+      "name_parameter": "Pipe_18",
+      "key": "Data.Digital.Pipe_18"
+    },
+    {
+      "name_parameter": "Pipe_19",
+      "key": "Data.Digital.Pipe_19"
+    },
+    {
+      "name_parameter": "Pipe_2",
+      "key": "Data.Digital.Pipe_2"
+    },
+    {
+      "name_parameter": "Pipe_20",
+      "key": "Data.Digital.Pipe_20"
+    },
+    {
+      "name_parameter": "Pipe_21",
+      "key": "Data.Digital.Pipe_21"
+    },
+    {
+      "name_parameter": "Pipe_22",
+      "key": "Data.Digital.Pipe_22"
+    },
+    {
+      "name_parameter": "Pipe_23",
+      "key": "Data.Digital.Pipe_23"
+    },
+    {
+      "name_parameter": "Pipe_24",
+      "key": "Data.Digital.Pipe_24"
+    },
+    {
+      "name_parameter": "Pipe_3",
+      "key": "Data.Digital.Pipe_3"
+    },
+    {
+      "name_parameter": "Pipe_4",
+      "key": "Data.Digital.Pipe_4"
+    },
+    {
+      "name_parameter": "Pipe_5",
+      "key": "Data.Digital.Pipe_5"
+    },
+    {
+      "name_parameter": "Pipe_6",
+      "key": "Data.Digital.Pipe_6"
+    },
+    {
+      "name_parameter": "Pipe_7",
+      "key": "Data.Digital.Pipe_7"
+    },
+    {
+      "name_parameter": "Pipe_8",
+      "key": "Data.Digital.Pipe_8"
+    },
+    {
+      "name_parameter": "Pipe_9",
+      "key": "Data.Digital.Pipe_9"
+    },
+    {
+      "name_parameter": "Pompa_1",
+      "key": "Data.Digital.Pompa_1"
+    },
+    {
+      "name_parameter": "Pompa_2",
+      "key": "Data.Digital.Pompa_2"
+    },
+    {
+      "name_parameter": "Pompa_3",
+      "key": "Data.Digital.Pompa_3"
+    },
+    {
+      "name_parameter": "Pump_1",
+      "key": "Data.Digital.Pump_1"
+    },
+    {
+      "name_parameter": "Pump_2",
+      "key": "Data.Digital.Pump_2"
+    },
+    {
+      "name_parameter": "Pump_3",
+      "key": "Data.Digital.Pump_3"
+    },
+    {
+      "name_parameter": "Sampling_OK",
+      "key": "Data.Digital.Sampling_OK"
+    },
+    {
+      "name_parameter": "Selector_Recipe1",
+      "key": "Data.Digital.Selector_Recipe1"
+    },
+    {
+      "name_parameter": "Selector_Recipe2",
+      "key": "Data.Digital.Selector_Recipe2"
+    },
+    {
+      "name_parameter": "Selector_Recipe3",
+      "key": "Data.Digital.Selector_Recipe3"
+    },
+    {
+      "name_parameter": "Selector_Recipe4",
+      "key": "Data.Digital.Selector_Recipe4"
+    },
+    {
+      "name_parameter": "Set_Recipe1",
+      "key": "Data.Digital.Set_Recipe1"
+    },
+    {
+      "name_parameter": "Set_Recipe2",
+      "key": "Data.Digital.Set_Recipe2"
+    },
+    {
+      "name_parameter": "Set_Recipe3",
+      "key": "Data.Digital.Set_Recipe3"
+    },
+    {
+      "name_parameter": "Set_Recipe4",
+      "key": "Data.Digital.Set_Recipe4"
+    },
+    {
+      "name_parameter": "Start_Charge_P1",
+      "key": "Data.Digital.Start_Charge_P1"
+    },
+    {
+      "name_parameter": "Start_Charge_P2",
+      "key": "Data.Digital.Start_Charge_P2"
+    },
+    {
+      "name_parameter": "Start_Charge_S1",
+      "key": "Data.Digital.Start_Charge_S1"
+    },
+    {
+      "name_parameter": "Start_Charge_S2",
+      "key": "Data.Digital.Start_Charge_S2"
+    },
+    {
+      "name_parameter": "Start_Prosses_Auto",
+      "key": "Data.Digital.Start_Prosses_Auto"
+    },
+    {
+      "name_parameter": "Start_Transfer_S1",
+      "key": "Data.Digital.Start_Transfer_S1"
+    },
+    {
+      "name_parameter": "Start_Transfer_S2",
+      "key": "Data.Digital.Start_Transfer_S2"
+    },
+    {
+      "name_parameter": "Start_Transfer_S3",
+      "key": "Data.Digital.Start_Transfer_S3"
+    },
+    {
+      "name_parameter": "Start_Transfer_S4",
+      "key": "Data.Digital.Start_Transfer_S4"
+    },
+    {
+      "name_parameter": "Status_Recipe1",
+      "key": "Data.Digital.Status_Recipe1"
+    },
+    {
+      "name_parameter": "Status_Recipe2",
+      "key": "Data.Digital.Status_Recipe2"
+    },
+    {
+      "name_parameter": "Status_Recipe3",
+      "key": "Data.Digital.Status_Recipe3"
+    },
+    {
+      "name_parameter": "Status_Recipe4",
+      "key": "Data.Digital.Status_Recipe4"
+    },
+    {
+      "name_parameter": "Stop_Charge_p1",
+      "key": "Data.Digital.Stop_Charge_p1"
+    },
+    {
+      "name_parameter": "Stop_Charge_p2",
+      "key": "Data.Digital.Stop_Charge_p2"
+    },
+    {
+      "name_parameter": "Stop_Charge_S1",
+      "key": "Data.Digital.Stop_Charge_S1"
+    },
+    {
+      "name_parameter": "Stop_Charge_S2",
+      "key": "Data.Digital.Stop_Charge_S2"
+    },
+    {
+      "name_parameter": "Stop_Transfer_S1",
+      "key": "Data.Digital.Stop_Transfer_S1"
+    },
+    {
+      "name_parameter": "Stop_Transfer_S2",
+      "key": "Data.Digital.Stop_Transfer_S2"
+    },
+    {
+      "name_parameter": "Stop_Transfer_S3",
+      "key": "Data.Digital.Stop_Transfer_S3"
+    },
+    {
+      "name_parameter": "Stop_Transfer_S4",
+      "key": "Data.Digital.Stop_Transfer_S4"
+    },
+    {
+      "name_parameter": "Valve_1",
+      "key": "Data.Digital.Valve_1"
+    },
+    {
+      "name_parameter": "Valve_10",
+      "key": "Data.Digital.Valve_10"
+    },
+    {
+      "name_parameter": "Valve_11",
+      "key": "Data.Digital.Valve_11"
+    },
+    {
+      "name_parameter": "Valve_12",
+      "key": "Data.Digital.Valve_12"
+    },
+    {
+      "name_parameter": "Valve_13",
+      "key": "Data.Digital.Valve_13"
+    },
+    {
+      "name_parameter": "Valve_14",
+      "key": "Data.Digital.Valve_14"
+    },
+    {
+      "name_parameter": "Valve_15",
+      "key": "Data.Digital.Valve_15"
+    },
+    {
+      "name_parameter": "Valve_16",
+      "key": "Data.Digital.Valve_16"
+    },
+    {
+      "name_parameter": "Valve_17",
+      "key": "Data.Digital.Valve_17"
+    },
+    {
+      "name_parameter": "Valve_18",
+      "key": "Data.Digital.Valve_18"
+    },
+    {
+      "name_parameter": "Valve_19",
+      "key": "Data.Digital.Valve_19"
+    },
+    {
+      "name_parameter": "Valve_2",
+      "key": "Data.Digital.Valve_2"
+    },
+    {
+      "name_parameter": "Valve_20",
+      "key": "Data.Digital.Valve_20"
+    },
+    {
+      "name_parameter": "Valve_21",
+      "key": "Data.Digital.Valve_21"
+    },
+    {
+      "name_parameter": "Valve_22",
+      "key": "Data.Digital.Valve_22"
+    },
+    {
+      "name_parameter": "Valve_23",
+      "key": "Data.Digital.Valve_23"
+    },
+    {
+      "name_parameter": "Valve_24",
+      "key": "Data.Digital.Valve_24"
+    },
+    {
+      "name_parameter": "Valve_3",
+      "key": "Data.Digital.Valve_3"
+    },
+    {
+      "name_parameter": "Valve_4",
+      "key": "Data.Digital.Valve_4"
+    },
+    {
+      "name_parameter": "Valve_5",
+      "key": "Data.Digital.Valve_5"
+    },
+    {
+      "name_parameter": "Valve_6",
+      "key": "Data.Digital.Valve_6"
+    },
+    {
+      "name_parameter": "Valve_7",
+      "key": "Data.Digital.Valve_7"
+    },
+    {
+      "name_parameter": "Valve_8",
+      "key": "Data.Digital.Valve_8"
+    },
+    {
+      "name_parameter": "ts",
+      "key": "Data.Digital.ts"
+    },
+    {
+      "name_parameter": "Valve_9",
+      "key": "Data.Analog.Valve_9"
+    },
+    {
+      "name_parameter": "Comment_Process",
+      "key": "Data.Analog.Comment_Process"
+    },
+    {
+      "name_parameter": "Edit_Recipe1_Step1",
+      "key": "Data.Analog.Edit_Recipe1_Step1"
+    },
+    {
+      "name_parameter": "Edit_Recipe1_Step2",
+      "key": "Data.Analog.Edit_Recipe1_Step2"
+    },
+    {
+      "name_parameter": "Edit_Recipe1_Step3",
+      "key": "Data.Analog.Edit_Recipe1_Step3"
+    },
+    {
+      "name_parameter": "Edit_Recipe1_Step4",
+      "key": "Data.Analog.Edit_Recipe1_Step4"
+    },
+    {
+      "name_parameter": "Edit_Recipe1_Step5",
+      "key": "Data.Analog.Edit_Recipe1_Step5"
+    },
+    {
+      "name_parameter": "Edit_Recipe1_Step6",
+      "key": "Data.Analog.Edit_Recipe1_Step6"
+    },
+    {
+      "name_parameter": "Edit_Recipe1_Step7",
+      "key": "Data.Analog.Edit_Recipe1_Step7"
+    },
+    {
+      "name_parameter": "Edit_Recipe1_Step8",
+      "key": "Data.Analog.Edit_Recipe1_Step8"
+    },
+    {
+      "name_parameter": "Edit_Recipe1_Step9",
+      "key": "Data.Analog.Edit_Recipe1_Step9"
+    },
+    {
+      "name_parameter": "Edit_Recipe1_Tag",
+      "key": "Data.Analog.Edit_Recipe1_Tag"
+    },
+    {
+      "name_parameter": "Edit_Recipe2_Step1",
+      "key": "Data.Analog.Edit_Recipe2_Step1"
+    },
+    {
+      "name_parameter": "Edit_Recipe2_Step2",
+      "key": "Data.Analog.Edit_Recipe2_Step2"
+    },
+    {
+      "name_parameter": "Edit_Recipe2_Step3",
+      "key": "Data.Analog.Edit_Recipe2_Step3"
+    },
+    {
+      "name_parameter": "Edit_Recipe2_Step4",
+      "key": "Data.Analog.Edit_Recipe2_Step4"
+    },
+    {
+      "name_parameter": "Edit_Recipe2_Step5",
+      "key": "Data.Analog.Edit_Recipe2_Step5"
+    },
+    {
+      "name_parameter": "Edit_Recipe2_Step6",
+      "key": "Data.Analog.Edit_Recipe2_Step6"
+    },
+    {
+      "name_parameter": "Edit_Recipe2_Step7",
+      "key": "Data.Analog.Edit_Recipe2_Step7"
+    },
+    {
+      "name_parameter": "Edit_Recipe2_Step8",
+      "key": "Data.Analog.Edit_Recipe2_Step8"
+    },
+    {
+      "name_parameter": "Edit_Recipe2_Step9",
+      "key": "Data.Analog.Edit_Recipe2_Step9"
+    },
+    {
+      "name_parameter": "Edit_Recipe2_Tag",
+      "key": "Data.Analog.Edit_Recipe2_Tag"
+    },
+    {
+      "name_parameter": "Edit_Recipe3_Step1",
+      "key": "Data.Analog.Edit_Recipe3_Step1"
+    },
+    {
+      "name_parameter": "Edit_Recipe3_Step2",
+      "key": "Data.Analog.Edit_Recipe3_Step2"
+    },
+    {
+      "name_parameter": "Edit_Recipe3_Step3",
+      "key": "Data.Analog.Edit_Recipe3_Step3"
+    },
+    {
+      "name_parameter": "Edit_Recipe3_Step4",
+      "key": "Data.Analog.Edit_Recipe3_Step4"
+    },
+    {
+      "name_parameter": "Edit_Recipe3_Step5",
+      "key": "Data.Analog.Edit_Recipe3_Step5"
+    },
+    {
+      "name_parameter": "Edit_Recipe3_Step6",
+      "key": "Data.Analog.Edit_Recipe3_Step6"
+    },
+    {
+      "name_parameter": "Edit_Recipe3_Step7",
+      "key": "Data.Analog.Edit_Recipe3_Step7"
+    },
+    {
+      "name_parameter": "Edit_Recipe3_Step8",
+      "key": "Data.Analog.Edit_Recipe3_Step8"
+    },
+    {
+      "name_parameter": "Edit_Recipe3_Step9",
+      "key": "Data.Analog.Edit_Recipe3_Step9"
+    },
+    {
+      "name_parameter": "Edit_Recipe3_Tag",
+      "key": "Data.Analog.Edit_Recipe3_Tag"
+    },
+    {
+      "name_parameter": "Edit_Recipe4_Step1",
+      "key": "Data.Analog.Edit_Recipe4_Step1"
+    },
+    {
+      "name_parameter": "Edit_Recipe4_Step2",
+      "key": "Data.Analog.Edit_Recipe4_Step2"
+    },
+    {
+      "name_parameter": "Edit_Recipe4_Step3",
+      "key": "Data.Analog.Edit_Recipe4_Step3"
+    },
+    {
+      "name_parameter": "Edit_Recipe4_Step4",
+      "key": "Data.Analog.Edit_Recipe4_Step4"
+    },
+    {
+      "name_parameter": "Edit_Recipe4_Step5",
+      "key": "Data.Analog.Edit_Recipe4_Step5"
+    },
+    {
+      "name_parameter": "Edit_Recipe4_Step6",
+      "key": "Data.Analog.Edit_Recipe4_Step6"
+    },
+    {
+      "name_parameter": "Edit_Recipe4_Step7",
+      "key": "Data.Analog.Edit_Recipe4_Step7"
+    },
+    {
+      "name_parameter": "Edit_Recipe4_Step8",
+      "key": "Data.Analog.Edit_Recipe4_Step8"
+    },
+    {
+      "name_parameter": "Edit_Recipe4_Step9",
+      "key": "Data.Analog.Edit_Recipe4_Step9"
+    },
+    {
+      "name_parameter": "Edit_Recipe4_Tag",
+      "key": "Data.Analog.Edit_Recipe4_Tag"
+    },
+    {
+      "name_parameter": "FM_OK",
+      "key": "Data.Analog.FM_OK"
+    },
+    {
+      "name_parameter": "F_Meter_IN",
+      "key": "Data.Analog.F_Meter_IN"
+    },
+    {
+      "name_parameter": "Flow_Meter",
+      "key": "Data.Analog.Flow_Meter"
+    },
+    {
+      "name_parameter": "Freq_Inv1",
+      "key": "Data.Analog.Freq_Inv1"
+    },
+    {
+      "name_parameter": "Freq_Inv2",
+      "key": "Data.Analog.Freq_Inv2"
+    },
+    {
+      "name_parameter": "Inv1_Current",
+      "key": "Data.Analog.Inv1_Current"
+    },
+    {
+      "name_parameter": "Inv1_Frequency",
       "key": "Data.Analog.Inv1_Frequency"
     },
     {
-      "name_parameter": "Inverter Frequency TEST",
-      "key": "Data.Analog.Inv1_Frequency"
+      "name_parameter": "Inv1_MotorSpeed",
+      "key": "Data.Analog.Inv1_MotorSpeed"
+    },
+    {
+      "name_parameter": "Inv1_Voltage",
+      "key": "Data.Analog.Inv1_Voltage"
+    },
+    {
+      "name_parameter": "Inv2_Current",
+      "key": "Data.Analog.Inv2_Current"
+    },
+    {
+      "name_parameter": "Inv2_Frequency",
+      "key": "Data.Analog.Inv2_Frequency"
+    },
+    {
+      "name_parameter": "Inv2_MotorSpeed",
+      "key": "Data.Analog.Inv2_MotorSpeed"
+    },
+    {
+      "name_parameter": "Inv2_Voltage",
+      "key": "Data.Analog.Inv2_Voltage"
+    },
+    {
+      "name_parameter": "Kode_Batch",
+      "key": "Data.Analog.Kode_Batch"
+    },
+    {
+      "name_parameter": "LC_Input1",
+      "key": "Data.Analog.LC_Input1"
+    },
+    {
+      "name_parameter": "LC_Input2",
+      "key": "Data.Analog.LC_Input2"
+    },
+    {
+      "name_parameter": "LC_Input3",
+      "key": "Data.Analog.LC_Input3"
+    },
+    {
+      "name_parameter": "LC_Input4",
+      "key": "Data.Analog.LC_Input4"
+    },
+    {
+      "name_parameter": "LC_Input5",
+      "key": "Data.Analog.LC_Input5"
+    },
+    {
+      "name_parameter": "LC_Input6",
+      "key": "Data.Analog.LC_Input6"
+    },
+    {
+      "name_parameter": "LC_Input7",
+      "key": "Data.Analog.LC_Input7"
+    },
+    {
+      "name_parameter": "LC_Input8",
+      "key": "Data.Analog.LC_Input8"
+    },
+    {
+      "name_parameter": "Lv_Paraquat1",
+      "key": "Data.Analog.Lv_Paraquat1"
+    },
+    {
+      "name_parameter": "Lv_Paraquat2",
+      "key": "Data.Analog.Lv_Paraquat2"
+    },
+    {
+      "name_parameter": "Lv_Storage1",
+      "key": "Data.Analog.Lv_Storage1"
+    },
+    {
+      "name_parameter": "Lv_Storage2",
+      "key": "Data.Analog.Lv_Storage2"
+    },
+    {
+      "name_parameter": "Lv_Storage3",
+      "key": "Data.Analog.Lv_Storage3"
+    },
+    {
+      "name_parameter": "Lv_Storage4",
+      "key": "Data.Analog.Lv_Storage4"
+    },
+    {
+      "name_parameter": "Lv_Surfactan1",
+      "key": "Data.Analog.Lv_Surfactan1"
+    },
+    {
+      "name_parameter": "Lv_Surfactan2",
+      "key": "Data.Analog.Lv_Surfactan2"
+    },
+    {
+      "name_parameter": "Max_Sacle_FM",
+      "key": "Data.Analog.Max_Sacle_FM"
+    },
+    {
+      "name_parameter": "Max_PLC_FM",
+      "key": "Data.Analog.Max_PLC_FM"
+    },
+    {
+      "name_parameter": "Min_Scale_FM",
+      "key": "Data.Analog.Min_Scale_FM"
+    },
+    {
+      "name_parameter": "Mixing_Time",
+      "key": "Data.Analog.Mixing_Time"
+    },
+    {
+      "name_parameter": "Out_Scale_FM",
+      "key": "Data.Analog.Out_Scale_FM"
+    },
+    {
+      "name_parameter": "Paraquat_1",
+      "key": "Data.Analog.Paraquat_1"
+    },
+    {
+      "name_parameter": "Paraquat_2",
+      "key": "Data.Analog.Paraquat_2"
+    },
+    {
+      "name_parameter": "Real_amp1",
+      "key": "Data.Analog.Real_amp1"
+    },
+    {
+      "name_parameter": "Real_amp2",
+      "key": "Data.Analog.Real_amp2"
+    },
+    {
+      "name_parameter": "Real_Volt1",
+      "key": "Data.Analog.Real_Volt1"
+    },
+    {
+      "name_parameter": "Real_Volt2",
+      "key": "Data.Analog.Real_Volt2"
+    },
+    {
+      "name_parameter": "Recipe_Process",
+      "key": "Data.Analog.Recipe_Process"
+    },
+    {
+      "name_parameter": "Setting_Parm_Speed1",
+      "key": "Data.Analog.Setting_Parm_Speed1"
+    },
+    {
+      "name_parameter": "Setting_Parm_Speed2",
+      "key": "Data.Analog.Setting_Parm_Speed2"
+    },
+    {
+      "name_parameter": "Setting_Parm_Step1",
+      "key": "Data.Analog.Setting_Parm_Step1"
+    },
+    {
+      "name_parameter": "Setting_Parm_Step2",
+      "key": "Data.Analog.Setting_Parm_Step2"
+    },
+    {
+      "name_parameter": "Setting_Parm_Step3",
+      "key": "Data.Analog.Setting_Parm_Step3"
+    },
+    {
+      "name_parameter": "Setting_Parm_Step4",
+      "key": "Data.Analog.Setting_Parm_Step4"
+    },
+    {
+      "name_parameter": "Storage_1",
+      "key": "Data.Analog.Storage_1"
+    },
+    {
+      "name_parameter": "Storage_2",
+      "key": "Data.Analog.Storage_2"
+    },
+    {
+      "name_parameter": "Storage_3",
+      "key": "Data.Analog.Storage_3"
+    },
+    {
+      "name_parameter": "Storage_4",
+      "key": "Data.Analog.Storage_4"
+    },
+    {
+      "name_parameter": "Surfactan_1",
+      "key": "Data.Analog.Surfactan_1"
+    },
+    {
+      "name_parameter": "Surfactan_2",
+      "key": "Data.Analog.Surfactan_2"
+    },
+    {
+      "name_parameter": "Tag_Recipe1",
+      "key": "Data.Analog.Tag_Recipe1"
+    },
+    {
+      "name_parameter": "Tag_Recipe2",
+      "key": "Data.Analog.Tag_Recipe2"
+    },
+    {
+      "name_parameter": "Tag_Recipe3",
+      "key": "Data.Analog.Tag_Recipe3"
+    },
+    {
+      "name_parameter": "Tag_Recipe4",
+      "key": "Data.Analog.Tag_Recipe4"
+    },
+    {
+      "name_parameter": "Time_Min",
+      "key": "Data.Analog.Time_Min"
+    },
+    {
+      "name_parameter": "Time_Sec",
+      "key": "Data.Analog.Time_Sec"
+    },
+    {
+      "name_parameter": "ts",
+      "key": "Data.Analog.ts"
     }
   ]
 }

@@ -35,37 +35,48 @@ class ApiUploadPoController extends Controller
             $material_code = $request->material_code;
             $material_desc = $request->material_desc;
             $uom_material_code = $request->uom_material_code;
+            $batch = intval($request->batch);
 
-            foreach ($request->component as $component) {
-                ZpoSapToAuto::create([
-                    'prod_ord_no' => $prod_ord_no,
-                    'reservation' => $reservation,
-                    'plant' => $plant,
-                    'order_type' => $order_type,
-                    'production_start' => $production_start,
-                    'mrp_controller' => $mrp_controller,
-                    'work_center_10' => $work_center_10,
-                    'work_center_20' => $work_center_20,
-                    'work_center_30' => $work_center_30,
-                    'work_center_40' => $work_center_40,
-                    'work_center_50' => $work_center_50,
-                    'work_center_60' => $work_center_60,
-                    'work_center_70' => $work_center_70,
-                    'work_center_80' => $work_center_80,
-                    'work_center_90' => $work_center_90,
-                    'work_center_100' => $work_center_100,
-                    'qty_production' => $qty_production,
-                    'material_code' => $material_code,
-                    'material_desc' => $material_desc,
-                    'uom_material_code' => $uom_material_code,
-                    'item' => $component['item'],
-                    'material_component' => $component['material_component'],
-                    'material_component_desc' => $component['material_component_desc'],
-                    'material_packing_flag' => $component['material_packing_flag'],
-                    'qty_component' => $component['qty_component'],
-                    'uom_component' => $component['uom_component'],
-                ]);
+            if ($batch > 0) {
+                $start = 31;
+                $max   = 99;
+
+                foreach ($request->component as $component) {
+                    for ($i = $start; $i < $start + $batch && $i <= $max; $i++) {
+                        ZpoSapToAuto::create([
+                            'prod_ord_no' => $prod_ord_no,
+                            'reservation' => $reservation,
+                            'plant' => $plant,
+                            'order_type' => $order_type,
+                            'production_start' => $production_start,
+                            'mrp_controller' => $mrp_controller,
+                            'work_center_10' => $work_center_10,
+                            'work_center_20' => $work_center_20,
+                            'work_center_30' => $work_center_30,
+                            'work_center_40' => $work_center_40,
+                            'work_center_50' => $work_center_50,
+                            'work_center_60' => $work_center_60,
+                            'work_center_70' => $work_center_70,
+                            'work_center_80' => $work_center_80,
+                            'work_center_90' => $work_center_90,
+                            'work_center_100' => $work_center_100,
+                            'qty_production' => $qty_production,
+                            'material_code' => $material_code,
+                            'material_desc' => $material_desc,
+                            'uom_material_code' => $uom_material_code,
+                            'batch' => $batch,
+                            'batch_code' => date('y') . substr('ABCDEFGHIJKL', date('n') - 1, 1) . date('d') . $i,
+                            'item' => $component['item'],
+                            'material_component' => $component['material_component'],
+                            'material_component_desc' => $component['material_component_desc'],
+                            'material_packing_flag' => $component['material_packing_flag'],
+                            'qty_component' => $component['qty_component'],
+                            'uom_component' => $component['uom_component'],
+                        ]);
+                    }
+                }
             }
+
 
             $responseSuccess = [
                 'success' => true,

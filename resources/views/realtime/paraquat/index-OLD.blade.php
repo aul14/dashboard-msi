@@ -159,7 +159,7 @@
         });
 
         function startWebsocket() {
-            const tagJsonUrl = "{{ asset('assets/json/glyposate.json') }}" + "?v=" + new Date().getTime();
+            const tagJsonUrl = "{{ asset('assets/json/paraquat.json') }}" + "?v=" + new Date().getTime();
             let tagMap = {};
 
             fetch(tagJsonUrl)
@@ -173,13 +173,12 @@
                     tagMap = map;
 
                     let ws_url = $("input[name=ws_url]").val();
-                    let ws = new WebSocket(`${ws_url}/Glyposate`);
+                    let ws = new WebSocket(`${ws_url}/Parakuat`);
 
                     ws.onopen = () => console.log('Connection Established');
 
-                    let svgExample = "{{ asset('assets/images/svg/Glyphosate_Graphic_V2.svg') }}" + "?v=" + new Date()
+                    let svgExample = "{{ asset('assets/images/svg/Paraquat_Graphic_V1.svg') }}" + "?v=" + new Date()
                         .getTime();
-
                     scadavisInit({
                         container: 'example-svg',
                         iframeparams: 'frameborder="0" height="400" width="800"',
