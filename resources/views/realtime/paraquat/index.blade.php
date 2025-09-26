@@ -61,13 +61,15 @@
     <div class="row">
         <div class="col-md-3">
             <div class="col-md-12 mb-2">
-                <button class="btn btn-lg btn-primary w-100" style="height:70px;">Operation</button>
+                <button class="btn btn-lg btn-primary w-100" style="height:70px;"
+                    onclick="openModalOperation()">Operation</button>
             </div>
             <div class="col-md-12 mb-2">
                 <button class="btn btn-lg btn-primary w-100" style="height:70px;">HMI Mesin</button>
             </div>
             <div class="col-md-12 mb-2">
-                <button class="btn btn-lg btn-primary w-100" style="height:70px;">Settings</button>
+                <button class="btn btn-lg btn-primary w-100" style="height:70px;"
+                    onclick="openModalSettings()">Settings</button>
             </div>
             <div class="col-md-12 mb-2">
                 <button class="btn btn-lg btn-primary w-100" style="height:70px;">Table Parameter</button>
@@ -112,6 +114,10 @@
             </div>
         </div>
     </div>
+
+    @include('realtime.paraquat.modal.operation')
+    @include('realtime.paraquat.modal.settings')
+    @include('realtime.paraquat.modal.parameter_setting')
 @endsection
 @section('script')
     <script>
@@ -179,6 +185,30 @@
 
         function getValueByPath(obj, path) {
             return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+        }
+
+        function openModalOperation() {
+            $('#modalOperation').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#modalOperation").modal('show');
+        }
+
+        function openModalSettings() {
+            $('#modalSettings').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#modalSettings").modal('show');
+        }
+
+        function openModalParameterSett() {
+            $('#modalParameterSetting').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#modalParameterSetting").modal('show');
         }
     </script>
 @endsection
