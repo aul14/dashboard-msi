@@ -45,6 +45,8 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
     Route::get('/good_receipt', [GoodReceiptController::class, 'index'])->name('good_receipt.index');
     Route::get('/confirm', [ConfirmationController::class, 'index'])->name('confirm.index');
     Route::get('/alarm_logger', [AlarmLoggerController::class, 'index'])->name('alarm_logger.index');
+    Route::post('/search_no_po', [ParaquatRealTimeController::class, 'search_no_po'])->name('search_no_po');
+    Route::post('/batch_by_no_po', [ParaquatRealTimeController::class, 'batch_by_no_po'])->name('batch_by_no_po');
     Route::resource('/settings/users', UserController::class);
     Route::get('/test', function () {
         return view('test-websocket-client');

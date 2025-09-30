@@ -25,7 +25,8 @@
                                     <label class="col-form-label" for="setting_rm1">RM 1</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="setting_rm1" name="setting_rm1" class="form-control">
+                                    <input type="text" id="setting_rm1" name="setting_rm1" class="form-control"
+                                        autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100">Edit</button>
@@ -39,7 +40,8 @@
                                     <label class="col-form-label" for="setting_rm2">RM 2</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="setting_rm2" name="setting_rm2" class="form-control">
+                                    <input type="text" id="setting_rm2" name="setting_rm2" class="form-control"
+                                        autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100">Edit</button>
@@ -53,7 +55,8 @@
                                     <label class="col-form-label" for="setting_rm3">RM 3</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="setting_rm3" name="setting_rm3" class="form-control">
+                                    <input type="text" id="setting_rm3" name="setting_rm3" class="form-control"
+                                        autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100">Edit</button>
@@ -67,7 +70,8 @@
                                     <label class="col-form-label" for="setting_rm4">RM 4</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="setting_rm4" name="setting_rm4" class="form-control">
+                                    <input type="text" id="setting_rm4" name="setting_rm4" class="form-control"
+                                        autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100">Edit</button>
@@ -88,7 +92,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="setting_storage1" name="setting_storage1"
-                                        class="form-control">
+                                        class="form-control" autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100">Edit</button>
@@ -103,7 +107,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="setting_storage2" name="setting_storage2"
-                                        class="form-control">
+                                        class="form-control" autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100">Edit</button>
@@ -118,7 +122,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="setting_storage3" name="setting_storage3"
-                                        class="form-control">
+                                        class="form-control" autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100">Edit</button>
@@ -133,7 +137,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="setting_storage4" name="setting_storage4"
-                                        class="form-control">
+                                        class="form-control" autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100">Edit</button>

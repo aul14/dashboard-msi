@@ -37,44 +37,54 @@ class ApiUploadPoController extends Controller
             $uom_material_code = $request->uom_material_code;
             $batch = intval($request->batch);
 
+            // validasi jumlah array component harus sama dengan batch
+            if (!is_array($request->component) || count($request->component) !== $batch) {
+                return response()->json([
+                    'status' => false,
+                    'message' => "Jumlah component (" . count($request->component) . ") tidak sesuai dengan batch ($batch)."
+                ], 400);
+            }
+
             if ($batch > 0) {
                 $start = 31;
                 $max   = 99;
+                $key = 0;
 
-                foreach ($request->component as $component) {
-                    for ($i = $start; $i < $start + $batch && $i <= $max; $i++) {
-                        ZpoSapToAuto::create([
-                            'prod_ord_no' => $prod_ord_no,
-                            'reservation' => $reservation,
-                            'plant' => $plant,
-                            'order_type' => $order_type,
-                            'production_start' => $production_start,
-                            'mrp_controller' => $mrp_controller,
-                            'work_center_10' => $work_center_10,
-                            'work_center_20' => $work_center_20,
-                            'work_center_30' => $work_center_30,
-                            'work_center_40' => $work_center_40,
-                            'work_center_50' => $work_center_50,
-                            'work_center_60' => $work_center_60,
-                            'work_center_70' => $work_center_70,
-                            'work_center_80' => $work_center_80,
-                            'work_center_90' => $work_center_90,
-                            'work_center_100' => $work_center_100,
-                            'qty_production' => $qty_production,
-                            'material_code' => $material_code,
-                            'material_desc' => $material_desc,
-                            'uom_material_code' => $uom_material_code,
-                            'batch' => $batch,
-                            'batch_code' => date('y') . substr('ABCDEFGHIJKL', date('n') - 1, 1) . date('d') . $i,
-                            'item' => $component['item'],
-                            'material_component' => $component['material_component'],
-                            'material_component_desc' => $component['material_component_desc'],
-                            'material_packing_flag' => $component['material_packing_flag'],
-                            'qty_component' => $component['qty_component'],
-                            'uom_component' => $component['uom_component'],
-                        ]);
-                    }
+                // foreach ($request->component as $component) {
+                for ($i = $start; $i < $start + $batch && $i <= $max; $i++) {
+                    ZpoSapToAuto::create([
+                        'prod_ord_no' => $prod_ord_no,
+                        'reservation' => $reservation,
+                        'plant' => $plant,
+                        'order_type' => $order_type,
+                        'production_start' => $production_start,
+                        'mrp_controller' => $mrp_controller,
+                        'work_center_10' => $work_center_10,
+                        'work_center_20' => $work_center_20,
+                        'work_center_30' => $work_center_30,
+                        'work_center_40' => $work_center_40,
+                        'work_center_50' => $work_center_50,
+                        'work_center_60' => $work_center_60,
+                        'work_center_70' => $work_center_70,
+                        'work_center_80' => $work_center_80,
+                        'work_center_90' => $work_center_90,
+                        'work_center_100' => $work_center_100,
+                        'qty_production' => $qty_production,
+                        'material_code' => $material_code,
+                        'material_desc' => $material_desc,
+                        'uom_material_code' => $uom_material_code,
+                        'batch' => $batch,
+                        'batch_code' => date('y') . substr('ABCDEFGHIJKL', date('n') - 1, 1) . date('d') . $i,
+                        'item' => $request->component[$key]['item'],
+                        'material_component' => $request->component[$key]['material_component'],
+                        'material_component_desc' => $request->component[$key]['material_component_desc'],
+                        'material_packing_flag' => $request->component[$key]['material_packing_flag'],
+                        'qty_component' => $request->component[$key]['qty_component'] / $batch,
+                        'uom_component' => $request->component[$key]['uom_component'],
+                    ]);
+                    $key++;
                 }
+                // }
             }
 
 

@@ -38,7 +38,8 @@
 
                     <!-- Gateway -->
                     <div class="col-auto">
-                        <img src="{{ asset('assets/images/connections/on.png') }}" class="icon" alt="Gateway">
+                        <img id="gateway-status" src="{{ asset('assets/images/connections/on.png') }}" class="icon"
+                            alt="Gateway">
                         <p class="label">Connection</p>
                     </div>
 
@@ -78,32 +79,32 @@
 
         <div class="col-md-9">
             <div class="row">
-                <div class="col-md-2">
-                    <div class="card-body bg-dark text-white">
+                <div class="col-md-4 my-2">
+                    <div class="card-body bg-dark text-white" id="status-mesin-card">
                         Status Mesin
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="card-body bg-dark text-white">
+                <div class="col-md-4 my-2">
+                    <div class="card-body bg-dark text-white" id="po-no-card">
                         PO Number
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="card-body bg-dark text-white">
+                <div class="col-md-4 my-2">
+                    <div class="card-body bg-dark text-white" id="batch-code-card">
                         Batch Code
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="card-body bg-dark text-white">
+                <div class="col-md-4 my-2">
+                    <div class="card-body bg-dark text-white" id="duration-card">
                         Duration
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="card-body bg-dark text-white">
-                        Auto/Manual
+                <div class="col-md-4 my-2">
+                    <div class="card-body bg-dark text-white" id="mode-machine-card">
+                        Mode Machine
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4 my-2">
                     <button class="btn btn-lg btn-warning w-100 px-0">
                         Status Production
                     </button>
@@ -123,6 +124,76 @@
     <script>
         $(function() {
             startWebsocket();
+
+            $('#modalOperation').on('shown.bs.modal', function() {
+                $(`.select-nopo`).select2({
+                    placeholder: 'Search...',
+                    dropdownParent: $('#modalOperation'),
+                    width: "100%",
+                    allowClear: true,
+                    ajax: {
+                        url: '{{ route('search_no_po') }}',
+                        dataType: 'json',
+                        type: 'POST',
+                        delay: 0,
+                        processResults: function(data) {
+                            return {
+                                results: $.map(data, function(item) {
+                                    return {
+                                        text: item.prod_ord_no,
+                                        id: item.prod_ord_no,
+                                        prod_ord_no: item.prod_ord_no,
+                                        material_code: item.material_code,
+                                        material_desc: item.material_desc,
+                                        qty_production: item.qty_production,
+                                        batch: item.batch,
+                                    }
+                                })
+                            };
+                        },
+                        cache: false
+                    }
+                }).on('select2:select', function(e) {
+                    let poNumber = e.params.data.prod_ord_no;
+                    let materialCode = e.params.data.material_code;
+                    let materialDesc = e.params.data.material_desc;
+                    let qtyProduction = e.params.data.qty_production;
+                    let batch = e.params.data.batch;
+
+                    $('#material_desc').val(materialDesc);
+                    $('#uom_material_code').val(materialCode);
+                    $('#qty_production').val(qtyProduction);
+                    $('#batch').val(batch);
+
+                    if (poNumber) {
+                        $.ajax({
+                            type: "POST",
+                            url: "{{ route('batch_by_no_po') }}",
+                            data: {
+                                no_po: poNumber
+                            },
+                            dataType: "json",
+                            success: function(response) {
+                                // kosongkan dulu option sebelumnya
+                                $('#batch_code').empty();
+
+                                // tambahkan option kosong default
+                                $('#batch_code').append('<option value=""></option>');
+
+                                // loop data response
+                                $.each(response, function(index, item) {
+                                    $('#batch_code').append(
+                                        $('<option>', {
+                                            value: item.batch_code,
+                                            text: item.batch_code
+                                        })
+                                    );
+                                });
+                            }
+                        });
+                    }
+                });
+            })
         });
 
         function startWebsocket() {
@@ -148,15 +219,16 @@
                         .getTime();
                     scadavisInit({
                         container: 'example-svg',
-                        iframeparams: 'frameborder="0" height="400" width="930"',
+                        iframeparams: 'frameborder="0" height="450" width="800"',
                         svgurl: svgExample
                     }).then(sv => {
-                        sv.zoomTo(0.55);
+                        sv.zoomTo(0.60);
                         sv.enableTools(true, true);
                         sv.hideWatermark();
 
                         ws.onmessage = function(e) {
                             let data = JSON.parse(e.data);
+                            let dataWs = data.Data;
 
                             Object.entries(tagMap).forEach(([path, selector]) => {
                                 const value = getValueByPath(data, path);
@@ -166,6 +238,49 @@
                             });
 
                             sv.updateValues();
+
+                            let statusConnect = dataWs.Status.bool;
+                            let statusMesinCard = "";
+                            let poNumberCard = dataWs.Analog.PO_number;
+                            let batchCodeCard = dataWs.Analog.Kode_Batch;
+                            let durationCard = "";
+                            let modeMachineCard = dataWs.Digital.Control_ON_OFF_Auto == 1 ? "Auto" :
+                                "Manual";
+
+                            let $img = $("#gateway-status");
+                            if (statusConnect == 1) {
+                                $img.attr("src", "{{ asset('assets/images/connections/on.png') }}");
+                                $img.addClass("blink");
+                            } else {
+                                $img.attr("src", "{{ asset('assets/images/connections/off.png') }}");
+                                $img.addClass("blink");
+                            }
+
+                            $('#status-mesin-card').html(`Status Mesin: ${statusMesinCard}`)
+                            $('#po-no-card').html(`PO Number: ${poNumberCard}`)
+                            $('#batch-code-card').html(`Batch Code: ${batchCodeCard}`)
+                            $('#duration-card').html(`Duration: ${durationCard}`)
+                            $('#mode-machine-card').html(`Mode Machine: ${modeMachineCard}`)
+
+                            $('#modalSettings').on('shown.bs.modal', function() {
+                                let setRM1 = dataWs.Analog.RM1
+                                let setRM2 = dataWs.Analog.RM2
+                                let setRM3 = dataWs.Analog.RM3
+                                let setRM4 = dataWs.Analog.RM4
+                                let setStorage1 = dataWs.Analog.Storage1;
+                                let setStorage2 = dataWs.Analog.Storage2;
+                                let setStorage3 = dataWs.Analog.Storage3;
+                                let setStorage4 = dataWs.Analog.Storage4;
+
+                                $('#setting_rm1').val(setRM1);
+                                $('#setting_rm2').val(setRM2);
+                                $('#setting_rm3').val(setRM3);
+                                $('#setting_rm4').val(setRM4);
+                                $('#setting_storage1').val(setStorage1);
+                                $('#setting_storage2').val(setStorage2);
+                                $('#setting_storage3').val(setStorage3);
+                                $('#setting_storage4').val(setStorage4);
+                            })
                         };
                     });
 

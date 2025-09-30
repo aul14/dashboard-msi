@@ -334,6 +334,19 @@ table.my-tablelogs tr td {
 }
 /* END */
 
+/* BLINK */
+.blink {
+    animation: blink-animation 1s steps(2, start) infinite;
+}
+
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+/* END BLINK */
+
 @-webkit-keyframes flash {
   0% {
     opacity: 1;

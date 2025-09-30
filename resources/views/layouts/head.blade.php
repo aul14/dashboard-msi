@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome/css/font-awesome.min.css?v=1.0.0') }}" />
     <!-- End plugin css for this page -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css?v=1.0.0') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css?v=1.1.3') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css?v=1.1.4') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/sweetalert2.min.css?v=1.0.0') }}">
     <link rel="stylesheet" href="{{ asset('assets/select2/select2.min.css?v=1.0.0') }}" />
     <link rel="stylesheet" href="{{ asset('assets/date-range/daterangepicker.css?v=1.0.0') }}" />

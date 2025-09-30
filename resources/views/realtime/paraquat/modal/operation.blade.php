@@ -15,7 +15,7 @@
                             <label class="col-form-label" for="prod_ord_no">PO Number</label>
                         </div>
                         <div class="col-sm-8">
-                            <select class="choices form-select" id="prod_ord_no" name="prod_ord_no">
+                            <select class="choices form-select select-nopo" id="prod_ord_no" name="prod_ord_no">
                                 <option value=""></option>
                             </select>
                         </div>
@@ -67,12 +67,9 @@
 
                 </form>
             </div>
-            <div class="modal-footer d-flex justify-content-between">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Start</button>
                 <button type="button" class="btn btn-success">Finish</button>
-                <div>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
             </div>
 
         </div>
