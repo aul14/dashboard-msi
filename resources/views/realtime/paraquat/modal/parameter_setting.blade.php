@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalParameterSetting" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade" id="x" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="modalParameterSettingLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -14,11 +14,11 @@
                         <div class="card-body p-2">
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="sett_param_mixing_1">Mixing Time Step
+                                    <label class="col-form-label" for="sett_param_step_1">Mixing Time Step
                                         1</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="sett_param_mixing_1" name="sett_param_mixing_1"
+                                    <input type="text" id="sett_param_step_1" name="sett_param_step_1"
                                         class="form-control">
                                 </div>
                                 <div class="col-sm-2">
@@ -30,11 +30,11 @@
                             </div>
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="sett_param_mixing_2">Mixing Time Step
+                                    <label class="col-form-label" for="sett_param_step_2">Mixing Time Step
                                         2</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="sett_param_mixing_2" name="sett_param_mixing_2"
+                                    <input type="text" id="sett_param_step_2" name="sett_param_step_2"
                                         class="form-control">
                                 </div>
                                 <div class="col-sm-2">
@@ -46,11 +46,11 @@
                             </div>
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="sett_param_mixing_3">Mixing Time Step
+                                    <label class="col-form-label" for="sett_param_step_3">Mixing Time Step
                                         3</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="sett_param_mixing_3" name="sett_param_mixing_3"
+                                    <input type="text" id="sett_param_step_3" name="sett_param_step_3"
                                         class="form-control">
                                 </div>
                                 <div class="col-sm-2">
@@ -62,11 +62,11 @@
                             </div>
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="sett_param_mixing_4">Mixing Time Step
+                                    <label class="col-form-label" for="sett_param_step_4">Mixing Time Step
                                         4</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="sett_param_mixing_4" name="sett_param_mixing_4"
+                                    <input type="text" id="sett_param_step_4" name="sett_param_step_4"
                                         class="form-control">
                                 </div>
                                 <div class="col-sm-2">
@@ -78,10 +78,10 @@
                             </div>
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="sett_param_rpm_mixing_1">RPM Mixing 1</label>
+                                    <label class="col-form-label" for="sett_param_speed_1">RPM Mixing 1</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="sett_param_rpm_mixing_1" name="sett_param_rpm_mixing_1"
+                                    <input type="text" id="sett_param_speed_1" name="sett_param_speed_1"
                                         class="form-control">
                                 </div>
                                 <div class="col-sm-2">
@@ -93,10 +93,10 @@
                             </div>
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="sett_param_rpm_mixing_2">RPM Mixing 2</label>
+                                    <label class="col-form-label" for="sett_param_speed_2">RPM Mixing 2</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="sett_param_rpm_mixing_2" name="sett_param_rpm_mixing_2"
+                                    <input type="text" id="sett_param_speed_2" name="sett_param_speed_2"
                                         class="form-control">
                                 </div>
                                 <div class="col-sm-2">

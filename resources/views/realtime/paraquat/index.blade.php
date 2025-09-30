@@ -263,10 +263,10 @@
                             $('#mode-machine-card').html(`Mode Machine: ${modeMachineCard}`)
 
                             $('#modalSettings').on('shown.bs.modal', function() {
-                                let setRM1 = dataWs.Analog.RM1
-                                let setRM2 = dataWs.Analog.RM2
-                                let setRM3 = dataWs.Analog.RM3
-                                let setRM4 = dataWs.Analog.RM4
+                                let setRM1 = dataWs.Analog.RM1;
+                                let setRM2 = dataWs.Analog.RM2;
+                                let setRM3 = dataWs.Analog.RM3;
+                                let setRM4 = dataWs.Analog.RM4;
                                 let setStorage1 = dataWs.Analog.Storage1;
                                 let setStorage2 = dataWs.Analog.Storage2;
                                 let setStorage3 = dataWs.Analog.Storage3;
@@ -280,6 +280,15 @@
                                 $('#setting_storage2').val(setStorage2);
                                 $('#setting_storage3').val(setStorage3);
                                 $('#setting_storage4').val(setStorage4);
+                            })
+
+                            $('#modalParameterSetting').on('shown.bs.modal', function() {
+                                let setParamStep1 = dataWs.Analog.Setting_Parm_Step1;
+                                let setParamStep2 = dataWs.Analog.Setting_Parm_Step2;
+                                let setParamStep3 = dataWs.Analog.Setting_Parm_Step3;
+                                let setParamStep4 = dataWs.Analog.Setting_Parm_Step4;
+                                let setParamSpeed1 = dataWs.Analog.Setting_Parm_Speed1;
+                                let setParamSpeed2 = dataWs.Analog.Setting_Parm_Speed2;
                             })
                         };
                     });
