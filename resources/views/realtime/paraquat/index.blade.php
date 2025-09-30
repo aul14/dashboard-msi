@@ -289,6 +289,13 @@
                                 let setParamStep4 = dataWs.Analog.Setting_Parm_Step4;
                                 let setParamSpeed1 = dataWs.Analog.Setting_Parm_Speed1;
                                 let setParamSpeed2 = dataWs.Analog.Setting_Parm_Speed2;
+
+                                $('#sett_param_step_1').val(setParamStep1);
+                                $('#sett_param_step_2').val(setParamStep2);
+                                $('#sett_param_step_3').val(setParamStep3);
+                                $('#sett_param_step_4').val(setParamStep4);
+                                $('#sett_param_speed_1').val(setParamSpeed1);
+                                $('#sett_param_speed_2').val(setParamSpeed2);
                             })
                         };
                     });
