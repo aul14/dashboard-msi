@@ -38,9 +38,28 @@
 
                     <!-- Gateway -->
                     <div class="col-auto">
-                        <img id="gateway-status" src="{{ asset('assets/images/connections/on.png') }}" class="icon"
+                        <img id="dashboard-gateway" src="{{ asset('assets/images/connections/on.png') }}" class="icon"
                             alt="Gateway">
-                        <p class="label">Connection</p>
+                        <p class="label" id="label-dashboard-gateway">Connection</p>
+                    </div>
+
+                    <div class="col">
+                        <div class="border-top border-dark" style="height:2px;"></div>
+                    </div>
+
+                    <div class="col-auto">
+                        <img src="{{ asset('assets/images/connections/gateway.jpg') }}" class="icon" alt="Gateway">
+                        <p class="label">Communication Gateway</p>
+                    </div>
+
+                    <div class="col">
+                        <div class="border-top border-dark" style="height:2px;"></div>
+                    </div>
+
+                    <div class="col-auto">
+                        <img id="plc-gateway" src="{{ asset('assets/images/connections/on.png') }}" class="icon"
+                            alt="Gateway">
+                        <p class="label" id="label-plc-gateway">Connection</p>
                     </div>
 
                     <!-- Line -->
@@ -73,7 +92,8 @@
                     onclick="openModalSettings()">Settings</button>
             </div>
             <div class="col-md-12 mb-2">
-                <button class="btn btn-lg btn-primary w-100" style="height:70px;">Table Parameter</button>
+                <a href="{{ route('paraquat.table') }}" class="btn btn-lg btn-primary w-100" style="height:70px;">Table
+                    Parameter</a>
             </div>
         </div>
 
@@ -241,6 +261,7 @@
                             sv.updateValues();
 
                             let statusConnect = dataWs.Status.bool;
+                            let plcStatusConnect = dataWs.Digital.PLC_Connection;
                             let statusMesinCard = "";
                             let poNumberCard = dataWs.Analog.PO_number;
                             let batchCodeCard = dataWs.Analog.Kode_Batch;
@@ -248,13 +269,28 @@
                             let modeMachineCard = dataWs.Digital.Control_ON_OFF_Auto == 1 ? "Auto" :
                                 "Manual";
 
-                            let $img = $("#gateway-status");
+                            let $imgDashboard = $("#dashboard-gateway");
                             if (statusConnect == 1) {
-                                $img.attr("src", "{{ asset('assets/images/connections/on.png') }}");
-                                $img.addClass("blink");
+                                $imgDashboard.attr("src",
+                                    "{{ asset('assets/images/connections/on.png') }}");
+                                $imgDashboard.addClass("blink");
+                                $('#label-dashboard-gateway').html('Connected');
                             } else {
-                                $img.attr("src", "{{ asset('assets/images/connections/off.png') }}");
-                                $img.addClass("blink");
+                                $imgDashboard.attr("src",
+                                    "{{ asset('assets/images/connections/off.png') }}");
+                                $imgDashboard.addClass("blink");
+                                $('#label-dashboard-gateway').html('Disconnected');
+                            }
+
+                            let $imgPlc = $("#plc-gateway");
+                            if (plcStatusConnect == 1) {
+                                $imgPlc.attr("src", "{{ asset('assets/images/connections/on.png') }}");
+                                $imgPlc.addClass("blink");
+                                $('#label-plc-gateway').html('Connected');
+                            } else {
+                                $imgPlc.attr("src", "{{ asset('assets/images/connections/off.png') }}");
+                                $imgPlc.addClass("blink");
+                                $('#label-plc-gateway').html('Disconnected');
                             }
 
                             $('#status-mesin-card').html(`Status Mesin: ${statusMesinCard}`)
@@ -347,19 +383,37 @@
         }
 
         function openModalParameterSett() {
+            // sembunyikan modal utama
+            $("#modalSettings").modal('hide');
+
+            // buka modal kedua
             $('#modalParameterSetting').modal({
                 backdrop: 'static',
                 keyboard: false
             });
             $("#modalParameterSetting").modal('show');
+
+            // ketika modal kedua ditutup, tampilkan lagi modal utama
+            $('#modalParameterSetting').off('hidden.bs.modal').on('hidden.bs.modal', function() {
+                $("#modalSettings").modal('show');
+            });
         }
 
         function openModalRecipe() {
+            // sembunyikan modal utama
+            $("#modalSettings").modal('hide');
+
+            // buka modal ketiga
             $('#modalRecipeEditor').modal({
                 backdrop: 'static',
                 keyboard: false
             });
             $("#modalRecipeEditor").modal('show');
+
+            // ketika modal ketiga ditutup, tampilkan lagi modal utama
+            $('#modalRecipeEditor').off('hidden.bs.modal').on('hidden.bs.modal', function() {
+                $("#modalSettings").modal('show');
+            });
         }
     </script>
 @endsection

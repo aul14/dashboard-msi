@@ -54,54 +54,42 @@
              <div class="container">
                  <ul class="nav page-navigation">
                      <li class="nav-item">
-                         <a href="javascript:void(0)" class="nav-link">
+                         <a class="nav-link" href="{{ route('paraquat.index') }}">
                              <i class="mdi mdi-calendar-clock menu-icon"></i>
-                             <span class="menu-title">Realtime</span>
+                             <span class="menu-title">Paraquat</span>
+                         </a>
+                     </li>
+
+                     <li class="nav-item">
+                         <a class="nav-link" href="{{ route('glyposate.index') }}">
+                             <i class="mdi mdi-calendar-clock menu-icon"></i>
+                             <span class="menu-title">Glyposate</span>
+                         </a>
+                     </li>
+
+                     <li class="nav-item">
+                         <a href="javascript:void(0)" class="nav-link">
+                             <i class="mdi mdi-file-document menu-icon"></i>
+                             <span class="menu-title">Data List</span>
                              <i class="menu-arrow"></i>
                          </a>
                          <div class="submenu">
                              <ul class="submenu-item">
                                  <li class="nav-item">
-                                     <a class="nav-link" href="{{ route('glyposate.index') }}">Monitoring Glyposate</a>
+                                     <a class="nav-link" href="{{ route('upload_po.index') }}">PO List</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="{{ route('paraquat.index') }}">Monitoring Paraquat</a>
+                                     <a class="nav-link" href="{{ route('good_issue.index') }}">Good Issue</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="{{ route('glyposate.table') }}">Table Monitoring
-                                         Glyposate</a>
+                                     <a class="nav-link" href="{{ route('confirm.index') }}">Confirmation</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="{{ route('paraquat.table') }}">Table Monitoring
-                                         Paraquat</a>
+                                     <a class="nav-link" href="{{ route('good_receipt.index') }}">Good Receipt</a>
                                  </li>
+
                              </ul>
                          </div>
-                     </li>
-
-                     <li class="nav-item">
-                         <a class="nav-link" href="{{ route('upload_po.index') }}">
-                             <i class="mdi mdi-file-document menu-icon"></i>
-                             <span class="menu-title">Upload PO</span>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="{{ route('good_issue.index') }}">
-                             <i class="mdi mdi-file-document menu-icon"></i>
-                             <span class="menu-title">Good Issue</span>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="{{ route('confirm.index') }}">
-                             <i class="mdi mdi-file-document menu-icon"></i>
-                             <span class="menu-title">Confirmation</span>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="{{ route('good_receipt.index') }}">
-                             <i class="mdi mdi-file-document menu-icon"></i>
-                             <span class="menu-title">Good Receipt</span>
-                         </a>
                      </li>
 
                      <li class="nav-item">
@@ -116,7 +104,28 @@
                                      <a class="nav-link" href="javascript:void(0)">Report</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="{{ route('alarm_logger.index') }}">Alarm Logger</a>
+                                     <a class="nav-link" href="javascript:void(0)">Log SAP</a>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="javascript:void(0)">Log Machine</a>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="javascript:void(0)">Log Operation</a>
+                                 </li>
+                             </ul>
+                         </div>
+                     </li>
+
+                     <li class="nav-item">
+                         <a href="javascript:void(0)" class="nav-link">
+                             <i class="mdi mdi-cogs menu-icon"></i>
+                             <span class="menu-title">Settings</span>
+                             <i class="menu-arrow"></i>
+                         </a>
+                         <div class="submenu">
+                             <ul class="submenu-item">
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="javascript:void(0)">User Setting</a>
                                  </li>
                              </ul>
                          </div>
