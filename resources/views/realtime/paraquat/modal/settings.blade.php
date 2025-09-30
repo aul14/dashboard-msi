@@ -14,7 +14,8 @@
                         <button type="button" class="btn btn-dark mx-1">Tank Name</button>
                         <button type="button" class="btn btn-dark mx-1" onclick="openModalParameterSett()">Setting
                             Parameter</button>
-                        <button type="button" class="btn btn-dark mx-1">Recepy Editor</button>
+                        <button type="button" class="btn btn-dark mx-1" onclick="openModalRecipe()">Recipe
+                            Editor</button>
                     </div>
                     <div class="card">
                         <div class="card-body p-2">

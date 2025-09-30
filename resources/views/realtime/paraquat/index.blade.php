@@ -119,6 +119,7 @@
     @include('realtime.paraquat.modal.operation')
     @include('realtime.paraquat.modal.settings')
     @include('realtime.paraquat.modal.parameter_setting')
+    @include('realtime.paraquat.modal.recipe_editor')
 @endsection
 @section('script')
     <script>
@@ -297,6 +298,17 @@
                                 $('#sett_param_speed_1').val(setParamSpeed1);
                                 $('#sett_param_speed_2').val(setParamSpeed2);
                             })
+
+                            $('#modalRecipeEditor').on('shown.bs.modal', function() {
+                                for (let i = 1; i <= 4; i++) {
+                                    $('#row_recipe_' + i + '_tag').text(dataWs.Analog[
+                                        'Edit_Recipe' + i + '_Tag']);
+                                    for (let j = 1; j <= 4; j++) {
+                                        $('#row_recipe_' + i + '_step' + j).text(dataWs.Analog[
+                                            'Edit_Recipe' + i + '_Step' + j]);
+                                    }
+                                }
+                            })
                         };
                     });
 
@@ -340,6 +352,14 @@
                 keyboard: false
             });
             $("#modalParameterSetting").modal('show');
+        }
+
+        function openModalRecipe() {
+            $('#modalRecipeEditor').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#modalRecipeEditor").modal('show');
         }
     </script>
 @endsection
