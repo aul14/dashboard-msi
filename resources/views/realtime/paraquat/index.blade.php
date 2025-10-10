@@ -262,10 +262,10 @@
 
                             let statusConnect = dataWs.Status.bool;
                             let plcStatusConnect = dataWs.Digital.PLC_Connection;
-                            let statusMesinCard = "";
-                            let poNumberCard = dataWs.Analog.PO_number;
+                            let statusMesinCard = dataWs.buffer.machineStatus;
+                            let poNumberCard = dataWs.Analog.PO_Number;
                             let batchCodeCard = dataWs.Analog.Kode_Batch;
-                            let durationCard = "";
+                            let durationCard = dataWs.Analog.Duration;
                             let modeMachineCard = dataWs.Digital.Control_ON_OFF_Auto == 1 ? "Auto" :
                                 "Manual";
 
