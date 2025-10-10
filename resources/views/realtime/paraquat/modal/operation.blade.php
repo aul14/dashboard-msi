@@ -68,8 +68,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Start</button>
-                <button type="button" class="btn btn-success">Finish</button>
+                <button type="button" class="btn btn-primary" onclick="btnStartFinishOperation('start')">Start</button>
+                <button type="button" class="btn btn-success"
+                    onclick="btnStartFinishOperation('finish')">Finish</button>
             </div>
 
         </div>

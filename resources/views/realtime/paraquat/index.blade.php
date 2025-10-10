@@ -217,6 +217,7 @@
             })
         });
 
+
         function startWebsocket() {
             const tagJsonUrl = "{{ asset('assets/json/paraquat.json') }}" + "?v=" + new Date().getTime();
             let tagMap = {};
@@ -364,6 +365,60 @@
 
         function getValueByPath(obj, path) {
             return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+        }
+
+        function btnStartFinishOperation(optionBtn) {
+            let noPo = $('select[name=prod_ord_no]').val();
+            let batchNumber = $('select[name=batch_code]').val();
+
+            if (optionBtn === 'start') {
+                // 🔹 Validasi: pastikan tidak kosong
+                if (!noPo || !batchNumber) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Data belum lengkap',
+                        text: 'Nomor PO dan Kode Batch wajib diisi!',
+                        confirmButtonText: 'OK'
+                    });
+                    return; // hentikan eksekusi
+                }
+            }
+
+            // 🔹 Kirim API POST
+            $.ajax({
+                url: '{{ env('NODERED_URL') }}' + '/update', // ganti {IP} sesuai server Anda
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    PO_number: noPo,
+                    Kode_Batch: batchNumber
+                }),
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Mengirim data...',
+                        text: 'Mohon tunggu sebentar.',
+                        didOpen: () => Swal.showLoading(),
+                        allowOutsideClick: false,
+                        allowEscapeKey: false
+                    });
+                },
+                success: function(response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: 'Data berhasil dikirim!',
+                        confirmButtonText: 'OK'
+                    });
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: 'Terjadi kesalahan saat mengirim data: ' + error,
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
         }
 
         function openModalOperation() {
