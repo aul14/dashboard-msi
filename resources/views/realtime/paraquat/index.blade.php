@@ -263,7 +263,7 @@
 
                             let statusConnect = dataWs.Status.bool;
                             let plcStatusConnect = dataWs.Digital.PLC_Connection;
-                            let statusMesinCard = dataWs.buffer.StatusMesin;
+                            let statusMesinCard = dataWs.Buffer.StatusMesin;
                             let poNumberCard = dataWs.Analog.PO_Number;
                             let batchCodeCard = dataWs.Analog.Kode_Batch;
                             let durationCard = dataWs.Analog.Duration;
