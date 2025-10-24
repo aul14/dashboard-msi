@@ -5,6 +5,7 @@ use App\Http\Controllers\api\ApiGoodReceiptController;
 use App\Http\Controllers\api\ApiUpdateGoodIssueController;
 use App\Http\Controllers\api\ApiUpdateStatusPoController;
 use App\Http\Controllers\api\ApiUploadPoController;
+use App\Http\Controllers\api\LogAllController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -62,4 +63,11 @@ Route::get('/data_good_receipt', function () {
         'success' => false,
         'message' => 'Parameter prod_ord_no is required.'
     ], 422);
+});
+
+Route::prefix('log')->group(function () {
+    Route::post('/good_issue', [LogAllController::class, 'goodIssue']);
+    Route::post('/confirmation', [LogAllController::class, 'confirmation']);
+    Route::post('/recipient', [LogAllController::class, 'recipient']);
+    Route::post('/mesin', [LogAllController::class, 'mesin']);
 });

@@ -266,7 +266,7 @@
                             let statusMesinCard = dataWs.Buffer.StatusMesin;
                             let poNumberCard = dataWs.Analog.PO_Number;
                             let batchCodeCard = dataWs.Analog.Kode_Batch;
-                            let durationCard = dataWs.Analog.Duration;
+                            let durationCard = dataWs.Buffer.Duration;
                             let modeMachineCard = dataWs.Digital.Control_ON_OFF_Auto == 1 ? "Auto" :
                                 "Manual";
 
