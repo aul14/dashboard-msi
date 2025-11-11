@@ -74,33 +74,33 @@
              forceUpdate: false,
              singleDatePicker: true,
              timeZone: 'Asia/Jakarta',
-             timePicker: true,
+             timePicker: false,
              timePicker24Hour: true,
              startDate: moment().subtract(0, 'days').startOf('hour'),
              endDate: moment().startOf('hour').add(24, 'hour'),
              locale: {
-                 format: 'YYYY-MM-DD HH:mm'
+                 format: 'YYYY-MM-DD'
              },
              autoUpdateInput: false
          });
          $('input[name=date_start]').on('apply.daterangepicker', function(ev, picker) {
-             $(this).val(picker.startDate.format('YYYY-MM-DD HH:mm'));
+             $(this).val(picker.startDate.format('YYYY-MM-DD'));
          });
          $("input[name=date_end]").daterangepicker({
              forceUpdate: false,
              singleDatePicker: true,
              timeZone: 'Asia/Jakarta',
-             timePicker: true,
+             timePicker: false,
              timePicker24Hour: true,
              startDate: moment().startOf('hour'),
              endDate: moment().startOf('hour').add(24, 'hour'),
              locale: {
-                 format: 'YYYY-MM-DD HH:mm'
+                 format: 'YYYY-MM-DD'
              },
              autoUpdateInput: false
          });
          $('input[name=date_end]').on('apply.daterangepicker', function(ev, picker) {
-             $(this).val(picker.startDate.format('YYYY-MM-DD HH:mm'));
+             $(this).val(picker.startDate.format('YYYY-MM-DD'));
          });
 
      });

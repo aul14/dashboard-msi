@@ -107,10 +107,17 @@
                                      <a class="nav-link" href="javascript:void(0)">Log SAP</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="javascript:void(0)">Log Machine</a>
+                                     <a class="nav-link" href="{{ route('log_mesin.index') }}">Log Machine</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="javascript:void(0)">Log Operation</a>
+                                     <a class="nav-link" href="{{ route('log_goodissue.index') }}">Log Good Issue</a>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="{{ route('log_confirmation.index') }}">Log
+                                         Confirmation</a>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="{{ route('log_recipient.index') }}">Log Recipients</a>
                                  </li>
                              </ul>
                          </div>

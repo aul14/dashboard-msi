@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('batch')->nullable();
             $table->string('material_number')->nullable();
             $table->double('qty')->nullable();
+            $table->string('sloc')->nullable();
             $table->timestamps();
         });
     }
