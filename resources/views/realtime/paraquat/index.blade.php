@@ -386,13 +386,57 @@
 
             // 🔹 Kirim API POST
             $.ajax({
-                url: '{{ env('NODERED_URL') }}' + '/update', // ganti {IP} sesuai server Anda
+                url: '{{ env('NODERED_URL') }}' + '/Parakuat/update',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({
+                    Action: optionBtn === 'start' ? 'Start' : 'Finish',
                     PO_number: noPo,
                     Kode_Batch: batchNumber
                 }),
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Mengirim data...',
+                        text: 'Mohon tunggu sebentar.',
+                        didOpen: () => Swal.showLoading(),
+                        allowOutsideClick: false,
+                        allowEscapeKey: false
+                    });
+                },
+                success: function(response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: 'Data berhasil dikirim!',
+                        confirmButtonText: 'OK'
+                    });
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: 'Terjadi kesalahan saat mengirim data: ' + error,
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        }
+
+        function btnSaveEditSettings(button) {
+            const row = button.closest('.form-group');
+            const input = row.querySelector('input');
+            const key = input.id.replace('setting_', ''); // contoh: setting_rm1 -> rm1
+            const value = input.value.trim();
+
+            // Siapkan body JSON
+            const body = {};
+            body[key] = value;
+
+            $.ajax({
+                url: '{{ env('NODERED_URL') }}' + '/Parakuat/SettingParameter',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(body),
                 beforeSend: function() {
                     Swal.fire({
                         title: 'Mengirim data...',

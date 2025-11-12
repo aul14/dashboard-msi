@@ -23,62 +23,70 @@
 
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="setting_rm1">RM 1</label>
+                                    <label class="col-form-label" for="RM1">RM 1</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="setting_rm1" name="setting_rm1" class="form-control"
+                                    <input type="text" id="RM1" name="RM1" class="form-control"
                                         autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-primary w-100">Edit</button>
+                                    <button type="button" class="btn btn-primary w-100"
+                                        onclick="btnSaveEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-success w-100">Save</button>
+                                    <button type="button" class="btn btn-success w-100"
+                                        onclick="btnSaveEditSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="setting_rm2">RM 2</label>
+                                    <label class="col-form-label" for="RM2">RM 2</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="setting_rm2" name="setting_rm2" class="form-control"
+                                    <input type="text" id="RM2" name="RM2" class="form-control"
                                         autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-primary w-100">Edit</button>
+                                    <button type="button" class="btn btn-primary w-100"
+                                        onclick="btnSaveEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-success w-100">Save</button>
+                                    <button type="button" class="btn btn-success w-100"
+                                        onclick="btnSaveEditSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="setting_rm3">RM 3</label>
+                                    <label class="col-form-label" for="RM3">RM 3</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="setting_rm3" name="setting_rm3" class="form-control"
+                                    <input type="text" id="RM3" name="RM3" class="form-control"
                                         autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-primary w-100">Edit</button>
+                                    <button type="button" class="btn btn-primary w-100"
+                                        onclick="btnSaveEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-success w-100">Save</button>
+                                    <button type="button" class="btn btn-success w-100"
+                                        onclick="btnSaveEditSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="setting_rm4">RM 4</label>
+                                    <label class="col-form-label" for="RM4">RM 4</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="setting_rm4" name="setting_rm4" class="form-control"
+                                    <input type="text" id="RM4" name="RM4" class="form-control"
                                         autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-primary w-100">Edit</button>
+                                    <button type="button" class="btn btn-primary w-100"
+                                        onclick="btnSaveEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-success w-100">Save</button>
+                                    <button type="button" class="btn btn-success w-100"
+                                        onclick="btnSaveEditSettings(this)">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -89,62 +97,70 @@
 
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="setting_storage1">Storage 1</label>
+                                    <label class="col-form-label" for="Storage1">Storage 1</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="setting_storage1" name="setting_storage1"
-                                        class="form-control" autocomplete="off">
+                                    <input type="text" id="Storage1" name="Storage1" class="form-control"
+                                        autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-primary w-100">Edit</button>
+                                    <button type="button" class="btn btn-primary w-100"
+                                        onclick="btnSaveEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-success w-100">Save</button>
+                                    <button type="button" class="btn btn-success w-100"
+                                        onclick="btnSaveEditSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="setting_storage2">Storage 2</label>
+                                    <label class="col-form-label" for="Storage2">Storage 2</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="setting_storage2" name="setting_storage2"
-                                        class="form-control" autocomplete="off">
+                                    <input type="text" id="Storage2" name="Storage2" class="form-control"
+                                        autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-primary w-100">Edit</button>
+                                    <button type="button" class="btn btn-primary w-100"
+                                        onclick="btnSaveEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-success w-100">Save</button>
+                                    <button type="button" class="btn btn-success w-100"
+                                        onclick="btnSaveEditSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="setting_storage3">Storage 3</label>
+                                    <label class="col-form-label" for="Storage3">Storage 3</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="setting_storage3" name="setting_storage3"
-                                        class="form-control" autocomplete="off">
+                                    <input type="text" id="Storage3" name="Storage3" class="form-control"
+                                        autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-primary w-100">Edit</button>
+                                    <button type="button" class="btn btn-primary w-100"
+                                        onclick="btnSaveEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-success w-100">Save</button>
+                                    <button type="button" class="btn btn-success w-100"
+                                        onclick="btnSaveEditSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
                                 <div class="col-sm-2">
-                                    <label class="col-form-label" for="setting_storage4">Storage 4</label>
+                                    <label class="col-form-label" for="Storage4">Storage 4</label>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" id="setting_storage4" name="setting_storage4"
-                                        class="form-control" autocomplete="off">
+                                    <input type="text" id="Storage4" name="Storage4" class="form-control"
+                                        autocomplete="off">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-primary w-100">Edit</button>
+                                    <button type="button" class="btn btn-primary w-100"
+                                        onclick="btnSaveEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-success w-100">Save</button>
+                                    <button type="button" class="btn btn-success w-100"
+                                        onclick="btnSaveEditSettings(this)">Save</button>
                                 </div>
                             </div>
 
