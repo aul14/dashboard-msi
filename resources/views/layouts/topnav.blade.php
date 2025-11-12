@@ -132,7 +132,7 @@
                          <div class="submenu">
                              <ul class="submenu-item">
                                  <li class="nav-item">
-                                     <a class="nav-link" href="javascript:void(0)">User Setting</a>
+                                     <a class="nav-link" href="{{ route('users.index') }}">User Setting</a>
                                  </li>
                              </ul>
                          </div>
