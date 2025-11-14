@@ -391,8 +391,8 @@
                 contentType: 'application/json',
                 data: JSON.stringify({
                     Action: optionBtn === 'start' ? 'Start' : 'Finish',
-                    PO_number: noPo,
-                    Kode_Batch: batchNumber
+                    PO_number: optionBtn === 'finish' ? '' : noPo,
+                    Kode_Batch: optionBtn === 'finish' ? '' : batchNumber
                 }),
                 beforeSend: function() {
                     Swal.fire({
