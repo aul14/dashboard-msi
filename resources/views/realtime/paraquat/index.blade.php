@@ -391,7 +391,7 @@
                 contentType: 'application/json',
                 data: JSON.stringify({
                     Action: optionBtn === 'start' ? 'Start' : 'Finish',
-                    PO_number: optionBtn === 'finish' ? '' : noPo,
+                    PO_Number: optionBtn === 'finish' ? '' : noPo,
                     Kode_Batch: optionBtn === 'finish' ? '' : batchNumber
                 }),
                 beforeSend: function() {
