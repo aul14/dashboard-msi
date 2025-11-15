@@ -433,7 +433,7 @@
             body[key] = value;
 
             $.ajax({
-                url: '{{ env('NODERED_URL') }}' + '/Parakuat/SettingParameter',
+                url: '{{ env('NODERED_URL') }}' + 'Parakuat/SettingParameter',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(body),
