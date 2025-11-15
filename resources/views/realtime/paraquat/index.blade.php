@@ -386,7 +386,7 @@
 
             // 🔹 Kirim API POST
             $.ajax({
-                url: '{{ env('NODERED_URL') }}' + '/Parakuat/update',
+                url: '{{ env('NODERED_URL') }}' + 'Parakuat/update',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({
