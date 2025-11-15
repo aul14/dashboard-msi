@@ -32,7 +32,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Created At</th>
+                        <th>DateTime</th>
                         <th>Description</th>
                     </tr>
                 </thead>

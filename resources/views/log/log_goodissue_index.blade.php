@@ -32,7 +32,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Created At</th>
+                        <th>DateTime</th>
                         <th>PO Number</th>
                         <th>Batch</th>
                         <th>Material Number</th>
