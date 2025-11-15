@@ -85,7 +85,7 @@
                     onclick="openModalOperation()">Operation</button>
             </div>
             <div class="col-md-12 mb-2">
-                <button class="btn btn-lg btn-primary w-100" style="height:70px;">HMI Mesin</button>
+                <button class="btn btn-lg btn-primary w-100" style="height:70px;" onclick="openModalAlarms()">Alarm</button>
             </div>
             <div class="col-md-12 mb-2">
                 <button class="btn btn-lg btn-primary w-100" style="height:70px;"
@@ -140,9 +140,12 @@
     @include('realtime.paraquat.modal.settings')
     @include('realtime.paraquat.modal.parameter_setting')
     @include('realtime.paraquat.modal.recipe_editor')
+    @include('realtime.paraquat.modal.alarm')
 @endsection
 @section('script')
     <script>
+        let wsAlarm = null;
+        let wsConnectedAlarm = false;
         $(function() {
             startWebsocket();
 
@@ -215,6 +218,14 @@
                     }
                 });
             })
+
+            $("#modalAlarms").on("hidden.bs.modal", function() {
+                if (wsAlarm) {
+                    wsAlarm.close();
+                    wsAlarm = null;
+                    wsConnectedAlarm = false;
+                }
+            });
         });
 
 
@@ -479,6 +490,70 @@
                 keyboard: false
             });
             $("#modalSettings").modal('show');
+        }
+
+        function openModalAlarms() {
+            $('#modalAlarms').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#modalAlarms").modal('show');
+
+            if (!wsConnectedAlarm) {
+                connectWebSocketAlarm();
+            }
+        }
+
+        function connectWebSocketAlarm() {
+            let wsUrlAlarm = $("input[name=ws_url]").val();
+
+            wsAlarm = new WebSocket(`${wsUrlAlarm}/Parakuat/Alarm`);
+
+            wsAlarm.onopen = function() {
+                console.log("WS Connected Alarm");
+                wsConnectedAlarm = true;
+            };
+
+            wsAlarm.onmessage = function(event) {
+                try {
+                    const data = JSON.parse(event.data);
+                    renderAlarmTable(data);
+                } catch (e) {
+                    console.error("Invalid JSON:", e);
+                }
+            };
+
+            wsAlarm.onerror = function() {
+                console.error("WS Error");
+            };
+
+            wsAlarm.onclose = function() {
+                console.log("WS Closed");
+                wsConnectedAlarm = false;
+            };
+        }
+
+
+        function renderAlarmTable(data) {
+            let tbody = $("#tbl-alarms tbody");
+            tbody.empty();
+
+            let index = 1;
+
+            Object.keys(data).forEach(key => {
+                let item = data[key];
+
+                tbody.append(`
+                    <tr>
+                        <td>${index++}</td>
+                        <td>${item.alarm}</td>
+                        <td>${item.massage}</td>
+                        <td><span style="color:${item.color};font-weight:bold;">${item.color}</span></td>
+                        <td>${item.values}</td>
+                        <td>${item.start} (${item.duration})</td>
+                    </tr>
+                `);
+            });
         }
 
         function openModalParameterSett() {
