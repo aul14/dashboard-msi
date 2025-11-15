@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('po_number')->nullable();
             $table->string('batch')->nullable();
             $table->enum('type', ['RM', 'Charging', 'Mixing', 'Transfer', 'DownTime'])->nullable();
+            $table->string('type_message')->nullable();
+            $table->double('qty')->nullable();
             $table->string('duration')->nullable();
             $table->dateTime('start_time')->nullable();
             $table->timestamps();
