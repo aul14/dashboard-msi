@@ -453,7 +453,14 @@
             });
         }
 
-        function btnSaveEditSettings(button) {
+        function btnEditSettings(button) {
+            const row = button.closest('.form-group');
+            const input = row.querySelector('input');
+            input.removeAttribute('readonly');
+            input.focus();
+        }
+
+        function btnSaveSettings(button) {
             const row = button.closest('.form-group');
             const input = row.querySelector('input');
             const key = input.id.replace('setting_', ''); // contoh: setting_rm1 -> rm1
@@ -462,6 +469,8 @@
             // Siapkan body JSON
             const body = {};
             body[key] = value;
+
+            input.setAttribute('readonly', true);
 
             $.ajax({
                 url: '{{ env('NODERED_URL') }}' + 'Parakuat/SettingParameter',

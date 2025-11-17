@@ -36,6 +36,8 @@
                         <th>PO Number</th>
                         <th>Batch</th>
                         <th>Type</th>
+                        <th>Type Message</th>
+                        <th>Qty</th>
                         <th>Duration</th>
                         <th>Start Time</th>
                     </tr>
@@ -106,6 +108,12 @@
                     },
                     {
                         data: 'type',
+                    },
+                    {
+                        data: 'type_message',
+                    },
+                    {
+                        data: 'qty',
                     },
                     {
                         data: 'duration',

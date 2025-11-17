@@ -19,15 +19,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="Setting_Param_Step1" name="Setting_Param_Step1"
-                                        class="form-control">
+                                        class="form-control" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
@@ -37,15 +37,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="Setting_Param_Step2" name="Setting_Param_Step2"
-                                        class="form-control">
+                                        class="form-control" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
@@ -55,15 +55,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="Setting_Param_Step3" name="Setting_Param_Step3"
-                                        class="form-control">
+                                        class="form-control" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
@@ -73,15 +73,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="Setting_Param_Step4" name="Setting_Param_Step4"
-                                        class="form-control">
+                                        class="form-control" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
@@ -90,15 +90,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="Setting_Param_Speed1" name="Setting_Param_Speed1"
-                                        class="form-control">
+                                        class="form-control" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
@@ -107,15 +107,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="Setting_Param_Speed2" name="Setting_Param_Speed2"
-                                        class="form-control">
+                                        class="form-control" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
                         </div>

@@ -27,15 +27,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="RM1" name="RM1" class="form-control"
-                                        autocomplete="off">
+                                        autocomplete="off" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
@@ -44,15 +44,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="RM2" name="RM2" class="form-control"
-                                        autocomplete="off">
+                                        autocomplete="off" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
@@ -61,15 +61,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="RM3" name="RM3" class="form-control"
-                                        autocomplete="off">
+                                        autocomplete="off" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
@@ -78,15 +78,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="RM4" name="RM4" class="form-control"
-                                        autocomplete="off">
+                                        autocomplete="off" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -101,15 +101,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="Storage1" name="Storage1" class="form-control"
-                                        autocomplete="off">
+                                        autocomplete="off" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
@@ -118,15 +118,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="Storage2" name="Storage2" class="form-control"
-                                        autocomplete="off">
+                                        autocomplete="off" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
@@ -135,15 +135,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="Storage3" name="Storage3" class="form-control"
-                                        autocomplete="off">
+                                        autocomplete="off" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center my-0">
@@ -152,15 +152,15 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" id="Storage4" name="Storage4" class="form-control"
-                                        autocomplete="off">
+                                        autocomplete="off" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary w-100"
-                                        onclick="btnSaveEditSettings(this)">Edit</button>
+                                        onclick="btnEditSettings(this)">Edit</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success w-100"
-                                        onclick="btnSaveEditSettings(this)">Save</button>
+                                        onclick="btnSaveSettings(this)">Save</button>
                                 </div>
                             </div>
 
