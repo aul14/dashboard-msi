@@ -339,12 +339,32 @@
                                 let setParamSpeed1 = dataWs.Analog.Setting_Parm_Speed1;
                                 let setParamSpeed2 = dataWs.Analog.Setting_Parm_Speed2;
 
-                                $('#sett_param_step_1').val(setParamStep1);
-                                $('#sett_param_step_2').val(setParamStep2);
-                                $('#sett_param_step_3').val(setParamStep3);
-                                $('#sett_param_step_4').val(setParamStep4);
-                                $('#sett_param_speed_1').val(setParamSpeed1);
-                                $('#sett_param_speed_2').val(setParamSpeed2);
+                                $('#Setting_Param_Step1').val(setParamStep1);
+                                $('#Setting_Param_Step2').val(setParamStep2);
+                                $('#Setting_Param_Step3').val(setParamStep3);
+                                $('#Setting_Param_Step4').val(setParamStep4);
+                                $('#Setting_Param_Speed1').val(setParamSpeed1);
+                                $('#Setting_Param_Speed2').val(setParamSpeed2);
+                            })
+
+                            $('#modalSettings').on('shown.bs.modal', function() {
+                                const RM_1 = dataWs.Analog.RM1;
+                                const RM_2 = dataWs.Analog.RM2;
+                                const RM_3 = dataWs.Analog.RM3;
+                                const RM_4 = dataWs.Analog.RM4;
+                                const Storage_1 = dataWs.Analog.Storage1;
+                                const Storage_2 = dataWs.Analog.Storage2;
+                                const Storage_3 = dataWs.Analog.Storage3;
+                                const Storage_4 = dataWs.Analog.Storage4;
+
+                                $('#RM1').val(RM_1);
+                                $('#RM2').val(RM_2);
+                                $('#RM3').val(RM_3);
+                                $('#RM4').val(RM_4);
+                                $('#Storage1').val(Storage_1);
+                                $('#Storage2').val(Storage_2);
+                                $('#Storage3').val(Storage_3);
+                                $('#Storage4').val(Storage_4);
                             })
 
                             $('#modalRecipeEditor').on('shown.bs.modal', function() {
