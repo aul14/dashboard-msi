@@ -17,7 +17,6 @@
                                     <th>No</th>
                                     <th>Alarm</th>
                                     <th>Message</th>
-                                    <th>Color</th>
                                     <th>Values</th>
                                     <th>Start Duration</th>
                                 </tr>

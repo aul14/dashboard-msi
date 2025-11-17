@@ -564,11 +564,10 @@
                 let item = data[key];
 
                 tbody.append(`
-                    <tr>
+                    <tr style="color:${item.color};font-weight:bold;">
                         <td>${index++}</td>
                         <td>${item.alarm}</td>
                         <td>${item.massage}</td>
-                        <td><span style="color:${item.color};font-weight:bold;">${item.color}</span></td>
                         <td>${item.values}</td>
                         <td>${item.start} (${item.duration})</td>
                     </tr>
