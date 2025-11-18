@@ -265,6 +265,8 @@
                     $("#btn-refresh").show();
                     $(this).text("Back to SVG");
 
+                    console.log("Trigger AJAX with:", currentPO, currentBatch);
+
                     if (currentPO && currentBatch) {
                         loadTable(currentPO, currentBatch);
                     }
@@ -328,6 +330,8 @@
 
                             currentPO = dataWs.Analog.PO_Number;
                             currentBatch = dataWs.Analog.Kode_Batch;
+
+                            console.log("PO:", currentPO, "Batch:", currentBatch);
 
                             let statusConnect = dataWs.Status.bool;
                             let plcStatusConnect = dataWs.Digital.PLC_Connection;
@@ -452,6 +456,8 @@
         }
 
         function loadTable(po, batch) {
+            console.log("Calling backend...", po, batch);
+
             $.ajax({
                 url: "{{ route('log_confirmation.filter') }}",
                 type: "GET",
@@ -473,7 +479,7 @@
                         res.data.forEach(item => {
                             rows += `
                         <tr>
-                            <td>${item.created_at}</td>
+                            <td>${formatDate(item.created_at)}</td>
                             <td>${item.po_number}</td>
                             <td>${item.batch}</td>
                             <td>${item.type}</td>
@@ -489,6 +495,15 @@
             });
         }
 
+        function formatDate(dateString) {
+            const d = new Date(dateString);
+            return d.getFullYear() + "-" +
+                String(d.getMonth() + 1).padStart(2, '0') + "-" +
+                String(d.getDate()).padStart(2, '0') + " " +
+                String(d.getHours()).padStart(2, '0') + ":" +
+                String(d.getMinutes()).padStart(2, '0') + ":" +
+                String(d.getSeconds()).padStart(2, '0');
+        }
 
         function getValueByPath(obj, path) {
             return path.split('.').reduce((acc, part) => acc && acc[part], obj);
