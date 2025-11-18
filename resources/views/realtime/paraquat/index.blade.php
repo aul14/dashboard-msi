@@ -329,11 +329,6 @@
                             currentPO = dataWs.Analog.PO_Number;
                             currentBatch = dataWs.Analog.Kode_Batch;
 
-                            // jika mode table aktif, auto-load
-                            if (tableVisible) {
-                                loadTable(currentPO, currentBatch);
-                            }
-
                             let statusConnect = dataWs.Status.bool;
                             let plcStatusConnect = dataWs.Digital.PLC_Connection;
                             let statusMesinCard = dataWs.Buffer.StatusMesin;
