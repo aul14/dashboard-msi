@@ -62,7 +62,9 @@ class LogAllController extends Controller
                 'batch' => 'nullable|string',
                 'type' => 'nullable|string',
                 'duration' => 'nullable|string',
+                'type_message' => 'nullable|string',
                 'start_time' => 'nullable|date',
+                'qty' => 'nullable|numeric'
             ]);
 
             if ($validator->fails()) {
