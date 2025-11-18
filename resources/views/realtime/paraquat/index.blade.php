@@ -125,13 +125,38 @@
                     </div>
                 </div>
                 <div class="col-md-4 my-2">
-                    <button class="btn btn-lg btn-warning w-100 px-0">
+                    <button id="btn-toggle-view" class="btn btn-lg btn-warning w-100 px-0">
                         Status Production
                     </button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12 col-sm-12" id="example-svg"></div>
+            <!-- SVG DEFAULT -->
+            <div id="svg-container">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12" id="example-svg"></div>
+                </div>
+            </div>
+
+            <!-- TABLE (HIDDEN BY DEFAULT) -->
+            <div id="table-container" style="display:none;">
+                <button id="btn-refresh" class="btn btn-primary mb-3" style="display:none;">
+                    Refresh Table
+                </button>
+
+                <table class="table table-bordered" id="confirm-table">
+                    <thead>
+                        <tr>
+                            <th>DateTime</th>
+                            <th>PO Number</th>
+                            <th>Batch</th>
+                            <th>Type</th>
+                            <th>Message</th>
+                            <th>Qty</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -146,6 +171,10 @@
     <script>
         let wsAlarm = null;
         let wsConnectedAlarm = false;
+        let currentPO = null;
+        let currentBatch = null;
+        let tableVisible = false;
+
         $(function() {
             startWebsocket();
 
@@ -226,8 +255,33 @@
                     wsConnectedAlarm = false;
                 }
             });
-        });
 
+            $("#btn-toggle-view").on("click", function() {
+                tableVisible = !tableVisible;
+
+                if (tableVisible) {
+                    $("#svg-container").hide();
+                    $("#table-container").show();
+                    $("#btn-refresh").show();
+                    $(this).text("Back to SVG");
+
+                    if (currentPO && currentBatch) {
+                        loadTable(currentPO, currentBatch);
+                    }
+                } else {
+                    $("#svg-container").show();
+                    $("#table-container").hide();
+                    $("#btn-refresh").hide();
+                    $(this).text("Status Production");
+                }
+            });
+
+            $("#btn-refresh").on("click", function() {
+                if (currentPO && currentBatch) {
+                    loadTable(currentPO, currentBatch);
+                }
+            });
+        });
 
         function startWebsocket() {
             const tagJsonUrl = "{{ asset('assets/json/paraquat.json') }}" + "?v=" + new Date().getTime();
@@ -271,6 +325,14 @@
                             });
 
                             sv.updateValues();
+
+                            currentPO = dataWs.Analog.PO_Number;
+                            currentBatch = dataWs.Analog.Kode_Batch;
+
+                            // jika mode table aktif, auto-load
+                            if (tableVisible) {
+                                loadTable(currentPO, currentBatch);
+                            }
 
                             let statusConnect = dataWs.Status.bool;
                             let plcStatusConnect = dataWs.Digital.PLC_Connection;
@@ -393,6 +455,45 @@
                     console.error('Gagal memuat tagMap JSON:', err);
                 });
         }
+
+        function loadTable(po, batch) {
+            $.ajax({
+                url: "{{ route('log_confirmation.filter') }}",
+                type: "GET",
+                data: {
+                    po_number: po,
+                    batch: batch
+                },
+                beforeSend: function() {
+                    $("#confirm-table tbody").html(
+                        `<tr><td colspan="7" class="text-center">Loading...</td></tr>`
+                    );
+                },
+                success: function(res) {
+                    let rows = "";
+
+                    if (res.data.length === 0) {
+                        rows = `<tr><td colspan="7" class="text-center">No Data Found</td></tr>`;
+                    } else {
+                        res.data.forEach(item => {
+                            rows += `
+                        <tr>
+                            <td>${item.created_at}</td>
+                            <td>${item.po_number}</td>
+                            <td>${item.batch}</td>
+                            <td>${item.type}</td>
+                            <td>${item.type_message}</td>
+                            <td>${item.qty}</td>
+                            <td>${item.duration}</td>
+                        </tr>`;
+                        });
+                    }
+
+                    $("#confirm-table tbody").html(rows);
+                }
+            });
+        }
+
 
         function getValueByPath(obj, path) {
             return path.split('.').reduce((acc, part) => acc && acc[part], obj);

@@ -248,6 +248,22 @@ class LogAllController extends Controller
         return view('log.log_confirmation_index', compact('date_start', 'date_end', 'title'));
     }
 
+    public function filter_confirmation(Request $request)
+    {
+        $po = $request->po_number;
+        $batch = $request->batch;
+
+        $log = LogConfirmation::where('po_number', $po)
+            ->where('batch', $batch)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return response()->json([
+            "success" => true,
+            "data" => $log
+        ]);
+    }
+
     public function index_recipient(Request $request)
     {
         $date_start = $request->date_start;

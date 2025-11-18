@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
     Route::get('/log_mesin_index', [LogAllController::class, 'index_mesin'])->name('log_mesin.index');
     Route::get('/log_goodissue_index', [LogAllController::class, 'index_good_issue'])->name('log_goodissue.index');
     Route::get('/log_confirmation_index', [LogAllController::class, 'index_confirmation'])->name('log_confirmation.index');
+    Route::get('/log_confirmation_filter', [LogAllController::class, 'filter_confirmation'])->name('log_confirmation.filter');
     Route::get('/log_recipient_index', [LogAllController::class, 'index_recipient'])->name('log_recipient.index');
 
     Route::post('/search_no_po', [ParaquatRealTimeController::class, 'search_no_po'])->name('search_no_po');
