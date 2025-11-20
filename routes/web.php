@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
 
     Route::post('/search_no_po', [ParaquatRealTimeController::class, 'search_no_po'])->name('search_no_po');
     Route::post('/batch_by_no_po', [ParaquatRealTimeController::class, 'batch_by_no_po'])->name('batch_by_no_po');
+    Route::post('/start_finish_ops', [ParaquatRealTimeController::class, 'start_finish_ops'])->name('start_finish_ops');
     Route::resource('/settings/users', UserController::class);
     Route::get('/test', function () {
         return view('test-websocket-client');

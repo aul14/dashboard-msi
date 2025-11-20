@@ -265,8 +265,6 @@
                     $("#btn-refresh").show();
                     $(this).text("Back to SVG");
 
-                    console.log("Trigger AJAX with:", currentPO, currentBatch);
-
                     if (currentPO && currentBatch) {
                         loadTable(currentPO, currentBatch);
                     }
@@ -330,8 +328,6 @@
 
                             currentPO = dataWs.Analog.PO_Number;
                             currentBatch = dataWs.Analog.Kode_Batch;
-
-                            console.log("PO:", currentPO, "Batch:", currentBatch);
 
                             let statusConnect = dataWs.Status.bool;
                             let plcStatusConnect = dataWs.Digital.PLC_Connection;
@@ -510,8 +506,8 @@
         }
 
         function btnStartFinishOperation(optionBtn) {
-            let noPo = $('select[name=prod_ord_no]').val();
-            let batchNumber = $('select[name=batch_code]').val();
+            let noPo = $('select[name=prod_ord_no]').val() ? $('select[name=prod_ord_no]').val() : currentPO;
+            let batchNumber = $('select[name=batch_code]').val() ? $('select[name=batch_code]').val() : currentBatch;
 
             if (optionBtn === 'start') {
                 // 🔹 Validasi: pastikan tidak kosong
@@ -528,14 +524,14 @@
 
             // 🔹 Kirim API POST
             $.ajax({
-                url: '{{ env('NODERED_URL') }}' + 'Parakuat/update',
+                url: '{{ route('start_finish_ops') }}',
                 type: 'POST',
                 contentType: 'application/json',
-                data: JSON.stringify({
-                    Action: optionBtn === 'start' ? 'Start' : 'Finish',
-                    PO_Number: optionBtn === 'finish' ? '' : noPo,
-                    Kode_Batch: optionBtn === 'finish' ? '' : batchNumber
-                }),
+                data: {
+                    action: optionBtn,
+                    po_number: noPo,
+                    batch_number: batchNumber
+                },
                 beforeSend: function() {
                     Swal.fire({
                         title: 'Mengirim data...',

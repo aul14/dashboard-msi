@@ -52,6 +52,20 @@ class ApiUploadPoController extends Controller
 
                 // foreach ($request->component as $component) {
                 for ($i = $start; $i < $start + $batch && $i <= $max; $i++) {
+                    $batchCode = date('y') . substr('ABCDEFGHIJKL', date('n') - 1, 1) . date('d') . $i;
+
+                    $exists = ZpoSapToAuto::where('prod_ord_no', $prod_ord_no)
+                        ->where('batch_code', $batchCode)
+                        ->exists();
+
+                    if ($exists) {
+                        DB::rollBack();
+                        return response()->json([
+                            'status' => false,
+                            'message' => "Data dengan no po $prod_ord_no dan kode batch $batchCode sudah ada."
+                        ], 400);
+                    }
+
                     ZpoSapToAuto::create([
                         'prod_ord_no' => $prod_ord_no,
                         'reservation' => $reservation,
@@ -74,7 +88,7 @@ class ApiUploadPoController extends Controller
                         'material_desc' => $material_desc,
                         'uom_material_code' => $uom_material_code,
                         'batch' => $batch,
-                        'batch_code' => date('y') . substr('ABCDEFGHIJKL', date('n') - 1, 1) . date('d') . $i,
+                        'batch_code' => $batchCode,
                         'item' => $request->component[$key]['item'],
                         'material_component' => $request->component[$key]['material_component'],
                         'material_component_desc' => $request->component[$key]['material_component_desc'],
