@@ -263,7 +263,7 @@
                     $("#svg-container").hide();
                     $("#table-container").show();
                     $("#btn-refresh").show();
-                    $(this).text("Back to SVG");
+                    $(this).text("Back to HMI");
 
                     if (currentPO && currentBatch) {
                         loadTable(currentPO, currentBatch);
