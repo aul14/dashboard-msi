@@ -526,7 +526,6 @@
             $.ajax({
                 url: '{{ route('start_finish_ops') }}',
                 type: 'POST',
-                contentType: 'application/json',
                 data: {
                     action: optionBtn,
                     po_number: noPo,
