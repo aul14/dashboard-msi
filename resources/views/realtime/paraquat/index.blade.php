@@ -92,8 +92,14 @@
                     onclick="openModalSettings()">Settings</button>
             </div>
             <div class="col-md-12 mb-2">
-                <a href="{{ route('paraquat.table') }}" class="btn btn-lg btn-primary w-100" style="height:70px;">Table
-                    Parameter</a>
+                <a href="{{ route('paraquat.table') }}" class="btn btn-lg btn-primary w-100" style="height:70px;">
+                    Table Parameter
+                </a>
+            </div>
+            <div class="col-md-12 mb-2">
+                <button onclick="openModalRealtimeLog()" class="btn btn-lg btn-primary w-100" style="height:70px;">
+                    Realtime Log Machine
+                </button>
             </div>
         </div>
 
@@ -166,6 +172,7 @@
     @include('realtime.paraquat.modal.parameter_setting')
     @include('realtime.paraquat.modal.recipe_editor')
     @include('realtime.paraquat.modal.alarm')
+    @include('realtime.paraquat.modal.realtime_log')
 @endsection
 @section('script')
     <script>
@@ -306,7 +313,7 @@
                         .getTime();
                     scadavisInit({
                         container: 'example-svg',
-                        iframeparams: 'frameborder="0" height="450" width="800"',
+                        iframeparams: 'frameborder="0" height="450" width="100%"',
                         svgurl: svgExample
                     }).then(sv => {
                         sv.zoomTo(0.60);
@@ -607,6 +614,14 @@
                     });
                 }
             });
+        }
+
+        function openModalRealtimeLog() {
+            $('#modalRealtimeLog').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#modalRealtimeLog").modal('show');
         }
 
         function openModalOperation() {
