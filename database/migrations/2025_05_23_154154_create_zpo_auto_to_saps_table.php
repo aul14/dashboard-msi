@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('prod_ord_no', 12)->nullable();
             $table->integer('key_status')->nullable();
             $table->dateTime('last_update_by_sap')->nullable();
+            $table->string('mrp_controller', 3)->nullable();
             $table->dateTime('last_update_by_automation')->nullable();
             $table->timestamps();
         });

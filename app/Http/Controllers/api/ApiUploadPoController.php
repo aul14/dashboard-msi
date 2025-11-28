@@ -2,16 +2,29 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller;
 use App\Models\LogApi;
 use App\Models\ZpoSapToAuto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class ApiUploadPoController extends Controller
 {
     public function post_upload_po(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'prod_ord_no' => 'required|string',
+            'mrp_controller' => 'required|string|in:WHP,WHG'
+        ]);
+
+        if ($validator->fails()) {
+            $error = $validator->messages()->first();
+            $response['success'] = false;
+            $response['message'] = $error;
+            return response()->json($response, 400);
+        }
+
         try {
             DB::beginTransaction();
 

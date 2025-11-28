@@ -34,6 +34,7 @@ class ApiUpdateStatusPoController extends Controller
             $zpoAutoToSap = new ZpoAutoToSap();
             $zpoAutoToSap->prod_ord_no = $prod_ord_no;
             $zpoAutoToSap->key_status = $key_status;
+            $zpoAutoToSap->mrp_controller = $request->mrp_controller;
             $zpoAutoToSap->last_update_by_sap = $last_update_by_sap;
             $zpoAutoToSap->save();
 

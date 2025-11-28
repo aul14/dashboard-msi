@@ -27,6 +27,7 @@ class LogAllController extends Controller
                 'sloc' => 'nullable|string',
                 'start_time' => 'nullable|date',
                 'duration' => 'nullable|string',
+                'mrp_controller' => 'required|string|in:WHP,WHG'
             ]);
 
             if ($validator->fails()) {
@@ -64,7 +65,8 @@ class LogAllController extends Controller
                 'duration' => 'nullable|string',
                 'type_message' => 'nullable|string',
                 'start_time' => 'nullable|date',
-                'qty' => 'nullable|numeric'
+                'qty' => 'nullable|numeric',
+                'mrp_controller' => 'required|string|in:WHP,WHG'
             ]);
 
             if ($validator->fails()) {
@@ -99,6 +101,7 @@ class LogAllController extends Controller
                 'batch' => 'nullable|string',
                 'material_number' => 'nullable|string',
                 'quantity' => 'nullable|numeric',
+                'mrp_controller' => 'required|string|in:WHP,WHG'
             ]);
 
             if ($validator->fails()) {
@@ -131,6 +134,7 @@ class LogAllController extends Controller
             $validator = Validator::make($request->all(), [
                 'datetime' => 'required|date|date_format:Y-m-d H:i:s',
                 'description' => 'nullable|string',
+                'mrp_controller' => 'required|string|in:WHP,WHG'
             ]);
 
             if ($validator->fails()) {

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->dateTime('datetime');
             $table->text('description')->nullable();
+            $table->string('mrp_controller', 3)->nullable(); //WHP = PARAQUAT, WHG = GLYPOSATE
             $table->timestamps();
         });
     }

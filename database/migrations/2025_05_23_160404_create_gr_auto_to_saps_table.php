@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('material_number', 18)->nullable();
             $table->double('qty')->nullable();
             $table->string('uom_material_number', 3)->nullable();
+            $table->string('mrp_controller', 3)->nullable();
             $table->string('sloc', 4)->nullable();
             $table->string('recipient', 12)->nullable();
             $table->string('batch_number', 8)->nullable();

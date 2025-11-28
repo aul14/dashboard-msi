@@ -452,8 +452,6 @@
         }
 
         function loadTable(po, batch) {
-            console.log("Calling backend...", po, batch);
-
             $.ajax({
                 url: "{{ route('log_confirmation.filter') }}",
                 type: "GET",
@@ -474,15 +472,15 @@
                     } else {
                         res.data.forEach(item => {
                             rows += `
-                        <tr>
-                            <td>${formatDate(item.created_at)}</td>
-                            <td>${item.po_number}</td>
-                            <td>${item.batch}</td>
-                            <td>${item.type}</td>
-                            <td>${item.type_message}</td>
-                            <td>${item.qty}</td>
-                            <td>${item.duration}</td>
-                        </tr>`;
+                            <tr>
+                                <td>${formatDate(item.created_at)}</td>
+                                <td>${item.po_number}</td>
+                                <td>${item.batch}</td>
+                                <td>${item.type}</td>
+                                <td>${item.type_message}</td>
+                                <td>${item.qty}</td>
+                                <td>${item.duration}</td>
+                            </tr>`;
                         });
                     }
 

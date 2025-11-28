@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('ip_address', 45)->nullable();
             $table->text('request_log')->nullable();
             $table->text('response_log')->nullable();
+            $table->string('mrp_controller', 3)->nullable();
             $table->timestamps();
         });
     }

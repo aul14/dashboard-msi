@@ -21,6 +21,7 @@ class ApiConfirmationController extends Controller
             'conf_qty' => 'required|numeric',
             'prod_start' => 'required|date_format:Y-m-d H:i:s',
             'prod_end' => 'required|date_format:Y-m-d H:i:s',
+            'mrp_controller' => 'required|string|in:WHP,WHG'
         ]);
 
         if ($validator->fails()) {
@@ -52,6 +53,7 @@ class ApiConfirmationController extends Controller
                     'work_center' => $work_center,
                     'conf_qty' => $conf_qty,
                     'operation_no' => $operation_no,
+                    'mrp_controller' => $request->mrp_controller,
                     'parameter_1' => $component['parameter_1'],
                     'parameter_desc_1' => $component['parameter_desc_1'],
                     'parameter_2' => $component['parameter_2'],

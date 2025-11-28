@@ -16,6 +16,7 @@ class ApiGoodReceiptController extends Controller
             'prod_ord_no' => 'required|string',
             'plant' => 'required|string',
             'material_number' => 'required|string',
+            'mrp_controller' => 'required|string|in:WHP,WHG',
             'prod_start' => 'required|date_format:Y-m-d H:i:s',
             'prod_end' => 'required|date_format:Y-m-d H:i:s',
         ]);
@@ -40,6 +41,7 @@ class ApiGoodReceiptController extends Controller
             $grAutoToSap->recipient = $request->recipient;
             $grAutoToSap->batch_number = $request->batch_number;
             $grAutoToSap->key_status = $request->key_status;
+            $grAutoToSap->mrp_controller = $request->mrp_controller;
             $grAutoToSap->insert_time = now();
             $grAutoToSap->update_time = now();
             $grAutoToSap->save();

@@ -16,6 +16,7 @@ class ApiUpdateGoodIssueController extends Controller
         $validator = Validator::make($request->all(), [
             'prod_ord_no' => 'required|string',
             'plant' => 'required|string',
+            'mrp_controller' => 'required|string|in:WHP,WHG',
             'prod_start' => 'required|date_format:Y-m-d H:i:s',
             'prod_end' => 'required|date_format:Y-m-d H:i:s',
         ]);
@@ -43,6 +44,7 @@ class ApiUpdateGoodIssueController extends Controller
                     'prod_start' => $prod_start,
                     'prod_end' => $prod_end,
                     'recipient' => $recipient,
+                    'mrp_controller' => $request->mrp_controller,
                     'material_number' => $component['material_number'],
                     'qty' => $component['qty'],
                     'uom_material_number' => $component['uom_material_number'],

@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('parameter_desc_4')->nullable();
             $table->string('parameter_desc_5')->nullable();
             $table->string('parameter_desc_6')->nullable();
+            $table->string('mrp_controller', 3)->nullable();
             $table->double('conf_qty')->nullable();
             $table->string('recipient', 12)->nullable();
             $table->integer('key_status')->nullable()->default(0);

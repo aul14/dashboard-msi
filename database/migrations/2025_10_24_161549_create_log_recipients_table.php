@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('material_number')->nullable();
             $table->double('qty')->nullable();
             $table->string('sloc')->nullable();
+            $table->string('mrp_controller', 3)->nullable();
             $table->timestamps();
         });
     }

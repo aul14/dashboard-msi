@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('sloc')->nullable();
             $table->dateTime('start_time')->nullable();
             $table->string('duration')->nullable();
+            $table->string('mrp_controller', 3)->nullable();
             $table->timestamps();
         });
     }

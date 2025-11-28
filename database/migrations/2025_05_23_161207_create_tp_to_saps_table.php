@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('receiving', 4)->nullable();
             $table->dateTime('transfer_posting')->nullable();
             $table->string('qty_transfer_posting', 13)->nullable();
+            $table->string('mrp_controller', 3)->nullable();
             $table->string('kode_batch_vendor')->nullable();
             $table->string('person_recipient', 12)->nullable();
             $table->integer('key_status')->default(0)->nullable();
