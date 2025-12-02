@@ -194,6 +194,12 @@
                     ajax: {
                         url: '{{ route('search_no_po') }}',
                         dataType: 'json',
+                        data: function(params) {
+                            return {
+                                search: params.term,
+                                mrp_controller: 'WHP',
+                            };
+                        },
                         type: 'POST',
                         delay: 0,
                         processResults: function(data) {
@@ -230,7 +236,8 @@
                             type: "POST",
                             url: "{{ route('batch_by_no_po') }}",
                             data: {
-                                no_po: poNumber
+                                no_po: poNumber,
+                                mrp_controller: 'WHP',
                             },
                             dataType: "json",
                             success: function(response) {
@@ -464,7 +471,8 @@
                 type: "GET",
                 data: {
                     po_number: po,
-                    batch: batch
+                    batch: batch,
+                    mrp_controller: 'WHP',
                 },
                 beforeSend: function() {
                     $("#confirm-table tbody").html(
@@ -534,7 +542,8 @@
                 data: {
                     action: optionBtn,
                     po_number: noPo,
-                    batch_number: batchNumber
+                    batch_number: batchNumber,
+                    mrp_controller: 'WHP',
                 },
                 beforeSend: function() {
                     Swal.fire({

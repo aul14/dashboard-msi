@@ -194,6 +194,12 @@
                     ajax: {
                         url: '{{ route('search_no_po') }}',
                         dataType: 'json',
+                        data: function(params) {
+                            return {
+                                search: params.term,
+                                mrp_controller: 'WHG',
+                            };
+                        },
                         type: 'POST',
                         delay: 0,
                         processResults: function(data) {
@@ -230,7 +236,8 @@
                             type: "POST",
                             url: "{{ route('batch_by_no_po') }}",
                             data: {
-                                no_po: poNumber
+                                no_po: poNumber,
+                                mrp_controller: 'WHG',
                             },
                             dataType: "json",
                             success: function(response) {
@@ -305,7 +312,7 @@
                     tagMap = map;
 
                     let ws_url = $("input[name=ws_url]").val();
-                    let ws = new WebSocket(`${ws_url}/Parakuat`);
+                    let ws = new WebSocket(`${ws_url}/Glyphosate`);
 
                     ws.onopen = () => console.log('Connection Established');
 
@@ -464,7 +471,8 @@
                 type: "GET",
                 data: {
                     po_number: po,
-                    batch: batch
+                    batch: batch,
+                    mrp_controller: 'WHG'
                 },
                 beforeSend: function() {
                     $("#confirm-table tbody").html(
@@ -534,7 +542,8 @@
                 data: {
                     action: optionBtn,
                     po_number: noPo,
-                    batch_number: batchNumber
+                    batch_number: batchNumber,
+                    mrp_controller: 'WHG'
                 },
                 beforeSend: function() {
                     Swal.fire({
@@ -584,7 +593,7 @@
             input.setAttribute('readonly', true);
 
             $.ajax({
-                url: '{{ env('NODERED_URL') }}' + 'Parakuat/SettingParameter',
+                url: '{{ env('NODERED_URL') }}' + 'Glyphosate/SettingParameter',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(body),
@@ -655,7 +664,7 @@
         function connectWebSocketAlarm() {
             let wsUrlAlarm = $("input[name=ws_url]").val();
 
-            wsAlarm = new WebSocket(`${wsUrlAlarm}/Parakuat/Alarm`);
+            wsAlarm = new WebSocket(`${wsUrlAlarm}/Glyphosate/Alarm`);
 
             wsAlarm.onopen = function() {
                 console.log("WS Connected Alarm");

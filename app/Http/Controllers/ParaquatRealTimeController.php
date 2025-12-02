@@ -22,12 +22,14 @@ class ParaquatRealTimeController extends Controller
 
     public function search_no_po(Request $request)
     {
-        $search = $request->q;
+        $search = $request->search;
+        $mrpController = $request->mrp_controller;
 
         $data = ZpoSapToAuto::select('prod_ord_no', 'material_code', 'material_desc', 'qty_production', 'batch')
             ->when($search != '', function ($q) use ($search) {
                 $q->where('prod_ord_no', 'like', "%$search%");
             })
+            ->where('mrp_controller', $mrpController)
             ->groupBy('prod_ord_no', 'material_code', 'material_desc', 'qty_production', 'batch')
             ->limit(10)
             ->get();
@@ -38,8 +40,12 @@ class ParaquatRealTimeController extends Controller
     public function batch_by_no_po(Request $request)
     {
         $noPo = $request->no_po;
+        $mrpController = $request->mrp_controller;
 
-        $data = ZpoSapToAuto::where('prod_ord_no', $noPo)->where('status_batch', 'RECEIVED')->select('batch_code')->get();
+        $data = ZpoSapToAuto::where('prod_ord_no', $noPo)
+            ->where('status_batch', 'RECEIVED')
+            ->where('mrp_controller', $mrpController)
+            ->select('batch_code')->get();
 
         if ($data->isEmpty()) {
             return response()->json([
@@ -57,15 +63,19 @@ class ParaquatRealTimeController extends Controller
             $request->validate([
                 'action' => 'required',
                 'po_number' => 'required',
-                'batch_number' => 'required'
+                'batch_number' => 'required',
+                'mrp_controller' => 'required'
             ]);
 
             $poNumber = $request->po_number;
             $batchNumber = $request->batch_number;
             $action = $request->action;
+            $mrpController = $request->mrp_controller;
             $noderedUrl = env('NODERED_URL');
 
-            $checkData = ZpoSapToAuto::where('prod_ord_no', $poNumber)->where('batch_code', $batchNumber)->first();
+            $checkData = ZpoSapToAuto::where('prod_ord_no', $poNumber)
+                ->where('batch_code', $batchNumber)
+                ->where('mrp_controller', $mrpController)->first();
 
             if (!$checkData) {
                 return response()->json([
@@ -74,11 +84,18 @@ class ParaquatRealTimeController extends Controller
                 ]);
             }
 
+            if ($mrpController === 'WHG') {
+                $endpointNodeRed = "{$noderedUrl}Glyphosate/update";
+            } else {
+                $endpointNodeRed = "{$noderedUrl}Parakuat/update";
+            }
+
             if ($action === 'start') {
                 $checkData->status_batch = 'ON PROCESS';
                 $checkData->update();
 
-                Http::post("{$noderedUrl}Parakuat/update", [
+
+                Http::post($endpointNodeRed, [
                     'Action' => 'Start',
                     'PO_Number' => $poNumber,
                     'Kode_Batch' => $batchNumber
@@ -92,7 +109,7 @@ class ParaquatRealTimeController extends Controller
                 $checkData->status_batch = 'FINISH';
                 $checkData->update();
 
-                Http::post("{$noderedUrl}Parakuat/update", [
+                Http::post($endpointNodeRed, [
                     'Action' => 'Finish',
                     'PO_Number' => '',
                     'Kode_Batch' => ''

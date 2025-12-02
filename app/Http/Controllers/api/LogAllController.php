@@ -258,8 +258,10 @@ class LogAllController extends Controller
     {
         $po = $request->po_number;
         $batch = $request->batch;
+        $mrp_controller = $request->mrp_controller;
 
         $log = LogConfirmation::where('po_number', $po)
+            ->where('mrp_controller', $mrp_controller)
             ->where('batch', $batch)
             ->orderBy('id', 'desc')
             ->get();
