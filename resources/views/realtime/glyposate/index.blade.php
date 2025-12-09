@@ -178,6 +178,8 @@
     <script>
         let wsAlarm = null;
         let wsConnectedAlarm = false;
+        let wsRealtimeLog = null;
+        let wsConnectedRealtimeLog = false;
         let currentPO = null;
         let currentBatch = null;
         let tableVisible = false;
@@ -631,6 +633,45 @@
                 keyboard: false
             });
             $("#modalRealtimeLog").modal('show');
+
+            if (!wsConnectedRealtimeLog) {
+                connectWebSocketRealtimeLog();
+            }
+        }
+
+        function connectWebSocketRealtimeLog() {
+            let wsUrlRtLog = $("input[name=ws_url]").val();
+
+            wsRealtimeLog = new WebSocket(`${wsUrlRtLog}/Parakuat/RealTimeLog`);
+
+            wsRealtimeLog.onopen = function() {
+                console.log("WS Connected Realtime Log");
+                wsConnectedRealtimeLog = true;
+            };
+
+            wsRealtimeLog.onmessage = function(event) {
+                try {
+                    const logList = document.getElementById("logList");
+
+                    const li = document.createElement("li");
+                    li.classList.add("list-group-item");
+
+                    li.textContent = event.data;
+
+                    logList.appendChild(li);
+                } catch (e) {
+                    console.error("Invalid JSON:", e);
+                }
+            };
+
+            wsRealtimeLog.onerror = function() {
+                console.error("WS Realtime Log Error");
+            };
+
+            wsRealtimeLog.onclose = function() {
+                console.log("WS Realtime Log closed");
+                wsConnectedRealtimeLog = false;
+            };
         }
 
         function openModalOperation() {
