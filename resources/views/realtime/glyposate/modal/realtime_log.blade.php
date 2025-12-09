@@ -11,9 +11,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <ul class="list-group">
-                            <li class="list-group-item">An item</li>
-                        </ul>
+                        <ul id="logList" class="list-group"></ul>
                     </div>
                 </div>
             </div>
