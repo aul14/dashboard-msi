@@ -173,6 +173,7 @@
     @include('realtime.paraquat.modal.recipe_editor')
     @include('realtime.paraquat.modal.alarm')
     @include('realtime.paraquat.modal.realtime_log')
+    @include('realtime.paraquat.modal.detail_operation')
 @endsection
 @section('script')
     <script>
@@ -258,6 +259,29 @@
                                         })
                                     );
                                 });
+
+                                $('#modalDetailOperation').on('shown.bs.modal',
+                                    function() {
+                                        let rows = "";
+
+                                        if (response.length === 0) {
+                                            rows =
+                                                `<tr><td colspan="6" class="text-center">No Data Found</td></tr>`;
+                                        } else {
+                                            $.each(response, function(index, item) {
+                                                rows += `
+                                            <tr>
+                                                <td>${index+1}</td>
+                                                <td>${item.material_component}</td>
+                                                <td>${item.material_component_desc}</td>
+                                                <td>${item.material_packing_flag}</td>
+                                                <td>${item.qty_component}</td>
+                                                <td>${item.uom_component}</td>
+                                            </tr>`;
+                                            });
+                                        }
+                                        $("#tbl_detail_ops tbody").html(rows);
+                                    })
                             }
                         });
                     }
@@ -637,6 +661,14 @@
             if (!wsConnectedRealtimeLog) {
                 connectWebSocketRealtimeLog();
             }
+        }
+
+        function openModalDetailOperation() {
+            $('#modalDetailOperation').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#modalDetailOperation").modal('show');
         }
 
         function connectWebSocketRealtimeLog() {

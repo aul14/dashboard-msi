@@ -45,7 +45,7 @@ class ParaquatRealTimeController extends Controller
         $data = ZpoSapToAuto::where('prod_ord_no', $noPo)
             ->where('status_batch', 'RECEIVED')
             ->where('mrp_controller', $mrpController)
-            ->select('batch_code')->get();
+            ->select('batch_code', 'material_component', 'material_component_desc', 'material_packing_flag', 'qty_component', 'uom_component')->get();
 
         if ($data->isEmpty()) {
             return response()->json([

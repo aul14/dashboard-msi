@@ -60,7 +60,8 @@
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-primary">Detail</button>
+                            <button type="button" class="btn btn-primary"
+                                onclick="openModalDetailOperation()">Detail</button>
                         </div>
                     </div>
 
