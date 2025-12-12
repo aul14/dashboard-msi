@@ -298,6 +298,11 @@
                 }
             });
 
+            $("#modalCreateManual").on("hidden.bs.modal", function() {
+                $('input[name=add_no_po]').val(currentPO);
+                $('input[name=add_batch]').val(currentBatch);
+            });
+
             $("#btn-toggle-view").on("click", function() {
                 tableVisible = !tableVisible;
 
