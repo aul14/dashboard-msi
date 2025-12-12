@@ -148,6 +148,9 @@
                 <button id="btn-refresh" class="btn btn-primary mb-3" style="display:none;">
                     Refresh Table
                 </button>
+                <button id="create-data" class="btn btn-danger mb-3" style="display:none;">
+                    Create Data
+                </button>
 
                 <table class="table table-bordered" id="confirm-table">
                     <thead>
@@ -174,6 +177,7 @@
     @include('realtime.paraquat.modal.alarm')
     @include('realtime.paraquat.modal.realtime_log')
     @include('realtime.paraquat.modal.detail_operation')
+    @include('realtime.paraquat.modal.create_manual')
 @endsection
 @section('script')
     <script>
@@ -281,7 +285,8 @@
                                             });
                                         }
                                         $("#tbl_detail_ops tbody").html(rows);
-                                    })
+                                    }
+                                )
                             }
                         });
                     }
@@ -303,6 +308,7 @@
                     $("#svg-container").hide();
                     $("#table-container").show();
                     $("#btn-refresh").show();
+                    $("#create-data").show();
                     $(this).text("Back to HMI");
 
                     if (currentPO && currentBatch) {
@@ -312,6 +318,7 @@
                     $("#svg-container").show();
                     $("#table-container").hide();
                     $("#btn-refresh").hide();
+                    $("#create-data").hide();
                     $(this).text("Status Production");
                 }
             });
@@ -320,6 +327,24 @@
                 if (currentPO && currentBatch) {
                     loadTable(currentPO, currentBatch);
                 }
+            });
+
+            $("#create-data").on("click", function() {
+                if (!currentPO && !currentBatch) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: 'Mesin belum di start. data po dan batch belum tersedia.',
+                        confirmButtonText: 'OK'
+                    });
+                    return
+                }
+                $('#modalCreateManual').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                $("#modalCreateManual").modal('show');
+
             });
         });
 
@@ -639,6 +664,62 @@
                         text: 'Data berhasil dikirim!',
                         confirmButtonText: 'OK'
                     });
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: 'Terjadi kesalahan saat mengirim data: ' + error,
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        }
+
+        function btnSaveAddManual(button) {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('add_manual_confirmation') }}",
+                data: {
+                    po_number: $('input[name=add_no_po]').val(),
+                    batch: $('input[name=add_batch]').val(),
+                    type: $('select[name=add_type]').val(),
+                    duration: $('input[name=add_duration]').val(),
+                    type_message: $('input[name=add_type_message]').val(),
+                    qty: $('input[name=add_qty]').val(),
+                    start_time: new Date().toISOString().slice(0, 19).replace('T', ' '),
+                    mrp_controller: 'WHP'
+                },
+                dataType: "json",
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Mengirim data...',
+                        text: 'Mohon tunggu sebentar.',
+                        didOpen: () => Swal.showLoading(),
+                        allowOutsideClick: false,
+                        allowEscapeKey: false
+                    });
+                },
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            text: response.message,
+                            confirmButtonText: 'OK'
+                        });
+
+                        loadTable($('input[name=add_no_po]').val(), $('input[name=add_batch]').val())
+                        return
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal',
+                            text: response.message ?? 'Sepertinya ada kesalahan.',
+                            confirmButtonText: 'OK'
+                        });
+                        return
+                    }
                 },
                 error: function(xhr, status, error) {
                     Swal.fire({

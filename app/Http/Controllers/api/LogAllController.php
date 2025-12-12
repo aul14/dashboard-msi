@@ -78,7 +78,7 @@ class LogAllController extends Controller
 
             $data = LogConfirmation::create($validator->validated());
             return response()->json([
-                'status' => true,
+                'success' => true,
                 'message' => 'Confirmation created',
                 'data' => $data
             ], 201);

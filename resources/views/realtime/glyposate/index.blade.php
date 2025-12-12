@@ -173,6 +173,8 @@
     @include('realtime.glyposate.modal.recipe_editor')
     @include('realtime.glyposate.modal.alarm')
     @include('realtime.glyposate.modal.realtime_log')
+    @include('realtime.glyposate.modal.detail_operation')
+    @include('realtime.glyposate.modal.create_manual')
 @endsection
 @section('script')
     <script>
@@ -258,6 +260,30 @@
                                         })
                                     );
                                 });
+
+                                $('#modalDetailOperation').on('shown.bs.modal',
+                                    function() {
+                                        let rows = "";
+
+                                        if (response.length === 0) {
+                                            rows =
+                                                `<tr><td colspan="6" class="text-center">No Data Found</td></tr>`;
+                                        } else {
+                                            $.each(response, function(index, item) {
+                                                rows += `
+                                            <tr>
+                                                <td>${index+1}</td>
+                                                <td>${item.material_component}</td>
+                                                <td>${item.material_component_desc}</td>
+                                                <td>${item.material_packing_flag}</td>
+                                                <td>${item.qty_component}</td>
+                                                <td>${item.uom_component}</td>
+                                            </tr>`;
+                                            });
+                                        }
+                                        $("#tbl_detail_ops tbody").html(rows);
+                                    }
+                                )
                             }
                         });
                     }
@@ -296,6 +322,24 @@
                 if (currentPO && currentBatch) {
                     loadTable(currentPO, currentBatch);
                 }
+            });
+
+            $("#create-data").on("click", function() {
+                if (!currentPO && !currentBatch) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: 'Mesin belum di start. data po dan batch belum tersedia.',
+                        confirmButtonText: 'OK'
+                    });
+                    return
+                }
+                $('#modalCreateManual').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                $("#modalCreateManual").modal('show');
+
             });
         });
 
@@ -627,6 +671,62 @@
             });
         }
 
+        function btnSaveAddManual(button) {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('add_manual_confirmation') }}",
+                data: {
+                    po_number: $('input[name=add_no_po]').val(),
+                    batch: $('input[name=add_batch]').val(),
+                    type: $('select[name=add_type]').val(),
+                    duration: $('input[name=add_duration]').val(),
+                    type_message: $('input[name=add_type_message]').val(),
+                    qty: $('input[name=add_qty]').val(),
+                    start_time: new Date().toISOString().slice(0, 19).replace('T', ' '),
+                    mrp_controller: 'WHG'
+                },
+                dataType: "json",
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Mengirim data...',
+                        text: 'Mohon tunggu sebentar.',
+                        didOpen: () => Swal.showLoading(),
+                        allowOutsideClick: false,
+                        allowEscapeKey: false
+                    });
+                },
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            text: response.message,
+                            confirmButtonText: 'OK'
+                        });
+
+                        loadTable($('input[name=add_no_po]').val(), $('input[name=add_batch]').val())
+                        return
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal',
+                            text: response.message ?? 'Sepertinya ada kesalahan.',
+                            confirmButtonText: 'OK'
+                        });
+                        return
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: 'Terjadi kesalahan saat mengirim data: ' + error,
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        }
+
         function openModalRealtimeLog() {
             $('#modalRealtimeLog').modal({
                 backdrop: 'static',
@@ -637,6 +737,14 @@
             if (!wsConnectedRealtimeLog) {
                 connectWebSocketRealtimeLog();
             }
+        }
+
+        function openModalDetailOperation() {
+            $('#modalDetailOperation').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#modalDetailOperation").modal('show');
         }
 
         function connectWebSocketRealtimeLog() {

@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
     Route::get('/log_confirmation_index', [LogAllController::class, 'index_confirmation'])->name('log_confirmation.index');
     Route::get('/log_confirmation_filter', [LogAllController::class, 'filter_confirmation'])->name('log_confirmation.filter');
     Route::get('/log_recipient_index', [LogAllController::class, 'index_recipient'])->name('log_recipient.index');
+    Route::post('/add_manual_confirmation', [LogAllController::class, 'confirmation'])->name('add_manual_confirmation');
 
     Route::post('/search_no_po', [ParaquatRealTimeController::class, 'search_no_po'])->name('search_no_po');
     Route::post('/batch_by_no_po', [ParaquatRealTimeController::class, 'batch_by_no_po'])->name('batch_by_no_po');
