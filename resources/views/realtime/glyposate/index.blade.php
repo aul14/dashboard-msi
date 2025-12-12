@@ -612,6 +612,7 @@
                         text: 'Data berhasil dikirim!',
                         confirmButtonText: 'OK'
                     });
+                    $('#modalOperation').hide();
                 },
                 error: function(xhr, status, error) {
                     Swal.fire({
@@ -710,6 +711,7 @@
                         });
 
                         loadTable($('input[name=add_no_po]').val(), $('input[name=add_batch]').val())
+                        $('#modalCreateManual').hide();
                         return
                     } else {
                         Swal.fire({
