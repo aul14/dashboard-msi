@@ -10,6 +10,7 @@ use App\Models\LogConfirmation;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Termwind\Components\Raw;
 
 class LogAllController extends Controller
 {
@@ -157,6 +158,8 @@ class LogAllController extends Controller
             ]);
         }
     }
+
+    public function add_manual(Request $request) {}
 
     public function index_mesin(Request $request)
     {

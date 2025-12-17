@@ -149,7 +149,7 @@
                     Refresh Table
                 </button>
                 <button id="create-data" class="btn btn-danger mb-3" style="display:none;">
-                    Create Data
+                    Add Manual
                 </button>
 
                 <table class="table table-bordered" id="confirm-table">
@@ -691,6 +691,9 @@
                     batch: $('input[name=add_batch]').val(),
                     type: $('select[name=add_type]').val(),
                     duration: $('input[name=add_duration]').val(),
+                    type_message: $('input[name=add_type_message]').val(),
+                    material_number: $('input[name=add_material_number]').val(),
+                    sloc: $('input[name=add_sloc]').val(),
                     type_message: $('input[name=add_type_message]').val(),
                     qty: $('input[name=add_qty]').val(),
                     start_time: new Date().toISOString().slice(0, 19).replace('T', ' '),

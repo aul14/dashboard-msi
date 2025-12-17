@@ -31,14 +31,8 @@
                             <label class="col-form-label" for="add_type">Type</label>
                         </div>
                         <div class="col-sm-7">
-                            <select class="choices form-select select-nopo" id="add_type" name="add_type">
-                                <option value=""></option>
-                                <option value="RM">RM</option>
-                                <option value="Charging">Charging</option>
-                                <option value="Mixing">Mixing</option>
-                                <option value="Transfer">Transfer</option>
-                                <option value="DownTime">DownTime</option>
-                            </select>
+                            <input type="text" readonly id="add_type" name="add_type" class="form-control"
+                                value="Charging">
                         </div>
                     </div>
                     <div class="form-group row align-items-center my-0">
@@ -47,6 +41,23 @@
                         </div>
                         <div class="col-sm-7">
                             <input type="text" id="add_type_message" name="add_type_message" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row align-items-center my-0">
+                        <div class="col-sm-4">
+                            <label class="col-form-label" for="add_material_number">Material Number</label>
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" id="add_material_number" name="add_material_number"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row align-items-center my-0">
+                        <div class="col-sm-4">
+                            <label class="col-form-label" for="add_sloc">Sloc</label>
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" id="add_sloc" name="add_sloc" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row align-items-center my-0">
