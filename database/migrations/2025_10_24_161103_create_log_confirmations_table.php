@@ -20,6 +20,7 @@ return new class extends Migration
             $table->double('qty')->nullable();
             $table->string('duration')->nullable();
             $table->dateTime('start_time')->nullable();
+            $table->string('type_input')->nullable();
             $table->string('mrp_controller', 3)->nullable();
             $table->timestamps();
         });

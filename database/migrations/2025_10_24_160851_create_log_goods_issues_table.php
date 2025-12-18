@@ -16,11 +16,12 @@ return new class extends Migration
             $table->string('po_number')->nullable();
             $table->string('batch')->nullable();
             $table->string('material_number')->nullable();
-            $table->double('quantity')->nullable();
+            $table->double('qty')->nullable();
             $table->string('sloc')->nullable();
             $table->dateTime('start_time')->nullable();
             $table->string('duration')->nullable();
             $table->string('mrp_controller', 3)->nullable();
+            $table->string('type_input')->nullable();
             $table->timestamps();
         });
     }

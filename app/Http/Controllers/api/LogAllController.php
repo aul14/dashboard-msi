@@ -5,12 +5,13 @@ namespace App\Http\Controllers\api;
 use App\Models\LogMesin;
 use App\Models\LogRecipient;
 use Illuminate\Http\Request;
+use Termwind\Components\Raw;
 use App\Models\LogGoodsIssue;
 use App\Models\LogConfirmation;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Termwind\Components\Raw;
 
 class LogAllController extends Controller
 {
@@ -24,7 +25,7 @@ class LogAllController extends Controller
                 'po_number' => 'required|string',
                 'batch' => 'nullable|string',
                 'material_number' => 'nullable|string',
-                'quantity' => 'nullable|numeric',
+                'qty' => 'nullable|numeric',
                 'sloc' => 'nullable|string',
                 'start_time' => 'nullable|date',
                 'duration' => 'nullable|string',
@@ -101,7 +102,7 @@ class LogAllController extends Controller
                 'po_number' => 'required|string',
                 'batch' => 'nullable|string',
                 'material_number' => 'nullable|string',
-                'quantity' => 'nullable|numeric',
+                'qty' => 'nullable|numeric',
                 'mrp_controller' => 'required|string|in:WHP,WHG'
             ]);
 
@@ -159,7 +160,72 @@ class LogAllController extends Controller
         }
     }
 
-    public function add_manual(Request $request) {}
+    public function add_manual(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'po_number' => 'required|string',
+            'batch' => 'nullable|string',
+            'type' => 'nullable|string',
+            'duration' => 'nullable|string',
+            'type_message' => 'nullable|string',
+            'type_input' => 'nullable|string',
+            'material_number' => 'nullable|string',
+            'start_time' => 'nullable|date',
+            'sloc' => 'nullable|string',
+            'qty' => 'nullable|numeric',
+            'mrp_controller' => 'required|string|in:WHP,WHG'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validator->errors()
+            ], 422);
+        }
+
+        try {
+            DB::beginTransaction();
+
+            $dataGoodIssue = [
+                'po_number' => $request->po_number,
+                'batch' => $request->batch,
+                'material_number' => $request->material_number,
+                'qty' => $request->qty,
+                'sloc' => $request->sloc,
+                'start_time' => $request->start_time,
+                'duration' => $request->duration,
+                'mrp_controller' => $request->mrp_controller,
+                'type_input' => 'add_manual'
+            ];
+            $saveGoodIssue = LogGoodsIssue::create($dataGoodIssue);
+
+            $dataConfirmation = [
+                'po_number' => $request->po_number,
+                'batch' => $request->batch,
+                'type_input' => 'add_manual',
+                'type' => $request->type,
+                'type_message' => $request->type_message,
+                'duration' => $request->duration,
+                'qty' => $request->qty,
+                'start_time' => $request->start_time,
+                'mrp_controller' => $request->mrp_controller,
+            ];
+            $saveConfirmation = LogConfirmation::create($dataConfirmation);
+
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Add manual created'
+            ], 201);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => $th->getMessage()
+            ]);
+        }
+    }
 
     public function index_mesin(Request $request)
     {
