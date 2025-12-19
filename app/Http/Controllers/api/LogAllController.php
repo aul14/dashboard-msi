@@ -197,7 +197,7 @@ class LogAllController extends Controller
                 'mrp_controller' => $request->mrp_controller,
                 'type_input' => 'add_manual'
             ];
-            $saveGoodIssue = LogGoodsIssue::create($dataGoodIssue);
+            LogGoodsIssue::create($dataGoodIssue);
 
             $dataConfirmation = [
                 'po_number' => $request->po_number,
@@ -210,7 +210,7 @@ class LogAllController extends Controller
                 'start_time' => $request->start_time,
                 'mrp_controller' => $request->mrp_controller,
             ];
-            $saveConfirmation = LogConfirmation::create($dataConfirmation);
+            LogConfirmation::create($dataConfirmation);
 
             DB::commit();
 

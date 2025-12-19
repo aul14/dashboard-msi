@@ -691,7 +691,6 @@
                     batch: $('input[name=add_batch]').val(),
                     type: $('select[name=add_type]').val(),
                     duration: $('input[name=add_duration]').val(),
-                    type_message: $('input[name=add_type_message]').val(),
                     material_number: $('input[name=add_material_number]').val(),
                     sloc: $('input[name=add_sloc]').val(),
                     type_message: $('input[name=add_type_message]').val(),

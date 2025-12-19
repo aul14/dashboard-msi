@@ -101,7 +101,7 @@
                          <div class="submenu">
                              <ul class="submenu-item">
                                  <li class="nav-item">
-                                     <a class="nav-link" href="javascript:void(0)">Report</a>
+                                     <a class="nav-link" href="{{ route('report.index') }}">Report</a>
                                  </li>
                                  <li class="nav-item">
                                      <a class="nav-link" href="javascript:void(0)">Log SAP</a>

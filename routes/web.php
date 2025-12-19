@@ -17,6 +17,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Logs\HistoricalLogsController;
 use App\Http\Controllers\Logs\UserLogsController;
 use App\Http\Controllers\ParaquatRealTimeController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UploadPoController;
 
 /*
@@ -55,6 +56,9 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
     Route::get('/log_confirmation_filter', [LogAllController::class, 'filter_confirmation'])->name('log_confirmation.filter');
     Route::get('/log_recipient_index', [LogAllController::class, 'index_recipient'])->name('log_recipient.index');
     Route::post('/add_manual_confirmation', [LogAllController::class, 'add_manual'])->name('add_manual_confirmation');
+
+    Route::get('/report_index', [ReportController::class, 'report_index'])->name('report.index');
+    Route::post('/ajax_report', [ReportController::class, 'ajax_report'])->name('report.ajax');
 
     Route::post('/search_no_po', [ParaquatRealTimeController::class, 'search_no_po'])->name('search_no_po');
     Route::post('/batch_by_no_po', [ParaquatRealTimeController::class, 'batch_by_no_po'])->name('batch_by_no_po');
