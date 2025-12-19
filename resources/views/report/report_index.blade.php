@@ -192,18 +192,18 @@
                     }
 
                     let summary = response.data_summary;
-                    $('.list-po').html(summary.total_po);
-                    $('.list-po-whp').html(summary.parakuat_po);
-                    $('.list-po-whg').html(summary.glyposate_po);
-                    $('.list-batch').html(summary.total_batch);
-                    $('.list-batch-whp').html(summary.parakuat_batch);
-                    $('.list-batch-whg').html(summary.glyposate_batch);
-                    $('.list-time').html(summary.total_time);
-                    $('.list-time-whp').html(summary.parakuat_time);
-                    $('.list-time-whg').html(summary.glyposate_time);
-                    $('.list-product').html(summary.total_product);
-                    $('.list-product-whp').html(summary.parakuat_product);
-                    $('.list-product-whg').html(summary.glyposate_product);
+                    $('.list-po').html(summary.total_po ?? 0);
+                    $('.list-po-whp').html(summary.parakuat_po ?? 0);
+                    $('.list-po-whg').html(summary.glyposate_po ?? 0);
+                    $('.list-batch').html(summary.total_batch ?? 0);
+                    $('.list-batch-whp').html(summary.parakuat_batch ?? 0);
+                    $('.list-batch-whg').html(summary.glyposate_batch ?? 0);
+                    $('.list-time').html(summary.total_time ?? 0);
+                    $('.list-time-whp').html(summary.parakuat_time ?? 0);
+                    $('.list-time-whg').html(summary.glyposate_time ?? 0);
+                    $('.list-product').html(summary.total_product ?? 0);
+                    $('.list-product-whp').html(summary.parakuat_product ?? 0);
+                    $('.list-product-whg').html(summary.glyposate_product ?? 0);
 
                     let details = response.data_details;
                     let rowDetails = "";
