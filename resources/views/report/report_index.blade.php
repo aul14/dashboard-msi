@@ -32,17 +32,17 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center">
                         <h6>Total PO</h6>
-                        <H5>0</H5>
+                        <H5 class="list-po">0</H5>
                     </li>
                     <li class="list-group-item text-center">
                         <div class="row">
                             <div class="col-md-6">
                                 <h6>Parakuat</h6>
-                                <H5>0</H5>
+                                <H5 class="list-po-whp">0</H5>
                             </div>
                             <div class="col-md-6">
                                 <h6>Glyposate</h6>
-                                <H5>0</H5>
+                                <H5 class="list-po-whg">0</H5>
                             </div>
                         </div>
                     </li>
@@ -54,17 +54,17 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center">
                         <h6>Total Batch</h6>
-                        <H5>0</H5>
+                        <H5 class="list-batch">0</H5>
                     </li>
                     <li class="list-group-item text-center">
                         <div class="row">
                             <div class="col-md-6">
                                 <h6>Parakuat</h6>
-                                <H5>0</H5>
+                                <H5 class="list-batch-whp">0</H5>
                             </div>
                             <div class="col-md-6">
                                 <h6>Glyposate</h6>
-                                <H5>0</H5>
+                                <H5 class="list-batch-whg">0</H5>
                             </div>
                         </div>
                     </li>
@@ -76,17 +76,17 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center">
                         <h6>Total Time</h6>
-                        <H5>0</H5>
+                        <H5 class="list-time">0</H5>
                     </li>
                     <li class="list-group-item text-center">
                         <div class="row">
                             <div class="col-md-6">
                                 <h6>Parakuat</h6>
-                                <H5>0</H5>
+                                <H5 class="list-time-whp">0</H5>
                             </div>
                             <div class="col-md-6">
                                 <h6>Glyposate</h6>
-                                <H5>0</H5>
+                                <H5 class="list-time-whg">0</H5>
                             </div>
                         </div>
                     </li>
@@ -98,17 +98,17 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center">
                         <h6>Total Product</h6>
-                        <H5>0</H5>
+                        <H5 class="list-product">0</H5>
                     </li>
                     <li class="list-group-item text-center">
                         <div class="row">
                             <div class="col-md-6">
                                 <h6>Parakuat</h6>
-                                <H5>0</H5>
+                                <H5 class="list-product-whp">0</H5>
                             </div>
                             <div class="col-md-6">
                                 <h6>Glyposate</h6>
-                                <H5>0</H5>
+                                <H5 class="list-product-whg">0</H5>
                             </div>
                         </div>
                     </li>
@@ -121,7 +121,6 @@
             <table id="tb_report_produksi" class="my-table table my-tableview my-table-striped table-hover w-100">
                 <thead>
                     <tr>
-                        <th>No</th>
                         <th>No PO</th>
                         <th>Batch</th>
                         <th>Start Time</th>
@@ -129,7 +128,6 @@
                         <th>Activity</th>
                         <th>Material Code</th>
                         <th>Start</th>
-                        <th>Duration</th>
                         <th>Qty</th>
                     </tr>
                 </thead>
@@ -192,7 +190,42 @@
                         });
                         return
                     }
-                    console.log(response);
+
+                    let summary = response.data_summary;
+                    $('.list-po').html(summary.total_po);
+                    $('.list-po-whp').html(summary.parakuat_po);
+                    $('.list-po-whg').html(summary.glyposate_po);
+                    $('.list-batch').html(summary.total_batch);
+                    $('.list-batch-whp').html(summary.parakuat_batch);
+                    $('.list-batch-whg').html(summary.glyposate_batch);
+                    $('.list-time').html(summary.total_time);
+                    $('.list-time-whp').html(summary.parakuat_time);
+                    $('.list-time-whg').html(summary.glyposate_time);
+                    $('.list-product').html(summary.total_product);
+                    $('.list-product-whp').html(summary.parakuat_product);
+                    $('.list-product-whg').html(summary.glyposate_product);
+
+                    let details = response.data_details;
+                    let rowDetails = "";
+                    if (details.length === 0) {
+                        rowDetails = `<tr><td colspan="8" class="text-center">No Data Found</td></tr>`;
+                    } else {
+                        $.map(details, function(item, key) {
+                            rowDetails += `
+                                <tr>
+                                    <td>${item.no_po}</td>
+                                    <td>${item.batch}</td>
+                                    <td>${item.start_time_po}</td>
+                                    <td>${item.duration}</td>
+                                    <td>${item.activity}</td>
+                                    <td>${item.material_code}</td>
+                                    <td>${item.material_start_time}</td>
+                                    <td>${item.duration_qty} KG</td>
+                                </tr>
+                            `;
+                        });
+                    }
+                    $("#tb_report_produksi tbody").html(rowDetails);
                 },
                 complete: function() {
                     Swal.close();
