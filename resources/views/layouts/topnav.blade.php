@@ -79,13 +79,13 @@
                                      <a class="nav-link" href="{{ route('upload_po.index') }}">PO List</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="{{ route('good_issue.index') }}">Good Issue</a>
+                                     <a class="nav-link" href="{{ route('log_goodissue.index') }}">Good Issue</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="{{ route('confirm.index') }}">Confirmation</a>
+                                     <a class="nav-link" href="{{ route('log_confirmation.index') }}">Confirmation</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="{{ route('good_receipt.index') }}">Good Receipt</a>
+                                     <a class="nav-link" href="{{ route('log_recipient.index') }}">Good Receipt</a>
                                  </li>
 
                              </ul>
