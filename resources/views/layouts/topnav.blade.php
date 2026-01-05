@@ -85,7 +85,7 @@
                                      <a class="nav-link" href="{{ route('log_confirmation.index') }}">Confirmation</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="{{ route('log_recipient.index') }}">Good Receipt</a>
+                                     <a class="nav-link" href="{{ route('good_receipt.index') }}">Good Receipt</a>
                                  </li>
 
                              </ul>
@@ -108,13 +108,6 @@
                                  </li>
                                  <li class="nav-item">
                                      <a class="nav-link" href="{{ route('log_mesin.index') }}">Log Machine</a>
-                                 </li>
-                                 <li class="nav-item">
-                                     <a class="nav-link" href="{{ route('log_goodissue.index') }}">Log Good Issue</a>
-                                 </li>
-                                 <li class="nav-item">
-                                     <a class="nav-link" href="{{ route('log_confirmation.index') }}">Log
-                                         Confirmation</a>
                                  </li>
                                  <li class="nav-item">
                                      <a class="nav-link" href="{{ route('log_recipient.index') }}">Log Recipients</a>
