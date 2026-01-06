@@ -233,7 +233,7 @@
 
                                 if (index === 0) {
                                     rowDetails +=
-                                        `<td rowspan="${rowspan}" style="vertical-align: middle;">${no_po}</td>`;
+                                        `<td rowspan="${rowspan}" class="text-center">${no_po}</td>`;
                                 }
 
                                 rowDetails += `
