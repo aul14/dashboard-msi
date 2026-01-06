@@ -22,117 +22,122 @@
             <div class="col-md-12 my-2 px-0">
                 <a href="{{ route('report.index') }}" class="btn btn-md btn-outline-warning">Refresh</a>
                 <a href="javascript:void(0)" class="btn btn-md btn-outline-primary" onclick="searchReport(event)">Search</a>
+                <a href="javascript:void(0)" style="display: none;" id="exportPdfBtn" onclick="exportToPDF(event)"
+                    class="btn btn-md btn-danger">Export
+                    to PDF</a>
 
             </div>
         </form>
     </div>
-    <div class="row mt-3" id="row-content">
-        <div class="col-12 col-md-3">
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center">
-                        <h6>Total PO</h6>
-                        <H5 class="list-po">0</H5>
-                    </li>
-                    <li class="list-group-item text-center">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6>Parakuat</h6>
-                                <H5 class="list-po-whp">0</H5>
+    <div id="row-content">
+        <div class="row mt-3">
+            <div class="col-12 col-md-3">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center">
+                            <h6>Total PO</h6>
+                            <H5 class="list-po">0</H5>
+                        </li>
+                        <li class="list-group-item text-center">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Parakuat</h6>
+                                    <H5 class="list-po-whp">0</H5>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Glyposate</h6>
+                                    <H5 class="list-po-whg">0</H5>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <h6>Glyposate</h6>
-                                <H5 class="list-po-whg">0</H5>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center">
+                            <h6>Total Batch</h6>
+                            <H5 class="list-batch">0</H5>
+                        </li>
+                        <li class="list-group-item text-center">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Parakuat</h6>
+                                    <H5 class="list-batch-whp">0</H5>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Glyposate</h6>
+                                    <H5 class="list-batch-whg">0</H5>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center">
+                            <h6>Total Time</h6>
+                            <H5 class="list-time">0</H5>
+                        </li>
+                        <li class="list-group-item text-center">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Parakuat</h6>
+                                    <H5 class="list-time-whp">0</H5>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Glyposate</h6>
+                                    <H5 class="list-time-whg">0</H5>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center">
+                            <h6>Total Product</h6>
+                            <H5 class="list-product">0</H5>
+                        </li>
+                        <li class="list-group-item text-center">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Parakuat</h6>
+                                    <H5 class="list-product-whp">0</H5>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Glyposate</h6>
+                                    <H5 class="list-product-whg">0</H5>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="col-12 col-md-3">
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center">
-                        <h6>Total Batch</h6>
-                        <H5 class="list-batch">0</H5>
-                    </li>
-                    <li class="list-group-item text-center">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6>Parakuat</h6>
-                                <H5 class="list-batch-whp">0</H5>
-                            </div>
-                            <div class="col-md-6">
-                                <h6>Glyposate</h6>
-                                <H5 class="list-batch-whg">0</H5>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+        <div class="row mt-3">
+            <div class="col-12 col-md-12 table-responsive">
+                <table id="tb_report_produksi" class="my-table table my-tableview my-table-striped table-hover w-100">
+                    <thead>
+                        <tr>
+                            <th>No PO</th>
+                            <th>Batch</th>
+                            <th>Start Time</th>
+                            <th>Duration</th>
+                            <th>Activity</th>
+                            <th>Material Code</th>
+                            <th>Start</th>
+                            <th>Qty</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
-        </div>
-        <div class="col-12 col-md-3">
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center">
-                        <h6>Total Time</h6>
-                        <H5 class="list-time">0</H5>
-                    </li>
-                    <li class="list-group-item text-center">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6>Parakuat</h6>
-                                <H5 class="list-time-whp">0</H5>
-                            </div>
-                            <div class="col-md-6">
-                                <h6>Glyposate</h6>
-                                <H5 class="list-time-whg">0</H5>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-12 col-md-3">
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center">
-                        <h6>Total Product</h6>
-                        <H5 class="list-product">0</H5>
-                    </li>
-                    <li class="list-group-item text-center">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6>Parakuat</h6>
-                                <H5 class="list-product-whp">0</H5>
-                            </div>
-                            <div class="col-md-6">
-                                <h6>Glyposate</h6>
-                                <H5 class="list-product-whg">0</H5>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-3" id="row-table-content">
-        <div class="col-12 col-md-12 table-responsive">
-            <table id="tb_report_produksi" class="my-table table my-tableview my-table-striped table-hover w-100">
-                <thead>
-                    <tr>
-                        <th>No PO</th>
-                        <th>Batch</th>
-                        <th>Start Time</th>
-                        <th>Duration</th>
-                        <th>Activity</th>
-                        <th>Material Code</th>
-                        <th>Start</th>
-                        <th>Qty</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
         </div>
     </div>
 @endsection
@@ -144,7 +149,6 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
         });
 
         function searchReport(e) {
@@ -190,6 +194,8 @@
                         });
                         return
                     }
+
+                    $('#exportPdfBtn').show();
 
                     let summary = response.data_summary;
                     $('.list-po').html(summary.total_po ?? 0);
@@ -237,8 +243,49 @@
                         text: 'Terjadi kesalahan saat mengirim data: ' + error,
                         confirmButtonText: 'OK'
                     });
+                    $('#exportPdfBtn').hide();
                 }
             });
+        }
+
+        function exportToPDF(e) {
+            if (e) e.preventDefault();
+            // Get the content of the specific div with id "row-content"
+            var contentToPrint = document.getElementById('row-content').innerHTML;
+
+            // Create a new window for printing
+            var printWindow = window.open('', '_blank');
+
+            // Write the content to the new window
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Print</title>
+                        <style>
+                            @page {
+                               size: A2 landscape;
+                            }
+                        </style>
+                        <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap-datatable/css/dataTables.bootstrap4.min.css?v=1.0.0') }}" type="text/css">
+                        <link rel="stylesheet" href="{{ asset('assets/css/font-awesome/css/font-awesome.min.css?v=1.0.0') }}" />
+                        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css?v=1.0.0') }}">
+                        <link rel="stylesheet" href="{{ asset('assets/css/style.css?v=1.1.3') }}" />
+                    </head>
+                    <body>
+                        ${contentToPrint}
+                    </body>
+                </html>
+            `);
+
+            // Close the document stream to finish the print
+            printWindow.document.close();
+
+            // Trigger the print function for the new window
+            setTimeout(function() {
+                // Trigger the print function for the new window
+                printWindow.print();
+            }, 4000); // Adjust the delay duration as needed
+
         }
     </script>
 @endsection
