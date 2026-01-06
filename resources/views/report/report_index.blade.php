@@ -282,6 +282,22 @@
                             @page {
                                size: A2 landscape;
                             }
+
+                            @media print {
+                                .col-md-3 {
+                                    width: 25% !important;
+                                    float: left !important;
+                                }
+                                .col-md-12 {
+                                    width: 100% !important;
+                                    float: left !important;
+                                }
+                                .row::after {
+                                    content: "";
+                                    display: table;
+                                    clear: both;
+                                }
+                            }
                         </style>
                         <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap-datatable/css/dataTables.bootstrap4.min.css?v=1.0.0') }}" type="text/css">
                         <link rel="stylesheet" href="{{ asset('assets/css/font-awesome/css/font-awesome.min.css?v=1.0.0') }}" />
