@@ -20,8 +20,8 @@
                 </div>
             </div>
             <div class="col-md-12 my-2 px-0">
-                <a href="{{ route('report.index') }}" class="btn btn-md btn-outline-warning">Refresh</a>
-                <a href="javascript:void(0)" class="btn btn-md btn-outline-primary" onclick="searchReport(event)">Search</a>
+                <a href="{{ route('report.index') }}" class="btn btn-md btn-warning">Refresh</a>
+                <a href="javascript:void(0)" class="btn btn-md btn-primary" onclick="searchReport(event)">Search</a>
                 <a href="javascript:void(0)" style="display: none;" id="exportPdfBtn" onclick="exportToPDF(event)"
                     class="btn btn-md btn-danger">Export
                     to PDF</a>
