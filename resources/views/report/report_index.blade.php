@@ -216,10 +216,27 @@
                     if (details.length === 0) {
                         rowDetails = `<tr><td colspan="8" class="text-center">No Data Found</td></tr>`;
                     } else {
-                        $.map(details, function(item, key) {
-                            rowDetails += `
-                                <tr>
-                                    <td>${item.no_po}</td>
+                        let grouped = {};
+                        details.forEach(item => {
+                            if (!grouped[item.no_po]) {
+                                grouped[item.no_po] = [];
+                            }
+                            grouped[item.no_po].push(item);
+                        });
+
+                        // RENDER TABLE
+                        $.each(grouped, function(no_po, items) {
+                            let rowspan = items.length;
+
+                            items.forEach((item, index) => {
+                                rowDetails += `<tr>`;
+
+                                if (index === 0) {
+                                    rowDetails +=
+                                        `<td rowspan="${rowspan}" style="vertical-align: middle;">${no_po}</td>`;
+                                }
+
+                                rowDetails += `
                                     <td>${item.batch}</td>
                                     <td>${item.start_time_po}</td>
                                     <td>${item.duration}</td>
@@ -227,8 +244,8 @@
                                     <td>${item.material_code}</td>
                                     <td>${item.material_start_time}</td>
                                     <td>${item.duration_qty} KG</td>
-                                </tr>
-                            `;
+                                </tr>`;
+                            });
                         });
                     }
                     $("#tb_report_produksi tbody").html(rowDetails);
