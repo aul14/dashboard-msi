@@ -288,6 +288,10 @@
                                     width: 25% !important;
                                     float: left !important;
                                 }
+                                .col-md-6 {
+                                    width: 50% !important;
+                                    float: left !important;
+                                }
                                 .col-md-12 {
                                     width: 100% !important;
                                     float: left !important;
