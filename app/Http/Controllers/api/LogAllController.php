@@ -195,7 +195,7 @@ class LogAllController extends Controller
                 'start_time' => $request->start_time,
                 'duration' => $request->duration,
                 'mrp_controller' => $request->mrp_controller,
-                'masa_jenis' => $request->masa_jenis,
+                'masa_jenis' => intval($request->masa_jenis) / intval($request->qty),
                 'type_input' => 'add_manual'
             ];
             LogGoodsIssue::create($dataGoodIssue);

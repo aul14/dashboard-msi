@@ -41,7 +41,7 @@ class ReportController extends Controller
                     ),
                     po_summary AS (
                         SELECT
-                            COUNT(DISTINCT prod_ord_no) FILTER (WHERE status_batch = 'FINISH') AS total_po,
+                            COUNT(DISTINCT prod_ord_no) AS total_po,
                             COUNT(DISTINCT prod_ord_no) FILTER (WHERE status_batch = 'FINISH' AND mrp_controller = 'WHP') AS parakuat_po,
                             COUNT(DISTINCT prod_ord_no) FILTER (WHERE status_batch = 'FINISH' AND mrp_controller = 'WHG') AS glyposate_po,
                             COUNT(DISTINCT prod_ord_no) FILTER (WHERE mrp_controller = 'WHP') AS po_whp,
