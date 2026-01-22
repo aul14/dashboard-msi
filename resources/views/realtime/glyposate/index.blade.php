@@ -618,8 +618,9 @@
                         title: 'Berhasil',
                         text: 'Data berhasil dikirim!',
                         confirmButtonText: 'OK'
+                    }).then(() => {
+                        $('#modalOperation').modal('hide');
                     });
-                    $('#modalOperation').hide();
                 },
                 error: function(xhr, status, error) {
                     Swal.fire({
