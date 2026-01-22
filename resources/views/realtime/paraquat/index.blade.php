@@ -149,7 +149,7 @@
                     Refresh Table
                 </button>
                 <button id="create-data" class="btn btn-danger mb-3" style="display:none;">
-                    Add Manual
+                    Hand Add
                 </button>
 
                 <table class="table table-bordered" id="confirm-table">
@@ -514,7 +514,11 @@
                     ws.onclose = function() {
                         // connection closed, discard old websocket and create a new one in 5s
                         ws = null
-                        setTimeout(startWebsocket, 5000)
+                        setTimeout(() => {
+                            console.log('Attempting to reconnect...');
+                            $("#example-svg").html("");
+                            startWebsocket();
+                        }, 5000);
                     }
                 }).catch(err => {
                     console.error('Gagal memuat tagMap JSON:', err);
@@ -694,6 +698,7 @@
                     material_number: $('input[name=add_material_number]').val(),
                     sloc: $('input[name=add_sloc]').val(),
                     type_message: $('input[name=add_type_message]').val(),
+                    masa_jenis: $('input[name=add_masa_jenis]').val(),
                     qty: $('input[name=add_qty]').val(),
                     start_time: new Date().toISOString().slice(0, 19).replace('T', ' '),
                     mrp_controller: 'WHP'

@@ -106,7 +106,7 @@ class ApiUploadPoController extends Controller
                         'material_component' => $request->component[$key]['material_component'],
                         'material_component_desc' => $request->component[$key]['material_component_desc'],
                         'material_packing_flag' => $request->component[$key]['material_packing_flag'],
-                        'qty_component' => $request->component[$key]['qty_component'] / $batch,
+                        'qty_component' => $request->component[$key]['qty_component'],
                         'uom_component' => $request->component[$key]['uom_component'],
                     ]);
                     $key++;

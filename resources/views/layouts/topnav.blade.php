@@ -85,7 +85,7 @@
                                      <a class="nav-link" href="{{ route('log_confirmation.index') }}">Confirmation</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="{{ route('good_receipt.index') }}">Good Receipt</a>
+                                     <a class="nav-link" href="{{ route('log_goodissue.index') }}">Good Receipt</a>
                                  </li>
 
                              </ul>

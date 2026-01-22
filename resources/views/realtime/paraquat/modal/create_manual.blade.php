@@ -45,11 +45,10 @@
                     </div>
                     <div class="form-group row align-items-center my-0">
                         <div class="col-sm-4">
-                            <label class="col-form-label" for="add_material_number">Material Number</label>
+                            <label class="col-form-label" for="add_masa_jenis">Masa Jenis</label>
                         </div>
                         <div class="col-sm-7">
-                            <input type="text" id="add_material_number" name="add_material_number"
-                                class="form-control">
+                            <input type="text" id="add_masa_jenis" name="add_masa_jenis" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row align-items-center my-0">

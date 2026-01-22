@@ -195,6 +195,7 @@ class LogAllController extends Controller
                 'start_time' => $request->start_time,
                 'duration' => $request->duration,
                 'mrp_controller' => $request->mrp_controller,
+                'masa_jenis' => $request->masa_jenis,
                 'type_input' => 'add_manual'
             ];
             LogGoodsIssue::create($dataGoodIssue);

@@ -148,6 +148,9 @@
                 <button id="btn-refresh" class="btn btn-primary mb-3" style="display:none;">
                     Refresh Table
                 </button>
+                <button id="create-data" class="btn btn-danger mb-3" style="display:none;">
+                    Hand Add
+                </button>
 
                 <table class="table table-bordered" id="confirm-table">
                     <thead>
@@ -509,7 +512,11 @@
                     ws.onclose = function() {
                         // connection closed, discard old websocket and create a new one in 5s
                         ws = null
-                        setTimeout(startWebsocket, 5000)
+                        setTimeout(() => {
+                            console.log('Attempting to reconnect...');
+                            $("#example-svg").html("");
+                            startWebsocket();
+                        }, 5000);
                     }
                 }).catch(err => {
                     console.error('Gagal memuat tagMap JSON:', err);
