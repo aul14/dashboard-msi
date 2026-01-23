@@ -104,7 +104,7 @@
                                      <a class="nav-link" href="{{ route('report.index') }}">Report</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="javascript:void(0)">Log SAP</a>
+                                     <a class="nav-link" href="{{ route('log_api.index') }}">Log SAP</a>
                                  </li>
                                  <li class="nav-item">
                                      <a class="nav-link" href="{{ route('log_mesin.index') }}">Log Machine</a>

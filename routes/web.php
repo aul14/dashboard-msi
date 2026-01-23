@@ -12,6 +12,7 @@ use App\Http\Controllers\GoodIssueController;
 use App\Http\Controllers\GoodReceiptController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LogApiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Logs\HistoricalLogsController;
@@ -55,6 +56,7 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
     Route::get('/log_confirmation_index', [LogAllController::class, 'index_confirmation'])->name('log_confirmation.index');
     Route::get('/log_confirmation_filter', [LogAllController::class, 'filter_confirmation'])->name('log_confirmation.filter');
     Route::get('/log_recipient_index', [LogAllController::class, 'index_recipient'])->name('log_recipient.index');
+    Route::get('/log_api_index', [LogApiController::class, 'log_index'])->name('log_api.index');
     Route::post('/add_manual_confirmation', [LogAllController::class, 'add_manual'])->name('add_manual_confirmation');
 
     Route::get('/report_index', [ReportController::class, 'report_index'])->name('report.index');

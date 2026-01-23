@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ZpoSapToAuto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class ParaquatRealTimeController extends Controller
@@ -84,32 +85,20 @@ class ParaquatRealTimeController extends Controller
                 ]);
             }
 
-            if ($mrpController === 'WHG') {
-                $endpointNodeRed = "{$noderedUrl}Glyphosate/update";
-            } else {
-                $endpointNodeRed = "{$noderedUrl}Parakuat/update";
-            }
+            $endpointNodeRed = $mrpController === 'WHG'
+                ? "{$noderedUrl}Glyphosate/update"
+                : "{$noderedUrl}Parakuat/update";
+
+            DB::beginTransaction();
 
             if ($action === 'start') {
-                $checkData->status_batch = 'ON PROCESS';
-                $checkData->update();
-
-
-                Http::post($endpointNodeRed, [
+                $response = Http::post($endpointNodeRed, [
                     'Action' => 'Start',
                     'PO_Number' => $poNumber,
                     'Kode_Batch' => $batchNumber
                 ]);
-
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Start operation successfully.'
-                ]);
             } else if ($action === 'finish') {
-                $checkData->status_batch = 'FINISH';
-                $checkData->update();
-
-                Http::post($endpointNodeRed, [
+                $response = Http::post($endpointNodeRed, [
                     'Action' => 'Finish',
                     'PO_Number' => '',
                     'Kode_Batch' => ''
@@ -120,6 +109,41 @@ class ParaquatRealTimeController extends Controller
                     'message' => 'Parameter action not found'
                 ]);
             }
+
+            if (!$response->successful()) {
+                DB::rollBack();
+
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Gateway Node-RED tidak bisa diakses'
+                ]);
+            }
+
+            $result = $response->json();
+
+            if (isset($result['Status']) && $result['Status'] === 'failed') {
+                DB::rollBack();
+
+                return response()->json([
+                    'success' => false,
+                    'message' => $result['message'] ?? 'PLC disconnected'
+                ]);
+            }
+
+            if ($action === 'start') {
+                $checkData->status_batch = 'ON PROCESS';
+            } else {
+                $checkData->status_batch = 'FINISH';
+            }
+
+            $checkData->save();
+
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => ucfirst($action) . ' operation successfully.'
+            ]);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,

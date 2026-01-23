@@ -613,13 +613,25 @@
                     });
                 },
                 success: function(response) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil',
-                        text: 'Data berhasil dikirim!',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        $('#modalOperation').modal('hide');
+                    if (!response.success) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal',
+                            text: response.message ?? 'Silahkan coba lagi..',
+                            confirmButtonText: 'OK'
+                        })
+                        return
+                    }
+
+                    $('#modalOperation').modal('hide');
+
+                    $('#modalOperation').one('hidden.bs.modal', function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            text: 'Data berhasil dikirim..',
+                            confirmButtonText: 'OK'
+                        });
                     });
                 },
                 error: function(xhr, status, error) {
