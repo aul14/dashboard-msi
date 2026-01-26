@@ -188,6 +188,7 @@
         let currentPO = null;
         let currentBatch = null;
         let tableVisible = false;
+        let batchDetailData = [];
 
         $(function() {
             startWebsocket();
@@ -255,43 +256,57 @@
                                 $('#batch_code').append('<option value=""></option>');
 
                                 // loop data response
-                                $.each(response, function(index, item) {
-                                    $('#batch_code').append(
-                                        $('<option>', {
-                                            value: item.batch_code,
-                                            text: item.batch_code
-                                        })
-                                    );
-                                });
-
-                                $('#modalDetailOperation').on('shown.bs.modal',
-                                    function() {
-                                        let rows = "";
-
-                                        if (response.length === 0) {
-                                            rows =
-                                                `<tr><td colspan="6" class="text-center">No Data Found</td></tr>`;
-                                        } else {
-                                            $.each(response, function(index, item) {
-                                                rows += `
-                                            <tr>
-                                                <td>${index+1}</td>
-                                                <td>${item.material_component}</td>
-                                                <td>${item.material_component_desc}</td>
-                                                <td>${item.material_packing_flag}</td>
-                                                <td>${item.qty_component}</td>
-                                                <td>${item.uom_component}</td>
-                                            </tr>`;
-                                            });
-                                        }
-                                        $("#tbl_detail_ops tbody").html(rows);
-                                    }
-                                )
+                                if (response.length > 0) {
+                                    batchDetailData = response;
+                                    $.each(response, function(index, item) {
+                                        $('#batch_code').append(
+                                            $('<option>', {
+                                                value: item.batch_code,
+                                                text: item.batch_code
+                                            })
+                                        );
+                                    });
+                                }
                             }
                         });
                     }
                 });
             })
+
+            $('#modalDetailOperation').on('shown.bs.modal', function() {
+                let rows = "";
+                let selectedBatch = $('#batch_code').val();
+                let rows = "";
+
+                let filteredData = batchDetailData.filter(
+                    item =>
+                    item.batch_code === selectedBatch
+                );
+
+                if (filteredData.length === 0) {
+                    rows =
+                        `<tr><td colspan="6" class="text-center">No Data Found</td></tr>`;
+                } else {
+                    $.each(filteredData, function(index,
+                        item) {
+                        rows += `
+                            <tr>
+                                <td>${index+1}</td>
+                                <td>${item.material_component}</td>
+                                <td>${item.material_component_desc}</td>
+                                <td>${item.material_packing_flag}</td>
+                                <td>${item.qty_component}</td>
+                                <td>${item.uom_component}</td>
+                            </tr>`;
+                    });
+                }
+                $("#tbl_detail_ops tbody").html(rows);
+            });
+
+            $('#modalDetailOperation').on('hidden.bs.modal', function() {
+                $('#tbl_detail_ops tbody').html('');
+                batchDetailData = [];
+            });
 
             $("#modalAlarms").on("hidden.bs.modal", function() {
                 if (wsAlarm) {
@@ -767,6 +782,18 @@
         }
 
         function openModalDetailOperation() {
+            let batchCode = $('#batch_code').val();
+
+            if (!batchCode) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Silakan pilih Batch Number terlebih dahulu.',
+                    confirmButtonText: 'OK'
+                });
+                return
+            }
+
             $('#modalDetailOperation').modal({
                 backdrop: 'static',
                 keyboard: false
