@@ -276,7 +276,6 @@
             $('#modalDetailOperation').on('shown.bs.modal', function() {
                 let rows = "";
                 let selectedBatch = $('#batch_code').val();
-                let rows = "";
 
                 let filteredData = batchDetailData.filter(
                     item =>
