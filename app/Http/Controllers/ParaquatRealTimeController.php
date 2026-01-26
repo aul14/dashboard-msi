@@ -27,6 +27,7 @@ class ParaquatRealTimeController extends Controller
         $mrpController = $request->mrp_controller;
 
         $data = ZpoSapToAuto::select('prod_ord_no', 'material_code', 'material_desc', 'qty_production', 'batch')
+            ->where('status_batch', 'RECEIVED')
             ->when($search != '', function ($q) use ($search) {
                 $q->where('prod_ord_no', 'like', "%$search%");
             })
