@@ -93,58 +93,96 @@ class ParaquatRealTimeController extends Controller
             DB::beginTransaction();
 
             if ($action === 'start') {
-                $response = Http::post($endpointNodeRed, [
-                    'Action' => 'Start',
-                    'PO_Number' => $poNumber,
-                    'Kode_Batch' => $batchNumber
+                /* 1️⃣ CALL SAP */
+                $responseSAP = Http::withHeaders([
+                    'sap-client'   => env('SAP_CLIENT'),
+                    'sap-user'     => env('SAP_USER'),
+                    'sap-password' => env('SAP_PASSWORD'),
+                    'Content-Type' => 'application/json',
+                ])
+                    ->timeout(30)
+                    ->post(env('SAP_URL'), [
+                        'ITAB' => 'ZPPMSIINT_UPPO',
+                        'DATA' => [
+                            [
+                                'CAUFV_AUFNR'      => $poNumber,
+                                'KEY_STATUS'      => '1',
+                                'LASTUPDATE_SAP'  => now()->format('d/m/Y H:i:s'),
+                                'LASTUPDATE_AUTO' => now()->format('d/m/Y H:i:s'),
+                            ]
+                        ]
+                    ]);
+
+                if (!$responseSAP->successful()) {
+                    DB::rollBack();
+
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'SAP Webservice gagal diakses'
+                    ]);
+                }
+
+                $sapResult = $responseSAP->json();
+
+                /* 2️⃣ CALL NODE-RED */
+                $responseNodeRed = Http::timeout(20)->post($endpointNodeRed, [
+                    'Action'      => 'Start',
+                    'PO_Number'   => $poNumber,
+                    'Kode_Batch'  => $batchNumber
                 ]);
-            } else if ($action === 'finish') {
-                $response = Http::post($endpointNodeRed, [
+
+                if (!$responseNodeRed->successful()) {
+                    DB::rollBack();
+
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Gateway Node-RED tidak bisa diakses'
+                    ]);
+                }
+
+                $nodeRedResult = $responseNodeRed->json();
+
+                if (isset($nodeRedResult['Status']) && $nodeRedResult['Status'] === 'failed') {
+                    DB::rollBack();
+
+                    return response()->json([
+                        'success' => false,
+                        'message' => $nodeRedResult['message'] ?? 'PLC disconnected'
+                    ]);
+                }
+
+                /* 3️⃣ UPDATE DATABASE */
+                $checkData->status_batch = 'ON PROCESS';
+                $checkData->save();
+            }
+
+
+            if ($action === 'finish') {
+                $responseNodeRed = Http::post($endpointNodeRed, [
                     'Action' => 'Finish',
                     'PO_Number' => '',
                     'Kode_Batch' => ''
                 ]);
-            } else {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Parameter action not found'
-                ]);
-            }
 
-            if (!$response->successful()) {
-                DB::rollBack();
+                if (!$responseNodeRed->successful()) {
+                    DB::rollBack();
 
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Gateway Node-RED tidak bisa diakses'
-                ]);
-            }
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Gateway Node-RED tidak bisa diakses'
+                    ]);
+                }
 
-            $result = $response->json();
-
-            if (isset($result['Status']) && $result['Status'] === 'failed') {
-                DB::rollBack();
-
-                return response()->json([
-                    'success' => false,
-                    'message' => $result['message'] ?? 'PLC disconnected'
-                ]);
-            }
-
-            if ($action === 'start') {
-                $checkData->status_batch = 'ON PROCESS';
-            } else {
                 $checkData->status_batch = 'FINISH';
+                $checkData->save();
+
+                DB::commit();
+
+                return response()->json([
+                    'success' => true,
+                    'message' => ucfirst($action) . ' operation successfully.'
+                ]);
             }
-
-            $checkData->save();
-
-            DB::commit();
-
-            return response()->json([
-                'success' => true,
-                'message' => ucfirst($action) . ' operation successfully.'
-            ]);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
