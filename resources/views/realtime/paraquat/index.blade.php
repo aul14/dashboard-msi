@@ -452,72 +452,125 @@
                             $('#duration-card').html(`Duration: ${durationCard}`)
                             $('#mode-machine-card').html(`Mode Machine: ${modeMachineCard}`)
 
-                            $('#modalSettings').on('shown.bs.modal', function() {
-                                let setRM1 = dataWs.Analog.RM1;
-                                let setRM2 = dataWs.Analog.RM2;
-                                let setRM3 = dataWs.Analog.RM3;
-                                let setRM4 = dataWs.Analog.RM4;
-                                let setStorage1 = dataWs.Analog.Storage1;
-                                let setStorage2 = dataWs.Analog.Storage2;
-                                let setStorage3 = dataWs.Analog.Storage3;
-                                let setStorage4 = dataWs.Analog.Storage4;
+                            if (statusMesinCard != 'Stanby') {
+                                $('#modalOperation').off('shown.bs.modal').on('shown.bs.modal', function() {
+                                    let defaultOptionPo = new Option(
+                                        poNumberCard,
+                                        poNumberCard,
+                                        true,
+                                        true
+                                    )
+                                    $('.select-nopo').append(defaultOptionPo).trigger('change')
 
-                                $('#setting_rm1').val(setRM1);
-                                $('#setting_rm2').val(setRM2);
-                                $('#setting_rm3').val(setRM3);
-                                $('#setting_rm4').val(setRM4);
-                                $('#setting_storage1').val(setStorage1);
-                                $('#setting_storage2').val(setStorage2);
-                                $('#setting_storage3').val(setStorage3);
-                                $('#setting_storage4').val(setStorage4);
-                            })
+                                    if (poNumberCard) {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "{{ route('batch_by_no_po') }}",
+                                            data: {
+                                                no_po: poNumberCard,
+                                                mrp_controller: 'WHP',
+                                            },
+                                            dataType: "json",
+                                            success: function(response) {
+                                                $('#batch_code').empty();
 
-                            $('#modalParameterSetting').on('shown.bs.modal', function() {
-                                let setParamStep1 = dataWs.Analog.Setting_Parm_Step1;
-                                let setParamStep2 = dataWs.Analog.Setting_Parm_Step2;
-                                let setParamStep3 = dataWs.Analog.Setting_Parm_Step3;
-                                let setParamStep4 = dataWs.Analog.Setting_Parm_Step4;
-                                let setParamSpeed1 = dataWs.Analog.Setting_Parm_Speed1;
-                                let setParamSpeed2 = dataWs.Analog.Setting_Parm_Speed2;
+                                                // tambahkan option kosong default
+                                                $('#batch_code').append(
+                                                    '<option value=""></option>');
 
-                                $('#Setting_Param_Step1').val(setParamStep1);
-                                $('#Setting_Param_Step2').val(setParamStep2);
-                                $('#Setting_Param_Step3').val(setParamStep3);
-                                $('#Setting_Param_Step4').val(setParamStep4);
-                                $('#Setting_Param_Speed1').val(setParamSpeed1);
-                                $('#Setting_Param_Speed2').val(setParamSpeed2);
-                            })
+                                                // loop data response
+                                                if (response.length > 0) {
+                                                    batchDetailData = response;
+                                                    $.each(response, function(index,
+                                                        item) {
+                                                        $('#batch_code').append(
+                                                            $('<option>', {
+                                                                value: item
+                                                                    .batch_code,
+                                                                text: item
+                                                                    .batch_code,
+                                                                selected: item
+                                                                    .batch_code ==
+                                                                    batchCodeCard
+                                                            })
+                                                        );
+                                                    });
 
-                            $('#modalSettings').on('shown.bs.modal', function() {
-                                const RM_1 = dataWs.Analog.RM1;
-                                const RM_2 = dataWs.Analog.RM2;
-                                const RM_3 = dataWs.Analog.RM3;
-                                const RM_4 = dataWs.Analog.RM4;
-                                const Storage_1 = dataWs.Analog.Storage1;
-                                const Storage_2 = dataWs.Analog.Storage2;
-                                const Storage_3 = dataWs.Analog.Storage3;
-                                const Storage_4 = dataWs.Analog.Storage4;
-
-                                $('#RM1').val(RM_1);
-                                $('#RM2').val(RM_2);
-                                $('#RM3').val(RM_3);
-                                $('#RM4').val(RM_4);
-                                $('#Storage1').val(Storage_1);
-                                $('#Storage2').val(Storage_2);
-                                $('#Storage3').val(Storage_3);
-                                $('#Storage4').val(Storage_4);
-                            })
-
-                            $('#modalRecipeEditor').on('shown.bs.modal', function() {
-                                for (let i = 1; i <= 4; i++) {
-                                    $('#row_recipe_' + i + '_tag').text(dataWs.Analog[
-                                        'Edit_Recipe' + i + '_Tag']);
-                                    for (let j = 1; j <= 4; j++) {
-                                        $('#row_recipe_' + i + '_step' + j).text(dataWs.Analog[
-                                            'Edit_Recipe' + i + '_Step' + j]);
+                                                }
+                                            }
+                                        });
                                     }
-                                }
-                            })
+                                })
+
+                                $('#modalSettings').off('shown.bs.modal').on('shown.bs.modal', function() {
+                                    let setRM1 = dataWs.Analog.RM1;
+                                    let setRM2 = dataWs.Analog.RM2;
+                                    let setRM3 = dataWs.Analog.RM3;
+                                    let setRM4 = dataWs.Analog.RM4;
+                                    let setStorage1 = dataWs.Analog.Storage1;
+                                    let setStorage2 = dataWs.Analog.Storage2;
+                                    let setStorage3 = dataWs.Analog.Storage3;
+                                    let setStorage4 = dataWs.Analog.Storage4;
+
+                                    $('#setting_rm1').val(setRM1);
+                                    $('#setting_rm2').val(setRM2);
+                                    $('#setting_rm3').val(setRM3);
+                                    $('#setting_rm4').val(setRM4);
+                                    $('#setting_storage1').val(setStorage1);
+                                    $('#setting_storage2').val(setStorage2);
+                                    $('#setting_storage3').val(setStorage3);
+                                    $('#setting_storage4').val(setStorage4);
+                                })
+
+                                $('#modalParameterSetting').off('shown.bs.modal').on('shown.bs.modal',
+                                    function() {
+                                        let setParamStep1 = dataWs.Analog.Setting_Parm_Step1;
+                                        let setParamStep2 = dataWs.Analog.Setting_Parm_Step2;
+                                        let setParamStep3 = dataWs.Analog.Setting_Parm_Step3;
+                                        let setParamStep4 = dataWs.Analog.Setting_Parm_Step4;
+                                        let setParamSpeed1 = dataWs.Analog.Setting_Parm_Speed1;
+                                        let setParamSpeed2 = dataWs.Analog.Setting_Parm_Speed2;
+
+                                        $('#Setting_Param_Step1').val(setParamStep1);
+                                        $('#Setting_Param_Step2').val(setParamStep2);
+                                        $('#Setting_Param_Step3').val(setParamStep3);
+                                        $('#Setting_Param_Step4').val(setParamStep4);
+                                        $('#Setting_Param_Speed1').val(setParamSpeed1);
+                                        $('#Setting_Param_Speed2').val(setParamSpeed2);
+                                    })
+
+                                $('#modalSettings').off('shown.bs.modal').on('shown.bs.modal', function() {
+                                    const RM_1 = dataWs.Analog.RM1;
+                                    const RM_2 = dataWs.Analog.RM2;
+                                    const RM_3 = dataWs.Analog.RM3;
+                                    const RM_4 = dataWs.Analog.RM4;
+                                    const Storage_1 = dataWs.Analog.Storage1;
+                                    const Storage_2 = dataWs.Analog.Storage2;
+                                    const Storage_3 = dataWs.Analog.Storage3;
+                                    const Storage_4 = dataWs.Analog.Storage4;
+
+                                    $('#RM1').val(RM_1);
+                                    $('#RM2').val(RM_2);
+                                    $('#RM3').val(RM_3);
+                                    $('#RM4').val(RM_4);
+                                    $('#Storage1').val(Storage_1);
+                                    $('#Storage2').val(Storage_2);
+                                    $('#Storage3').val(Storage_3);
+                                    $('#Storage4').val(Storage_4);
+                                })
+
+                                $('#modalRecipeEditor').off('shown.bs.modal').on('shown.bs.modal',
+                                    function() {
+                                        for (let i = 1; i <= 4; i++) {
+                                            $('#row_recipe_' + i + '_tag').text(dataWs.Analog[
+                                                'Edit_Recipe' + i + '_Tag']);
+                                            for (let j = 1; j <= 4; j++) {
+                                                $('#row_recipe_' + i + '_step' + j).text(dataWs.Analog[
+                                                    'Edit_Recipe' + i + '_Step' + j]);
+                                            }
+                                        }
+                                    })
+                            }
                         };
                     });
 
