@@ -463,38 +463,27 @@
                                     if (poNumberCard) {
                                         $.ajax({
                                             type: "POST",
-                                            url: "{{ route('batch_by_no_po') }}",
+                                            url: "{{ route('data_by_no_po_batch') }}",
                                             data: {
                                                 no_po: poNumberCard,
+                                                batch_code: batchCodeCard,
                                                 mrp_controller: 'WHP',
                                             },
                                             dataType: "json",
                                             success: function(response) {
+                                                $('#material_desc').val(response
+                                                    .material_desc);
+                                                $('#uom_material_code').val(
+                                                    response.uom_material_code);
+                                                $('#qty_production').val(response
+                                                    .qty_production);
+                                                $('#batch').val(response.batch);
+
                                                 $('#batch_code').empty();
 
-                                                // tambahkan option kosong default
                                                 $('#batch_code').append(
-                                                    '<option value=""></option>');
-
-                                                // loop data response
-                                                if (response.length > 0) {
-                                                    batchDetailData = response;
-                                                    $.each(response, function(index,
-                                                        item) {
-                                                        $('#batch_code').append(
-                                                            $('<option>', {
-                                                                value: item
-                                                                    .batch_code,
-                                                                text: item
-                                                                    .batch_code,
-                                                                selected: item
-                                                                    .batch_code ==
-                                                                    batchCodeCard
-                                                            })
-                                                        );
-                                                    });
-
-                                                }
+                                                    `<option selected value="${batchCodeCard}">${batchCodeCard}</option>`
+                                                );
                                             }
                                         });
                                     }

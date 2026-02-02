@@ -39,6 +39,28 @@ class ParaquatRealTimeController extends Controller
         return response()->json($data);
     }
 
+    public function data_by_no_po_batch(Request $request)
+    {
+        $noPo = $request->no_po;
+        $batchCode = $request->batch_code;
+        $mrpController = $request->mrp_controller;
+
+        $data = ZpoSapToAuto::where('prod_ord_no', $noPo)
+            ->where('batch_code', $batchCode)
+            ->where('mrp_controller', $mrpController)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        if ($data->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data not found'
+            ]);
+        }
+
+        return response()->json($data);
+    }
+
     public function batch_by_no_po(Request $request)
     {
         $noPo = $request->no_po;
