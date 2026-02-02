@@ -51,7 +51,7 @@ class ParaquatRealTimeController extends Controller
             ->orderBy('id', 'desc')
             ->first();
 
-        if ($data->isEmpty()) {
+        if (!$data) {
             return response()->json([
                 'success' => false,
                 'message' => 'Data not found'
