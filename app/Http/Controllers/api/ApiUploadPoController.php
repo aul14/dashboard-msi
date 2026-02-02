@@ -69,6 +69,7 @@ class ApiUploadPoController extends Controller
 
                     $exists = ZpoSapToAuto::where('prod_ord_no', $prod_ord_no)
                         ->where('batch_code', $batchCode)
+                        ->where('status_batch', '!=', 'RECEIVED')
                         ->exists();
 
                     if ($exists) {
