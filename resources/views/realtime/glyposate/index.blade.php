@@ -194,6 +194,7 @@
             startWebsocket();
 
             $('#modalOperation').on('shown.bs.modal', function() {
+                $('.btn-ops-start').show();
                 $(`.select-nopo`).select2({
                     placeholder: 'Search...',
                     dropdownParent: $('#modalOperation'),
@@ -459,6 +460,7 @@
                                         true
                                     )
                                     $('.select-nopo').append(defaultOptionPo).trigger('change')
+                                    $('.btn-ops-start').hide();
 
                                     if (poNumberCard) {
                                         $.ajax({
